@@ -1,11 +1,8 @@
 export async function load({ params }){
-  const post = await import(`../${params.slug}/index.md`)
-  const { title, date } = post.metadata
-  const content = post.default
+  const post = await import(`../../../../blog/${params.slug}/index.md`)
 
   return {
-    content,
-    title,
-    date,
+    meta : { ...post.metadata },
+    Content: post.default,
   }
 }
