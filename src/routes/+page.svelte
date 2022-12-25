@@ -1,1 +1,3 @@
-<h1>Welcome to my site</h1>
+<h1 class="text-3xl font-bold underline">
+  Welcome to my site
+</h1>
