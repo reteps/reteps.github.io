@@ -23,7 +23,7 @@
     </div>
     <div class="text-sm text-gray-500 lg:ml-auto flex flex-row justify-center lg:mt-0 mt-5">
       <div class="mr-1">© {new Date().getFullYear()} Pete Stenger / </div>
-      <Link href="https://github.com/reteps/reteps.github.io" simple>Code</Link>
+      <Link href="https://github.com/reteps/reteps.github.io" simple>Source</Link>
     </div>
   </div>
 </footer>
