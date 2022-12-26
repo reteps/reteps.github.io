@@ -35,7 +35,7 @@
   }
 </script> 
 <div class="flex flex-col lg:flex-row">
-  <div class="flex flex-col lg:w-1/5 sticky h-full top-0">
+  <div class="flex flex-col lg:w-1/5 lg:sticky h-full top-0">
     <h1 class="text-4xl font-bold text-purple-600 mb-10 mt-10">
       Showcase
      </h1> 
@@ -60,10 +60,10 @@
             <h3>{item.title}</h3>
             <div class="flex flex-row">
               {#if item.link}
-              <Link {linkClass} href={item.link}><LinkIcon /></Link>
+              <Link href={item.link}><LinkIcon /></Link>
               {/if}
               {#if item.source}
-              <Link {linkClass} href={item.source}><CodeIcon /></Link>
+              <Link href={item.source}><CodeIcon /></Link>
               {/if}
             </div>
           </div>
