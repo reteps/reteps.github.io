@@ -30,7 +30,7 @@
         Hi! I'm Pete Stenger!
       </h1>
       <p class="mt-5">
-        I'm a software developer at UIUC studying computer science. I'm passionate about open source software, cybersecurity, and education.
+        I'm a software developer at the University of Illinois Urbana Champaign (<Link href="https://illinois.edu/">UIUC</Link>) studying computer science. I'm passionate about open source software, cybersecurity, and education.
       </p>
       <h3 class="text-xl font-bold mt-10">Currently...</h3>
       <ul class="list-disc">
@@ -41,7 +41,7 @@
           A software developer for <Link href="https://uiuc.hack4impact.org" simple>Hack4Impact</Link>, where I program for nonprofits.
         </li>
         <li>
-          A admin for <Link href="https://sigpwny.com/" simple>SIGPwny</Link>, a SIG focused on cybersecurity and the largest educational RSO on campus.
+          An admin for <Link href="https://sigpwny.com/" simple>SIGPwny</Link>, an ACM special interest group focused on cybersecurity and the largest educational RSO on campus.
         </li>
       </ul>
     </div>

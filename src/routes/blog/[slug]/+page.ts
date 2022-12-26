@@ -1,4 +1,4 @@
-export async function load({ params }){
+export async function load({ params } : { params: any }){
   const post = await import(`../../../../blog/${params.slug}/index.md`)
 
   return {
