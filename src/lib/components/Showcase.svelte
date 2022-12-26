@@ -4,20 +4,29 @@
 
   const content = [
     {
-      'title': 'Title',
-      'description': 'Description',
-      'image': 'https://via.placeholder.com/1000',
-      'source': 'https://github.com/reteps',
-      'link': 'https://example.com',
-      'tags': ['tag1', 'tag2', 'tag3'],
-      'categories': ['Featured', 'category1']
+      'title': 'uiuc-apartments.com',
+      'description': 'A website that helps students find apartments near the University of Illinois at Urbana-Champaign. Wrote a web scraper for around 15 rental agencies on campus. Fetch new listings every day and provide a frontend for students to search for apartments.',
+      'image': '/showcase/uiuc-apartments.png',
+      'source': 'https://github.com/uiuc-apartments/uiuc-apartments.com',
+      'link': 'https://www.uiuc-apartments.com/',
+      'tags': ['Vue', 'Python', 'Google Cloud', 'TypeScript', 'TailwindCSS', 'Web Scraping'],
+      'categories': ['Featured', 'Projects']
     },
     {
-      'title': 'Title',
-      'description': 'Description',
-      'image': 'https://scontent.fdet1-2.fna.fbcdn.net/v/t39.30808-6/292775604_379634807486518_2661977746830899357_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=FS8J6BzCFLEAX8rDjje&_nc_ht=scontent.fdet1-2.fna&oh=00_AfCfLb4IjoDx9mNXtQhu8bzQfwuhW4V-JFWw3E7dtoJ77g&oe=63ADD009',
-      'tags': ['tag1', 'tag2', 'tag3'],
-      'categories': ['Featured', 'category2']
+      'title': 'My website',
+      'description': 'My personal website, built with SvelteKit and TailwindCSS. Blog uses mdsvex. Hosted on Github Pages.',
+      'image': '/showcase/website-beta.png',
+      'source': 'https://github.com/reteps/reteps.github.io',
+      'link': 'https://stenger.io',
+      'tags': ['Svelte', 'SvelteKit', 'TailwindCSS', 'mdsvex', 'Github Pages'],
+      'categories': ['Projects']
+    },
+    {
+      'title': 'CTF Discord Bot: pwnybot',
+      'description': 'A tool for the cybersecurity club @ UIUC to manage CTFs, and perform other useful actions. Autodeployed with Github Actions.',
+      'image': '/showcase/pwnybot.png',
+      'tags': ['Python', 'Github Actions', 'Discord.py', 'Docker'],
+      'categories': ['Projects']
     }
   ]
 
@@ -60,7 +69,7 @@
     {#each filteredContent as item}
       <div class="flex flex-col mb-10">
         <div class="flex flex-row justify-center item">
-          <img src={item.image} class="max-h-96" alt={item.title} />
+          <img src={item.image} alt={item.title} />
         </div>
         <div class="flex flex-col mt-5 lg:mt-10">
           <div class="flex flex-row justify-between">
