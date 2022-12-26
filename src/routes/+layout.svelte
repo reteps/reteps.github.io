@@ -7,8 +7,10 @@
 
 <Header />
 
-<main>
-  <slot />
+<main class="flex flex-col items-center">
+  <div class="container">
+    <slot />
+  </div>
 </main>
 
 <Footer />
