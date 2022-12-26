@@ -3,13 +3,16 @@
   import Link from '$lib/components/Link.svelte';
   import Showcase from '$lib/components/Showcase.svelte';
 
+  let hacker = false;
+  let arrowHover = false;
+
   function scrollIntoView() {
     const el = document.getElementById('showcase');
     if (!el) return;
     el.scrollIntoView({ behavior: 'smooth' });
   }
 
-  function rotateArrow({ clientX, clientY }) {
+  function rotateArrow({ clientX, clientY } : MouseEvent) {
     const el = document.getElementById('arrow');
     if (!el) return;
     const { left, top, width, height } = el.getBoundingClientRect();
@@ -43,11 +46,11 @@
       </ul>
     </div>
     <div class="flex flex-row justify-center">
-      <img src="/headshot.png" class="rounded-full w-1/2 lg:w-3/5" alt="Pete" />
+      <img src={hacker ? '/headshot_hacker.png' : '/headshot.png'} on:mouseover={() => hacker = true} on:focus={() => hacker = true} on:mouseleave={() => hacker = false} class="rounded-full w-1/2 lg:w-3/5 shadow-lg" alt="Pete" />
     </div>
   </div>
   <div class="flex-row items-end flex-grow hidden lg:flex">
-    <a id="arrow" class="mx-auto text-purple-600 mb-5 hover:scale-110" href="#showcase" on:keydown={scrollIntoView} on:click|preventDefault={scrollIntoView}>
+    <a id="arrow" class="mx-auto text-purple-400 mb-5 hover:text-purple-600" href="#showcase" on:keydown={scrollIntoView} on:click|preventDefault={scrollIntoView}>
       <ArrowDownCircleIcon size="48" />
     </a>
   </div>
