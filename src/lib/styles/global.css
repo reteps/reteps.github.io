@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Add Scroll Top for blog */
 @layer components {
   *:is(h1, h2, h3, h4, h5, h6) {
     @apply scroll-mt-10;
   }
+}
+
+svg {
+  vertical-align: middle;
 }

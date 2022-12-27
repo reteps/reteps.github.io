@@ -3,12 +3,12 @@
   const { Content, meta: { title, date } } = data
 </script>
 
-<article class="flex flex-col mx-10">
-  <div class="header mx-auto">
+<article class="flex flex-col mx-10 dark:text-white items-center">
+  <div class="header">
     <h1 class="text-4xl">{title}</h1>
     <p>Published: {date}</p>
   </div>
-  <div class="prose mx-auto pt-10">
+  <div class="prose pt-10 dark:prose-invert">
     <Content />
   </div>
 </article>
