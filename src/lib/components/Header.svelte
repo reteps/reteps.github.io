@@ -17,7 +17,7 @@
         <a href="/blog">Blog</a>
       </li>
       <li class={linkClass}>
-        <a href="/">Resume</a>
+        <a href="https://drive.google.com/file/d/1ZAKsHNas-5nEJbnqZx5fgJxtUmyMZBeq/view" target="_blank" rel="noreferrer">Resume</a>
       </li>
       <li class={linkClass}>
         <button on:click={() => $darkTheme = !$darkTheme}>

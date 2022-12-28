@@ -15,7 +15,7 @@
 
 
 <style lang="scss">
-  .prose, .header {
+  .prose {
     max-width: min(100vw, 65ch);
   }
 

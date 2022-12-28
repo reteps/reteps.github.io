@@ -9,8 +9,8 @@
       'image': '/showcase/uiuc-apartments.png',
       'source': 'https://github.com/uiuc-apartments/uiuc-apartments.com',
       'link': 'https://www.uiuc-apartments.com/',
-      'languages': ['TypeScript', 'Python'],
-      'technologies': ['Vue', 'Google Cloud', 'TailwindCSS'],
+      'languages': ['Javascript', 'Python'],
+      'technologies': ['Typescript', 'Vue', 'Google Cloud', 'TailwindCSS'],
       'categories': ['Featured', 'Projects']
     },
     {
@@ -19,8 +19,8 @@
       'image': '/showcase/website-beta.png',
       'source': 'https://github.com/reteps/reteps.github.io',
       'link': 'https://stenger.io',
-      'languages': ['TypeScript'],
-      'technologies': ['Svelte', 'SvelteKit', 'TailwindCSS', 'mdsvex', 'Github Pages'],
+      'languages': ['Javascript'],
+      'technologies': ['Typescript', 'Svelte', 'SvelteKit', 'TailwindCSS', 'Github Pages'],
       'categories': ['Projects']
     },
     {
@@ -38,7 +38,7 @@
       'image': '/showcase/pwnyctf.png',
       'source': 'https://github.com/sigpwny/CTFd',
       'link': 'https://ctf.sigpwny.com/',
-      'languages': ['Python', 'JavaScript'],
+      'languages': ['Python', 'Javascript'],
       'technologies': ['Docker', 'CI/CD', 'Django', 'Bootstrap 5'],
       'categories': ['Projects', 'Featured']
     }
@@ -112,17 +112,17 @@
     <div class="text-center mt-10 dark:text-white"> Showing {filteredContent.length} of {content.length} results</div>
   </div>
   <div class="flex flex-col lg:w-4/5 lg:pl-20 mt-10 lg:mt-40">
-    {#each filteredContent as item}
-      <div class="flex flex-col mb-10">
+    {#each filteredContent as item, i}
+      <div class="flex flex-col">
         <div class="flex flex-row justify-center item">
           <img class="rounded-lg" src={item.image} alt={item.title} />
         </div>
-        <div class="flex flex-col mt-5 lg:mt-10 dark:text-white">
+        <div class="flex flex-col mt-5 dark:text-white">
           <div class="flex flex-col lg:flex-row justify-between">
             <h3 class="text-3xl">{item.title}</h3>
             <div class="flex flex-row items-center mt-3 lg:mt-0">
               {#if item.link}
-              <Link href={item.link}><LinkIcon /></Link>
+              <Link href={item.link} className="ml-0"><LinkIcon /></Link>
               {/if}
               {#if item.source}
               <Link href={item.source}><CodeIcon /></Link>
@@ -139,6 +139,11 @@
             {/each}
           </div>
         </div>
+        {#if i !== filteredContent.length - 1}
+          <div class="flex flex-row justify-center">
+            <hr class="mt-10 mb-10 lg:mt-20 lg:mb-20 h-1 rounded border-0 w-64 bg-slate-400 dark:bg-slate-500"/>
+          </div>
+        {/if}
       </div>
     {/each}
   </div>

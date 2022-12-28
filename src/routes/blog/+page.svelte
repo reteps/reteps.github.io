@@ -1,19 +1,26 @@
 <script lang="ts">
+  import { CalendarIcon } from 'svelte-feather-icons';
+  import Link from '$lib/components/Link.svelte'
   export let data: any
   </script>
 
 <div class="content px-10 pt-20 dark:text-white">
-  <h1>My Blog Posts</h1>
+  <h1 class="text-3xl mb-3">Posts</h1>
   
   <ul>
     {#each data.posts as post}
-    <li>
-      <h2>
-        <a href={post.path}>
-          {post.meta.title}
-        </a>
-      </h2>
-      Published {post.meta.date}
+    <li class="mb-3">
+      <div>
+
+        <h2>
+          <Link href={post.path} simple>
+            {post.meta.title}
+          </Link>
+        </h2>
+      </div>
+        <div class="flex flex-row items-center">
+        <CalendarIcon class="mr-2" size="16"/> {post.meta.date}
+      </div>
     </li>
     {/each}
   </ul>
