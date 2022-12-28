@@ -3,19 +3,21 @@
   const { Content, meta: { title, date } } = data
 </script>
 
-<article class="flex flex-col mx-10 dark:text-white items-center">
-  <div class="header">
-    <h1 class="text-4xl">{title}</h1>
-    <p>Published: {date}</p>
-  </div>
-  <div class="prose pt-10 dark:prose-invert">
+<article class="flex flex-col dark:text-white items-center">
+  <div class="prose prose-sm md:prose-lg lg:prose-xl pt-10 px-10 dark:prose-invert prose-a:break-words prose-code:break-words">
+    <div class="not-prose">
+      <h1 class="text-3xl">{title}</h1>
+      <p>Published: <strong>{date}</strong></p>
+    </div>
     <Content />
   </div>
 </article>
 
 
 <style lang="scss">
-  .header {
-    width: 65ch; /* mirror prose max-width */
+  .prose, .header {
+    max-width: min(100vw, 65ch);
   }
+
+
 </style>

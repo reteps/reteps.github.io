@@ -6,7 +6,7 @@
   import { darkTheme } from '$lib/stores'
 
   $: dark = $darkTheme // bind to dark class
-  $: bg_color = dark ? 'bg-black min-w-fit' : 'bg-white min-w-fit'
+  $: bg_color = dark ? 'bg-black' : 'bg-white'
 </script>
 
 <div class:dark class={bg_color} >
