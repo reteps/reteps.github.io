@@ -46,7 +46,9 @@
       </ul>
     </div>
     <div class="flex flex-row justify-center mb-10">
-      <img src={hacker ? '/headshot_hacker.png' : '/headshot.png'} on:mouseover={() => hacker = true} on:focus={() => hacker = true} on:mouseleave={() => hacker = false} class="rounded-full w-1/2 lg:w-3/5 shadow-lg" alt="Pete" />
+      <div class="w-1/2 lg:w-3/5">
+        <img src={hacker ? '/headshot_hacker.png' : '/headshot.png'} on:mouseover={() => hacker = true} on:focus={() => hacker = true} on:mouseleave={() => hacker = false} class="rounded-full w-full shadow-lg h-auto block" alt="Pete" />
+      </div>
     </div>
   </div>
   <div class="flex-row items-end flex-grow hidden lg:flex">
@@ -60,6 +62,6 @@
 </div>
 <style lang="scss">
   #intro {
-    height: 90vh;
+    min-height: 90vh;
   }
 </style>

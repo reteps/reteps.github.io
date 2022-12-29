@@ -132,10 +132,10 @@
           <p class="mt-5">{item.description}</p>
           <div class="flex flex-row flex-wrap justify-end mt-3">
             {#each item.languages as language}
-              <span class="shrink-0 rounded-lg text-s px-3 mb-2 bg-blue-200 text-blue-600 mx-2">{language}</span>
+              <span class="shrink-0 rounded-lg text-sm lg:text-base px-2 mb-2 bg-blue-200 text-blue-600 mx-2">{language}</span>
             {/each}
             {#each item.technologies as technology}
-              <span class="shrink-0 rounded-lg text-s px-3 mb-2 bg-purple-200 text-purple-600 dark:bg-green-200 dark:text-green-600 mx-2">{technology}</span>
+              <span class="shrink-0 rounded-lg text-sm lg:text-base px-2 mb-2 bg-purple-200 text-purple-600 dark:bg-green-200 dark:text-green-600 mx-2">{technology}</span>
             {/each}
           </div>
         </div>
