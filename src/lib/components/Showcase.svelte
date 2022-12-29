@@ -11,17 +11,17 @@
       'link': 'https://www.uiuc-apartments.com/',
       'languages': ['Javascript', 'Python'],
       'technologies': ['Typescript', 'Vue', 'Google Cloud', 'TailwindCSS'],
-      'categories': ['Featured Projects', 'All Projects']
+      'categories': ['Projects']
     },
     {
-      'title': 'My website',
-      'description': 'My personal website, built with SvelteKit and TailwindCSS. Blog uses mdsvex. Hosted on Github Pages.',
+      'title': 'Personal website',
+      'description': 'Built with SvelteKit and TailwindCSS. Blog uses mdsvex. Hosted on Github Pages.',
       'image': '/showcase/website-beta.png',
       'source': 'https://github.com/reteps/reteps.github.io',
       'link': 'https://stenger.io',
       'languages': ['Javascript'],
       'technologies': ['Typescript', 'Svelte', 'SvelteKit', 'TailwindCSS', 'Github Pages'],
-      'categories': ['All Projects']
+      'categories': ['Projects']
     },
     {
       'title': 'CTF Discord Bot: pwnybot',
@@ -29,8 +29,8 @@
       'image': '/showcase/pwnybot.png',
       'languages': ['Python'],
       'technologies': ['CI/CD', 'Discord.py', 'Docker'],
-      'link': 'https://github.com/sigpwny/pwnybot',
-      'categories': ['All Projects']
+      'source': 'https://github.com/sigpwny/pwnybot',
+      'categories': ['Projects']
     },
     {
       'title': 'CTF Platform: PwnyCTF',
@@ -40,7 +40,7 @@
       'link': 'https://ctf.sigpwny.com',
       'languages': ['Python', 'Javascript'],
       'technologies': ['Docker', 'CI/CD', 'Django', 'Bootstrap 5'],
-      'categories': ['All Projects', 'Featured Projects']
+      'categories': ['Projects']
     },
     {
       'title': 'Kotahi: Manuscript Publishing Platform (Fall 2021)',
@@ -62,7 +62,7 @@
     },
     {
       'title': 'Full-Stack Intern @ Fifth Eye (Summer 2020)',
-      'description': 'Interned at a medical technology startup to created a platform to manage hospital deployments. It performs AWS provisioning and displays AWS CloudWatch statistics, with a user-friendly UI. Deployment management triggers <a href="https://circleci.com/">CircleCI</a> actions.',
+      'description': 'Interned at a medical technology startup, creating a webapp to manage hospital deployments. It performs AWS provisioning and displays AWS CloudWatch statistics. Deployment management triggers <a href="https://circleci.com/">CircleCI</a> actions.',
       'image': '/showcase/fifth-eye.png',
       'languages': ['Javascript'],
       'technologies': ['Node.js', 'React', 'AWS', 'MaterialUI', 'CI/CD'],
@@ -81,26 +81,27 @@
   ]
 
 
-  $: categories = [...new Set(content.map(item => item.categories).flat())]
+  $: categories = ['Everything', ...new Set(content.map(item => item.categories).flat())]
   $: languages = [...new Set(content.map(item => item.languages).flat())]
 
-  let selected: string = 'Featured Projects'
+  let selected: string = 'Everything'
   let selectedLanguages: string[] = []
 
   $: filteredContent = content.filter(item => {
-    return item.categories.includes(selected) && 
+    return (item.categories.includes(selected) || selected === 'Everything') && 
     (selectedLanguages.every(language => item.languages.includes(language)) || selectedLanguages.length === 0);
   });
 
   $: buttonClass = (category: string) => {
-    return selected === category ? `shrink-0 bg-purple-200 text-purple-600 dark:bg-green-200 dark:text-green-600 p-3 m-1 rounded-xl` : 
-    'shrink-0 p-3 m-1 dark:hover:bg-green-200 dark:hover:text-green-600 hover:bg-purple-200 hover:text-purple-600 transition duration-300 rounded-xl dark:text-white';
+    return selected === category ? `pl-5 text-left shrink-0 bg-purple-200 text-purple-600 dark:bg-green-200 dark:text-green-600 p-3 m-1 rounded-xl` : 
+    'pl-5 text-left shrink-0 p-3 m-1 dark:hover:bg-green-200 dark:hover:text-green-600 hover:bg-purple-200 hover:text-purple-600 transition duration-300 rounded-xl dark:text-white';
   }
 
   $: languageClass = (language: string) => {
     return selectedLanguages.includes(language) ?
      `shrink-0 rounded-lg text-s px-3 bg-blue-200 border-2 border-blue-200 mb-2 text-blue-600 mx-2 items-center cursor-pointer` 
-     : 'shrink-0 rounded-lg text-s px-3 hover:bg-blue-200 hover:border-blue-200 hover:text-blue-600 border-2 dark:border-slate-400 border-slate-500 mb-2 text-slate-700 mx-2 items-center cursor-pointer dark:text-slate-200';
+     : `shrink-0 rounded-lg text-s px-3 hover:bg-blue-200 hover:border-blue-200 hover:text-blue-600 border-2 dark:border-slate-400 border-slate-500 
+     mb-2 text-slate-700 mx-2 items-center cursor-pointer dark:hover:border-blue-200 dark:hover:text-blue-600 dark:text-slate-200`;
   }
 
   function toggleLanguage(language: string) {
@@ -129,9 +130,9 @@
       <FilterIcon class='mr-2' /> Filter
     </div>
     {#each categories as category}
-      <button class={buttonClass(category)} on:click={() => { selected = category; scrollIntoView() } }>
-        {category}
-      </button>
+    <button class={buttonClass(category)} on:click={() => { selected = category; scrollIntoView() } }>
+      {category}
+    </button>
     {/each}
     <div class={`m-3 mx-10 border-slate-400 p-2 dark:text-white flex flex-row justify-center border-b-2`}>
       <GlobeIcon class='mr-2' /> Languages
@@ -140,7 +141,8 @@
       {#each languages as language}
         <span class={languageClass(language)} on:click={() => toggleLanguage(language)} on:keypress={() => toggleLanguage(language)}>{language}</span>
       {/each}
-      <span class="rounded-lg text-s px-3 dark:border-slate-400 border-slate-500 text-slate-700 dark:text-slate-200 hover:text-red-600 hover:bg-red-200 hover:border-red-200
+      <span class="rounded-lg text-s px-3 dark:border-slate-400 border-slate-500 text-slate-700 dark:text-slate-200 
+      hover:text-red-600 hover:bg-red-200 hover:border-red-200 dark:hover:text-red-600 dark:hover:border-red-200
         border-2 mx-2 mb-2 flex flex-row items-center cursor-pointer justify-between viewbox-fix" on:click={() => { selectedLanguages = []; scrollIntoView() }} on:keydown={() => { selectedLanguages = []; scrollIntoView() }}>
         <div class="mr-2">Clear</div><TrashIcon size="14" /> 
       </span>
