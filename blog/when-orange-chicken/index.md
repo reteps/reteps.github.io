@@ -4,8 +4,8 @@ date: "2021-10-24"
 ---
 A simple, innocous question. While eating dinner, some friends and I were discussing the best Ike meals, eventually arriving at when is orange chicken next available at one of the Dining Halls littered around campus?
 
-![Picture of orange chicken](./Pasted_image_20211021003820.png)
-That sweet, sweet chicken
+![Picture of orange chicken](./Pasted_image_20211021003820.png){ width=400 }
+Caption: That sweet, sweet chicken
 
 Any ordinary person on campus would tell you to pull out your phone, and click on each dining hall, then search for some of that delicious chicken. But instead, I thought, 
 
@@ -45,12 +45,12 @@ In a nutshell, we configure an email provider to send email from, and then the l
     // '%s@sms.edgewireless.com',  // slow
   ],
 ```
-(A snippet of https://github.com/typpo/textbelt/blob/master/lib/providers.js)
+Caption: A snippet of https://github.com/typpo/textbelt/blob/master/lib/providers.js
 
 After some playing around, I was successfully sending texts!
 
-![Texts](./texts.jpg)
-ignore the message contents please
+![Texts](./texts.jpg){ width=400 }
+Caption: ignore the message contents please
 
 Unfortunately, this method has some drawbacks:
 
@@ -61,30 +61,31 @@ Unfortunately, this method has some drawbacks:
 When I setup the email service, the easiest method was to connect my gmail account and use that as the SMS sender. I have since regretted that decision, as the 19/20 emails repeatedly bounce.
 
 ![Lots of emails](./Pasted_image_20211021010021.png)
-2 days after the experiment
+Caption: 2 days after the experiment
 
-I later switched to mailgun, but I was not able to get the texts, even though the emails sent. I concluded that there must be some security protection against this sort of SMS spam* (or idk how mailgun works)
+I later switched to mailgun, but I was not able to get the texts, even though the emails sent. I concluded that there must be some security protection against this sort of SMS spam
+
+* This claim requires further research, and I had already spent an hour trying to get it to work, and so I moved onto more interesting parts of this project to determine it's feasibility.
 
 ![Mailgun errors](./Pasted_image_20211021010305.png)
 
-*This claim requires further research, and I had already spent an hour trying to get it to work, and so I moved onto more interesting parts of this project to determine it's feasibility.
 
 ## Playing around with web APIs
 
 I then pivoted my attention towards the dining halls.
 
 ![google search](./Pasted_image_20211021004728.png)
-Top 10 photos taken before a steep academic decline
+Caption: Top 10 photos taken before a steep academic decline
 
 The first spot I checked was the dining hall information page. Nothing special, but it could get the job done.
 
-![dining hall page screenshot](./Pasted_image_20211021004839.png)
-A true work of art
+![dining hall page screenshot](./Pasted_image_20211021004839.png){width=400}
+Caption: A true work of art
 
 Unfortunately, after looking at the requests, we figure out that this is a .NET application and it doesn't use any APIs.
 
 ![devtools screenshot](./Pasted_image_20211021004959.png)
-Debugger Tools showing the despair-inducing `__VIEWSTATE`.
+Caption: Debugger Tools showing the despair-inducing `__VIEWSTATE`.
 
 ![insomnia screenshot](./Pasted_image_20211021005048.png)
 
@@ -93,14 +94,15 @@ I was able to easily replicate this request in [Insomnia](https://insomnia.rest/
 I could have stopped here, and created a python script running to screen-scrape the menu and then send out emails. But  would I be a true software engineer if I did that?
 
 ![xkcd](./Pasted_image_20211021011038.png)
+
 ## The Illinois Dining App
 
 Most people at Illinois are familiar with the Illinois App: It shows you the locations and menu for all the dining halls. The app's information comes from somewhere, and that place is 99% of the time an API. 
 
 Reverse-engineering closed-source APIs is pretty much my specialty, and I really enjoy doing it. I've done it lets see, [one](https://github.com/sec-edgar/sec-edgar), [two](https://github.com/reteps/lrc_kit), [three](https://github.com/reteps/kbot), [four](https://github.com/reteps/rundata), [five](https://github.com/reteps/redfin), [six](https://github.com/reteps/quizizz-bot), [seven](https://github.com/reteps/mcdonalds-api-wrapper), [eight](https://github.com/reteps/freenom-register), [nine](https://github.com/reteps/pywerschool) times and turned it into an open-source library. DATA EQUITY FTW!!
 
-![dining hall app](./Pasted_image_20211021011306.png)
-An image of the dining hall app for the IKE dining hall
+![dining hall app](./Pasted_image_20211021011306.png){width=500}
+Caption: An image of the dining hall app for the IKE dining hall
 
 Enter Charles.
  ![charles logo](./Pasted_image_20211021011830.png)
@@ -130,7 +132,7 @@ Completing steps 1-3, I was able to confirm my hunch in the `adb logcat` output:
 This output pretty clearly shows us that native libraries are involved in SSL pinning.
 
 ![gru meme SSL pinning](./template.jpg)
-I cry every time
+Caption: I cry every time
 
 
 ### Time to bring out the heavy artillery
@@ -163,19 +165,22 @@ And we are rewarded with some sweet sweet burp logs!
 ![burp logs](./burp_req.png)
 And find... unauthenticated mobile API endpoints
 
-![think meme](./Pasted_image_20211021015012.png)
+![think meme](./Pasted_image_20211021015012.png){width=300}
+Caption: Security Moment
 
 A nice prize after so much work :)
 
 Mirroring these requests using Insomnia, we find two endpoints we care about:
 
 The list of locations,
+
 ```
 https://web.housing.illinois.edu/MobileAppWS/api/LocationSchedules
 ```
 ![location API](./Pasted_image_20211021015211.png)
 
 As well as the menu for that location on a certain day:
+
 ```
 https://web.housing.illinois.edu/MobileAppWS/api/Menu/<diningID>/<date>
 ```
@@ -199,7 +204,7 @@ I also made some other decisions: Obviously this webapp would be able to do more
 
 Authentication scares me, so I always do it first. I didn't really implement anything special, so I will just overview what I resarched instead. I looked into types of Illinois authentication, which boiled down to shibboleth, OpenID Connect, and Google. 
 
-![shib meme](./Pasted_image_20211021020308.png)
+![shib meme](./Pasted_image_20211021020308.png){width=400}
 
 I don't think any explanation I make of the first two is going to be better than the official Illinois tech support guy, so:
 
@@ -214,8 +219,7 @@ I decided to go with authentication method #3 because:
 tldr; I am lazy
 
 ![login flow](./Untitled_Diagram.drawio.png)
-
-The authentication flow I ended up with
+Caption: The authentication flow I ended up with
 
 ## Development Process
 
@@ -254,7 +258,7 @@ export const updateMenu = functions.pubsub.schedule('0 1 * * *')
 ```
 
 ### UI Madness
-![meme](./Pasted_image_20211021031205.png)
+![meme](./Pasted_image_20211021031205.png){width=400}
 Most of the UI development process went smoothly, I always forget how to use [MaterialUI](https://mui.com/) and so it takes me 2x as long to do basic things, like make a react button. I ended up using [styled-components](https://styled-components.com/), which made styling things way easier:
 
 ```js
@@ -266,12 +270,12 @@ styled(Container)`
  ```
 
 ![shitty UI project](./Pasted_image_20211021024050.png)
-About half-way through the project.
+Caption: About half-way through the project.
 
 React is great for most things, but what it is not known for is forms. This may have been the most infuriating two hours of my life to validate a phone number. The only advice I have to you is that while `useState` hooks can be annoying, integrating [react-hook-form](https://react-hook-form.com/) into a UI library is worse.
 
 ![cursed js](./Pasted_image_20211021023649.png)
-Ah yes, the joys of es6 javascript ...
+Caption: Ah yes, the joys of es6 javascript ...
 
 ### Re-engineering
 
@@ -299,7 +303,7 @@ After opening a couple tabs,
 
 He gave me a pretty crazy looking path structure to use, `/food/{date_doc}/meals/{meal_doc}/items/{item_doc}`, but after thinking it out on paper, I figured out a data structure for the food elements, as well how to query for food in this structure based on my alerts.
 ![paper for programming](./Pasted_image_20211021022927.png)
-When you use paper for programming, you know it's a complicated problem
+Caption: When you use paper for programming, you know it's a complicated problem
 
 
 ### Final Strides
