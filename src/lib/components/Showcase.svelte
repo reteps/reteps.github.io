@@ -11,7 +11,7 @@
       'link': 'https://www.uiuc-apartments.com/',
       'languages': ['Javascript', 'Python'],
       'technologies': ['Typescript', 'Vue', 'Google Cloud', 'TailwindCSS'],
-      'categories': ['Featured', 'Projects']
+      'categories': ['Featured Projects', 'All Projects']
     },
     {
       'title': 'My website',
@@ -21,7 +21,7 @@
       'link': 'https://stenger.io',
       'languages': ['Javascript'],
       'technologies': ['Typescript', 'Svelte', 'SvelteKit', 'TailwindCSS', 'Github Pages'],
-      'categories': ['Projects']
+      'categories': ['All Projects']
     },
     {
       'title': 'CTF Discord Bot: pwnybot',
@@ -30,25 +30,61 @@
       'languages': ['Python'],
       'technologies': ['CI/CD', 'Discord.py', 'Docker'],
       'link': 'https://github.com/sigpwny/pwnybot',
-      'categories': ['Projects']
+      'categories': ['All Projects']
     },
     {
       'title': 'CTF Platform: PwnyCTF',
       'description': 'An in-house CTF platform for the cybersecurity club @ UIUC. Driven by a Github Action that redeploys the latest challenges to the website and challenge infrastructure to the SIGPwny server. Hooks into Discord using webhooks.',
       'image': '/showcase/pwnyctf.png',
       'source': 'https://github.com/sigpwny/CTFd',
-      'link': 'https://ctf.sigpwny.com/',
+      'link': 'https://ctf.sigpwny.com',
       'languages': ['Python', 'Javascript'],
       'technologies': ['Docker', 'CI/CD', 'Django', 'Bootstrap 5'],
-      'categories': ['Projects', 'Featured']
+      'categories': ['All Projects', 'Featured Projects']
+    },
+    {
+      'title': 'Kotahi: Manuscript Publishing Platform (Fall 2021)',
+      'description': 'Worked with the nonprofit <a href="https://coko.foundation">Coko</a> to improve their open-source manuscript publishing system. Refactored the dashboard page into an extensible table system, and hooked up the tables with GraphQL to Postgres for filtering and sorting.',
+      'image': '/showcase/kotahi.png',
+      'source': 'https://gitlab.coko.foundation/kotahi/kotahi/-/commits/peer-review-dashboard',
+      'link': 'https://elife.kotahi.cloud',
+      'languages': ['Javascript'],
+      'technologies': ['Node.js', 'React', 'GraphQL', 'Postgres', 'Docker'],
+      'categories': ['Previous Work']
+    },
+    {
+      'title': 'Cybersecurity Intern @ Battelle (Summer 2021)',
+      'description': 'Reverse-engineered a closed-source ARM-based modem and modified functionality in order to exfiltrate valuable cellular data typically disarded. Wrote an emulator for a .NET debugging tool and wrote Ghidra plugins to aid in reverse-engineering.',
+      'image': '/showcase/battelle.png',
+      'languages': ['Assembly', 'C', 'Python'],
+      'technologies': ['Ghidra', 'Android'],
+      'categories': ['Previous Work', 'Cybersecurity']
+    },
+    {
+      'title': 'Full-Stack Intern @ Fifth Eye (Summer 2020)',
+      'description': 'Interned at a medical technology startup to created a platform to manage hospital deployments. It performs AWS provisioning and displays AWS CloudWatch statistics, with a user-friendly UI. Deployment management triggers <a href="https://circleci.com/">CircleCI</a> actions.',
+      'image': '/showcase/fifth-eye.png',
+      'languages': ['Javascript'],
+      'technologies': ['Node.js', 'React', 'AWS', 'MaterialUI', 'CI/CD'],
+      'categories': ['Previous Work']
+    },
+    {
+      'title': 'CTF Player for SIGPwny',
+      'description': 'Compete in cybersecurity "Capture the Flag" competitions at a high level. Am a key team player, especially focused on reverse-engineering. Ranked 47th in the world out of 10000+ teams, and the second best US collegiate team.',
+      'categories': ['Cybersecurity'],
+      'languages': [],
+      'image': '/showcase/ctftime.png',
+      'link': 'https://ctftime.org/team/27736',
+      'technologies': ['Organizer - UIUCTF 2020/2021/2022', '1st - Club CTF 2021', '5th - CSAW Finals 2022', '2nd - BuckeyeCTF 2022']
     }
+
   ]
 
 
   $: categories = [...new Set(content.map(item => item.categories).flat())]
   $: languages = [...new Set(content.map(item => item.languages).flat())]
 
-  let selected: string = 'Featured'
+  let selected: string = 'Featured Projects'
   let selectedLanguages: string[] = []
 
   $: filteredContent = content.filter(item => {
@@ -129,7 +165,7 @@
               {/if}
             </div>
           </div>
-          <p class="mt-5">{item.description}</p>
+          <p class="mt-5">{@html item.description}</p>
           <div class="flex flex-row flex-wrap justify-end mt-3">
             {#each item.languages as language}
               <span class="shrink-0 rounded-lg text-sm lg:text-base px-2 mb-2 bg-blue-200 text-blue-600 mx-2">{language}</span>
