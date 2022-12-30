@@ -3,7 +3,11 @@ title: "A really angry guide to productivity tools"
 date: "2022-10-27"
 ---
 
-Hi. I’m a CS student @ UIUC. Sometimes it’s hard to stay on top of your stuff. Here is how to become a master productivity-er even when you are as lazy as me.### Technology I use
++ Originally published on [Medium](https://medium.com/@peter.a.stenger/a-really-angry-guide-to-productivity-tools-28089285a2f)
+
+Hi. I’m a CS student @ UIUC. Sometimes it’s hard to stay on top of your stuff. Here is how to become a master productivity-er even when you are as lazy as me.
+
+### Technology I use
 
 *   Apple M1 Laptop. Awesome battery life. iMessage. Clean UI. Get the pro if you are rich AF. Get the [long extension cable](https://www.apple.com/shop/product/MK122LL/A/power-adapter-extension-cable). The fucking block sucks.
 *   Windows Desktop. Gaming + Game Development + Virtual Machines, you want to be on Windows for any beefy computational work. Second monitor. 2 monitors = 200% productive.
@@ -29,8 +33,8 @@ These tools suck. Make them better.
 *   Block literally every ad. Get [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en).
 *   Stop writing shitty essays. Get [Grammarly](https://chrome.google.com/webstore/detail/grammarly-grammar-checker/kbfnbcaeplbcioakkpcpgfkobkghlhen/related). Get an A.
 *   Stop pulling out your phone for 2FA. Get [Authenticator](https://chrome.google.com/webstore/detail/authenticator/bhghoamapcdpbohphigoooaddinpkbai?hl=en).
-*   Wikipedia looks like shit. [Wikiwand] (https://chrome.google.com/webstore/detail/wikiwand-wikipedia-modern/emffkefkbkpkgpdeeooapgaicgmcbolj?hl=en-US)makes it less shit.
-*   Get inspired. I use [momentum] (https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca?hl=en)for my new tab page.
+*   Wikipedia looks like shit. [Wikiwand](https://chrome.google.com/webstore/detail/wikiwand-wikipedia-modern/emffkefkbkpkgpdeeooapgaicgmcbolj?hl=en-US)makes it less shit.
+*   Get inspired. I use [momentum](https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca?hl=en)for my new tab page.
 *   Organize your shit. Use just the icons for sites. Use folders for class bookmarks.
 ![image](./images/1.png#layoutTextWidth)
 
@@ -65,7 +69,7 @@ Use GitHub [Copilot](https://github.com/features/copilot). Get the [Student Pack
 
 #### Improving Mac Development
 
-*   Stop clicking on download links. Use [brew] (https://brew.sh/)to install terminal apps and GUI apps.
+*   Stop clicking on download links. Use [brew](https://brew.sh/) to install terminal apps and GUI apps.
 *   Use [Iterm2](https://iterm2.com/). The default terminal sucks. Make it better. Use zsh. Bash is an ancient shell. Get [oh-my-zsh](https://ohmyz.sh/) for the plugins. Then get a [git version control plugin.](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git/git.plugin.zsh) Boom, no more git status checks.
 *   Need Windows? Need Linux? Use [Parallels](https://www.parallels.com/). 🏴‍☠️[PD-Runner](https://github.com/utsanjan/PD-Runner)🏴‍☠️. Runs natively on ARM with the hypervisor. It’s fast.
 *   Dependency Hell for your project? Stop. Use [Docker](https://www.docker.com/). It’s 2022.
