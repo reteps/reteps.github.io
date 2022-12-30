@@ -76,6 +76,10 @@
       'image': '/showcase/ctftime.png',
       'link': 'https://ctftime.org/team/27736',
       'technologies': ['Organizer - UIUCTF 2020/2021/2022', '1st - Club CTF 2021', '5th - CSAW Finals 2022', '2nd - BuckeyeCTF 2022']
+    },
+    {
+      'title': 'PrairieLearn Security Research Project',
+      'description': 'Exploited a flaw in the Python PrairieLearn autograder escalating to RCE and arbitrary grades. '
     }
 
   ]
