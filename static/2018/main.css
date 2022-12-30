@@ -1,0 +1,58 @@
+body {
+  	font-family: 'AvenirNext-Medium', Menlo, monospace;
+  	display: flex;
+  	flex-direction: column;
+  	min-height: calc(100vh - 1em) /*padding size*/;
+}
+header {
+  	text-align:center;
+}
+header a {
+  	font-size: 2em;
+  	cursor: pointer;
+  	color:white;
+  	padding: 10px;
+}
+header a:hover {
+  	color:#b4b7b7;
+}
+a {
+    text-decoration: none;
+}
+footer a {
+  	padding: 0.5em;
+  	color:white;
+}
+
+a:hover {
+  	text-decoration: underline;
+}
+footer {
+  	font-size:2.5em;
+  	color:white;
+  	padding: 1em;
+  	text-align: center;
+}
+
+main {
+  	flex:1;
+  	margin-left:15%;
+  	margin-right: 15%;
+  	padding-top:10px;
+  	padding-bottom:5px;
+}
+main p {
+  	color:#e6e6e6;
+  	font-size: 1.25em;
+}
+hr {
+  	width: 100%;
+  	height: 2px;
+  	border: 1px solid white;
+  	border-radius: 2px;
+  	background-color: white;
+}
+
+.inverse a {
+  	color: black;
+}

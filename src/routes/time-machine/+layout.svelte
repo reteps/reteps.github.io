@@ -1,7 +1,6 @@
 <script>
-  // import '$lib/styles/global.css'
+  import '$lib/styles/global.css'
   import Header from '$lib/components/Header.svelte'
 </script>
-
-<Header />
+<Header fixed />
 <slot />

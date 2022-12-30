@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Grade Calculator</title>
+    <meta charset="utf-8"/>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico">
+    <meta name="description" content="Grade Calculator | Peter's website">
+    <meta name="keywords" content="peter,stenger,website,retep,reteps,webpage,developer,programmer">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script>
+    </script>
+    <style>
+      input {
+        box-sizing: border-box;
+      }
+      input, button {
+        font-size: 2em;
+        border-radius:5px;
+        margin-top:10px;
+        padding: 5px 0px 5px 10px;
+        width:100%;
+      }
+      #form {
+        border-radius:5px;
+        background: #cdcfd8;
+        margin-top:2%;
+        margin-left:20%;
+        margin-right:20%;
+        padding: 20px;
+      }
+      input:focus {
+        background: #a1f442;
+      }
+      button:hover {
+        background: #a1f442;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header class='inverse'>
+      <a href='index.html'><i class="fas fa-home"></i> Home</a>
+        <a href='scripts.html'><i class="fas fa-code"></i> Scripts</a>
+        <a href='projects.html'><i class="far fa-newspaper"></i> Projects</a>
+        <a href='about.html' ><i class="fas fa-info-circle"></i> About</a>
+	</header>
+      <main><div id="form">
+      <input id="username" type="text" placeholder="username"></input><br>
+      <input id="password" type="password" placeholder="password"></input><br>
+      <input id="base_url" type="text" placeholder="powerschool url"></input><br>
+      <button onclick="getPhoto()">Go</button>
+  </div></main>
+    <footer class="inverse">
+      <a target="_blank" href="https://github.com/reteps"><i class="fab fa-github"></i></a><a href="mailto:peter.a.stenger@gmail.com"><i class="far fa-envelope"></i> </a>
+  </footer>
+  </body>
+</html>

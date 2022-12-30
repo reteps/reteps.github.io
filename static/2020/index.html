@@ -1,44 +1,21 @@
-<svelte:head>
-    <title>Pete Stenger's Personal Website</title>
+<html>
+<head>
+    <title>Peter Stenger</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Manrope&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3aa210e078.js" crossorigin="anonymous"></script>
     <style>
-        /* General Styles*/
         * { margin:0; padding:0; box-sizing:border-box;font-family: 'Manrope', sans-serif;}
         .intro-img {
             width: 100%;
         }
-        body {
+        .container {
             width: 100%;
             min-height: 100vh;
         }
         body {
             background: #f4f5f6;
         }
-        h1 {
-            text-align: center;
-        }
-        .link:hover, .visible {
-            transform: translate(2px, 8px);
-            transition: .2s;
-            box-shadow: 0 0 0 0 !important;
-        }
-        .link {
-            box-shadow: 2px 8px 0px 0px black;
-        }
-        .link {
-            cursor: pointer;
-            padding: 10px;
-            font-size: 20px;
-            border-radius: 5px;
-            color: #dddddd;
-        }
-        .link a {
-            text-decoration: none;
-            
-        }
-
         .navigation {
             display: flex;
             flex-direction: row;
@@ -55,6 +32,7 @@
         }
         .projects {
             display: flex;
+            width: 100%;
             background: #4ea36a;
         }
         .about {
@@ -63,6 +41,7 @@
 
         }
         .resume {
+            width: 100%;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -74,149 +53,139 @@
             flex-wrap: wrap;
             display: flex;
         }
-
-        .card img {
-            width: 100%;
+        .link:hover, .selected {
+            transform: translate(2px, 8px);
+            box-shadow: 0 0 0 0 !important;
         }
-        .about-part {
-            padding: 1em;
+        .link {
+            
+            cursor: pointer;
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 5px;
+            box-shadow: 2px 8px 0px 0px black;
+            color: #dddddd;
         }
-
-        a,div {
-            color:#3c4042;
+        .link a {
+            text-decoration: none;
+            
         }
-        
-        .section {
-            margin-top: 1em;
-            display: none;
-            padding-top: 10em;
-        }
-
-        .visible {
-            display: block;
-        }
-
-        /* Media Queries */
-        @media (max-width:600px) {
-            .card {
-                width: 300px;
-            }
-            .about-main {
-            font-size: 15px;
-            }
-            iframe {
-                width: 100%;
-            }
-            .spacer {
-                height: 0%;
-            }
-            .contact i {
-                font-size: 2em;
-            }
+        .about-part-2 {
+            margin:auto;
         }
         @media (min-width: 600px) {
-            .spacer {
-                height: 100%;
-            }
-            .card {
-                width: 22%;
-            }
-            .about-part img {
-                width: 50%;
-            }
-            .contact i {
-                font-size: 3em;
-            }
-        }
-        @media (min-width: 600px) and (max-width: 1200px) {
-
             .link {
                 font-size: 30px;
+            }
+            .about-main {
+                font-size: 15px;
+            }
+            .contact i {
+            font-size: 3em !important;
+            }
+            .spacer {
+                height: 100% !important;
+            }
+            .about-part-2 {
+                margin: none;
+            }
+            .about-main {
+            flex-direction: row !important;
             }
         }
         @media (min-width: 1200px) {
             .link {
                 font-size: 50px;
             }
-            .cards {
-                padding-left: 10%;
-                padding-right: 10%;
-            }
+
             .about-main {
-                font-size: 2em;
+            font-size: 30px;
             }
             iframe {
-                width: 50%;
+                width: 50% !important;
             }
+            .contact i {
+                font-size: 5em !important;
+            }
+        }
+        .section {
+            margin-top: 1em;
+            display: none;
+            padding-top: 10em;
+        }
+        .visible {
+            display: block;
+        }
+        .red {
+            background: red !important;
         }
         .card {
             border-radius: 5px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
+            /*width: 100px;*/
+            flex: 0 1 24%;
             background:#f4f5f6;
             margin: 1em 1em 1em 1em;
-            padding: 1em;
         }
         .card div {
             padding: 1em;
         }
-
-
+        .spacer {
+            height: 0%;
+        }
+        img {
+            width: 300px;
+        }
+        a,div {
+            color:#3c4042;
+        }
         .about-main {
+            font-size: 15px;
             border-radius: 5px;
             background:#f4f5f6;
             margin-left: 1em;
             padding: 1em;
             margin-right: 1em;
             display: flex;
-            text-align: center;
             flex-direction: column-reverse;
         }
-
-        .about-main img {
-            max-width:100%;
-            max-height:100%;
-        }
         .contact {
+            padding-top: 1em;
             display: flex;
             justify-content: space-around;
-            margin-top: 1em;
         }
-
-
+        .contact i {
+            font-size: 2em;
+        }
         iframe {
             border: none;
             padding: 2em 0 2em 0;
             display: block;
             margin: auto;
+            width: 100%;
             height: 100%;
         }
-
     </style>
-</svelte:head>
-<script lang="ts">
-    import { onMount } from 'svelte';
-
-    console.log('running script')
-    onMount(async () => {
-        console.log('onMount')
-        document.querySelectorAll(".link").forEach(e => {
-            console.log('link')
-            e.addEventListener('click', function(event) {
-                console.log('clicked')
-                document.querySelectorAll('.visible').forEach(elem => elem.classList.remove('visible'));
-                event.target.classList.add('visible');
-                document.querySelector(`.${event.target.id}`).classList.add("visible");
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll(".link").forEach(e => {
+                e.addEventListener('click', function(event) {
+                    document.querySelector('.selected').classList.remove('selected')
+                    event.target.classList.add('selected')
+                    document.querySelector('.visible').classList.remove('visible')
+                    document.querySelector(`.${event.target.id}`).classList.add("visible");
+                })
             })
         })
-    })
-</script>
+    </script>
+</head>
+<body>
     <div class="container">
-        <img class="intro-img" src="/2020-assets/intro.gif">
+        <img class="intro-img" src="assets/intro.png">
         <div class="navigation">
-            <div id="projects" class="link visible">Projects</div>
+            <div id="projects" class="link selected">Projects</div>
             <div id="resume" class="link">Resume</div>
             <div id="about" class="link">About Me</div>
         </div>
@@ -225,17 +194,17 @@
 
             
                 <div class="card">
-                    <h1>Word Hunt World Record</h1>
-                    <img src="/2020-assets/wordhunt.jpg">
+                    <h1>Word Hunt</h1>
+                    <img src="assets/wordhunt.jpg">
                     
                     <div>A program to play the iMessage game, word hunt. Check out my video <a
-                            href="https://www.tiktok.com/@spicypete/video/6821358058799779078" target="_blank">here</a> that explains how I got the WR!
+                            href="https://www.tiktok.com/@spicypete/video/6821358058799779078" target="_blank">here</a> that explains how I got the WR!</i>
                     </div>
                     <a target="_blank" href="https://github.com/reteps/word-hunt">Source <i class="fas fa-code"></i></a>
                 </div>
                 <div class="card">
-                    <h1>Cross Country Time Grapher</h1>
-                    <img src="/2020-assets/riverrat.png" alt="">
+                    <h1>RiverRat</h1>
+                    <img src="assets/riverrat.png" alt="">
                     <div>A website & bot that graphs cross country and track times. Check it out <a
                             href="https://riverrats.github.io">here</a>.</div>
                     <div class="spacer"></div>
@@ -244,40 +213,40 @@
                     <a target="_blank" href="https://github.com/reteps/groupme-crosscountry-bot">Bot Source <i class="fas fa-code"></i></a>
                 </div>
                 <div class="card">
-                    <h1>2020 FRC Robot Code</h1>
-                    <img src="/2020-assets/robot.png" alt="">
-                    <div>The code for the Ratpack Robotics 2020 (and 2021!) season. Implemented swerve drive. </div>
+                    <h1>2020 FRC Robot</h1>
+                    <img src="assets/robot.png" alt="">
+                    <div>The code for Ratpack's 2020 season robot.</div>
                     <div class="spacer"></div>
                     <a target="_blank"  href="https://github.com/frc830/2020robot">Source <i class="fas fa-code"></i></a>
                 </div>
                 <div class="card">
                     <h1>Kahoot Bot</h1>
-                    <img src="/2020-assets/kahoot.jpg" alt="">
+                    <img src="assets/kahoot.jpg" alt="">
                     <div>A python script to answer all questions correctly for the popular quiz game, Kahoot.</div>
                     <div class="spacer"></div>
                     <a target="_blank" href="https://github.com/reteps/kbot">Source <i class="fas fa-code"></i></a>
                 </div>
                 <div class="card">
                     <h1>Statlete</h1>
-                    <img src="/2020-assets/statlete.png" alt="">
-                    <div>An iOS app that displays athlete information from athletic.net. Check out this  
-                        <a href="/2020-assets/statlete.gif" target="_blank">gif</a>!
+                    <img src="assets/statlete.png" alt="">
+                    <div>An iOS app that displays athlete information from athletic.net. Check out the  
+                        <a href="assets/statlete.gif" target="_blank">gif</a>!
                     </div>
                     <div class="spacer"></div>
                     <a target="_blank" href="https://github.com/reteps/statlete">Source <i class="fas fa-code"></i></a>
                 </div>
                 <div class="card">
                     <h1>PowerJoule</h1>
-                    <img src="/2020-assets/powerjoulecode.png" alt="">
+                    <img src="assets/powerjoulecode.png" alt="">
                     <div>A mac menu bar app that displays your powerschool grades.</div>
                     <div class="spacer"></div>
                     <a target="_blank" href="https://github.com/reteps/powerjoule">Source <i class="fas fa-code"></i></a>
                 </div>
                 <div class="card">
                     <h1>Spotlightify</h1>
-                    <img src="/2020-assets/spotlightify.png" alt="">
+                    <img src="assets/spotlightify.png" alt="">
                     <div>A spotify web app to generate playlists based on 2 users playlists. Check it out <a
-                            target="_blank" href="https://spotify-poster.herokuapp.com/">here.</a></div>
+                            target="_blank" href="http://www.spotlightify.tk">here.</div>
 
                     <div class="spacer"></div>
                     <a target="_blank" href="https://github.com/reteps/spotify-nodes">Source <i
@@ -285,9 +254,9 @@
                 </div>
                 <div class="card">
                     <h1>Music Genre Map</h1>
-                    <img src="/2020-assets/genremap.png" alt="">
+                    <img src="assets/genremap.png" alt="">
                     <div>A algorithmically generated graph of related genres using spotify. Check out the full image <a
-                            target="_blank" href="https://i.redd.it/b9uekzkjssx41.jpg">here.</a></div>
+                            target="_blank" href="https://i.redd.it/b9uekzkjssx41.jpg">here.</div>
 
                     <div class="spacer"></div>
                     <a target="_blank" href="https://github.com/reteps/everynoise-genre-scraper">Source <i
@@ -295,50 +264,39 @@
                 </div>
                 <div class="card">
                     <h1>Historical Cross Country Chart</h1>
-                    <img src="/2020-assets/bump.png" alt="">
+                    <img src="assets/bump.png" alt="">
                     <div>A bump chart showing the top 10 athletes from my school throughout history. Check it out here <a
-                            target="_blank" href="https://riverrats.github.io/bump.html">here.</a></div>
+                            target="_blank" href="https://riverrats.github.io/bump.html">here.</div>
 
                     <div class="spacer"></div>
                     <a target="_blank" href="https://github.com/riverrats/riverrats.github.io/blob/master/bump.js">Source <i
                             class="fas fa-code"></i></a>
                 </div>
-                <div class="card">
-                    <h1>Cybersecurity</h1>
-                    <img src="/2020-assets/ctf.png" alt="">
-                    <div>I have competed in cybersecurity competitions at a <a
-                            target="_blank" href="https://ctftime.org/team/154080">high level</a>. Member of <a target="_blank" href="https://sigpwny.com/">SIGPwny</a>, being a major contributor to competitions such as <a target="_blank" href="https://ctftime.org/event/1315">CSAW 2021</a>, where we placed 2nd. 
-                        I also wrote a challenge for <a
-                            target="_blank" href="https://uiuc.tf">UIUCTF 2021</a> <a
-                            target="_blank" href="https://github.com/sigpwny/UIUCTF-2021-Public/tree/master/reverse/pawnfish">here</a>. </div>
-
-                    <div class="spacer"></div>
-                </div>
             </div>
         </div>
         <div class="section resume">
-            <iframe src="https://docs.google.com/viewerng/viewer?url=https://stenger.io/2020-assets/resumev3.pdf&embedded=true">
-            </iframe>
+                <iframe src="https://drive.google.com/file/d/1xciUFMoA6NTOYUHu9qSqhrECw0zZQC6N/preview"></iframe>
         </div>
         <div class="section about">
             <div class="about-main">
                 <div class="about-part">
 
-                    <div>
-                        Hi there! My name is Pete Stenger. I'm currently a freshman at the University of Illinois studying computer science. I am interested in all things computers :)
-                    </div>
-                    <div class="spacer"></div>
+                    Hi there! My name is Peter Stenger. I'm currently a high school junior at Huron High School, and I want to go into the field of computer science. 
+                    I moved to Ann Arbor my Sophomore year and it really helped me grow and develop as a person. I currently run cross country, participate in Boy Scouts, and a variety of clubs including FIRST Robotics and Business Professionals of America.
                     <div class="contact">
-                            <a target="_blank" href="https://www.linkedin.com/in/peter-stenger-94a9891a0/"><i class="fab fa-linkedin"></i></a>
-                            <a target="_blank" href="https://instagram.com/pete._.stenger"><i class="fab fa-instagram"></i></a>
-                            <a target="_blank" href="mailto:pete@stenger.io"><i class="far fa-envelope"></i></a>
+                        
+                        <a target="_blank" href="https://www.hackerrank.com/peter_a_stenger"><i
+                            class="fab fa-hackerrank"></i></a>
+                            <a target="_blank" href="https://instagram.com/peter._.stenger"><i class="fab fa-instagram"></i></a>
+                            <a target="_blank" href="mailto:peter.a.stenger@gmail.com"><i class="far fa-envelope"></i></a>
                             <a target="_blank" href="https://github.com/reteps"><i class="fab fa-github"></i></a>
                     </div>               
                 </div>
-                <div class="about-part">
-                    <img src="/2020-assets/me.jpg">
+                <div class="about-part-2">
+                    <img src="assets/me.jpg">
                 </div>
             </div>
         </div>
     </div>
-<!-- </body> -->
+</body>
+</html>

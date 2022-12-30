@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Grade Calculator</title>
+    <meta charset="utf-8"/>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico">
+    <meta name="description" content="Grade Calculator | Peter's website">
+    <meta name="keywords" content="peter,stenger,website,retep,reteps,webpage,developer,programmer">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <style>
+    #fog, #ing {
+      width: 300px;
+    }
+    </style>
+    <script type="text/javascript" src="js/gradecalc.js"></script>
+  </head>
+  <body>
+    <header class='inverse'>
+      <a href='index.html'><i class="fas fa-home"></i> Home</a>
+        <a href='scripts.html'><i class="fas fa-code"></i> Scripts</a>
+        <a href='projects.html'><i class="far fa-newspaper"></i> Projects</a>
+        <a href='about.html' ><i class="fas fa-info-circle"></i> About</a>
+    </header>
+
+	<main>
+	<h1>Grade Calculator</h1>
+    <input id="ing" placeholder="Informal grades, seperate by commas."><br>
+    <input id="fog" placeholder="Formal grades, seperate by commas."><br>
+    <input type="radio" name='type' onclick="changeoldgradedisplay()" id='radio_new_grade' >New<br>
+    <input type="radio" name='type' onclick="changeoldgradedisplay()" id='radio_old_grade' checked>Change<br>
+    <input id="old_grade_input" display='none' placeholder="old grade">
+    <input id="new_grade_input" placeholder="new grade"><br>
+    <input type="radio" name='gradetype' id='informal_radio'>Informal<br>
+    <input type="radio" name='gradetype' id='formal_radio' checked>Formal<br>
+    <input type="radio" name='school' id='bailey'>Bailey
+    <input type="radio" name='school' id='hough' checked>Hough<br>
+    <button onclick="add_grades()" > Calculate Grade </button>
+    <p id='previous_grade'></p>
+    <p id='new_grade'></p>
+	</main>
+    <footer class="inverse">
+      <a target="_blank" href="https://github.com/reteps"><i class="fab fa-github"></i></a><a href="mailto:peter.a.stenger@gmail.com"><i class="far fa-envelope"></i> </a>
+  </footer>
+  </body>
+</html>

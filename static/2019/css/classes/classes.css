@@ -1,0 +1,9 @@
+body {
+  background: -webkit-gradient(linear, left top, left bottom, from(#8a2387), color-stop(#e94057), to(#f27121));
+  background: linear-gradient(to bottom, #8a2387, #e94057, #f27121);
+}
+
+a.nav-link {
+  color: white;
+}
+/*# sourceMappingURL=classes.css.map */

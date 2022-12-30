@@ -1,13 +1,19 @@
 <script lang="ts">
-  import '$lib/styles/global.css'
   import { HomeIcon, SunIcon, MoonIcon } from 'svelte-feather-icons'
   import { darkTheme } from '$lib/stores'
+  export let fixed = false;
+  $: fixedClass = fixed ? 'lg:fixed' : 'lg:sticky';
   export const linkClass = `flex flex-col justify-center mx-5 hover:underline
   transition duration-300 hover:text-purple-600 hover:scale-110 flex-shrink-0
   dark:hover:text-green-600`;
 </script>
+<style>
+header {
+  height: 10vh;
+}
+</style>
 
-<header class="lg:sticky lg:pr-20 lg:pl-20 top-0 pt-10 flex flex-col justify-center pointer-events-none z-10">
+<header class={fixedClass + " lg:pr-20 lg:pl-20 top-0 pt-10 flex flex-col justify-center pointer-events-none z-10"}>
   <nav class="flex justify-center lg:justify-end">
     <ul class="flex flex-row items-center dark:text-white text-black
      lg:bg-white dark:bg-black lg:p-3 lg:rounded-full lg:border-2 dark:border-white border-black pointer-events-auto">
@@ -31,9 +37,3 @@
     </ul>
   </nav>
 </header>
-
-<style lang="scss">
-  header {
-    height: 10vh;
-  }
-</style>

@@ -1,0 +1,14 @@
+body {
+  background: -webkit-gradient(linear, left bottom, left top, from(#8e2de2), to(#4a00e0));
+  background: linear-gradient(to top, #8e2de2, #4a00e0);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+a.nav-link {
+  color: white;
+}
+
+.col {
+  min-height: 75vh;
+}
+/*# sourceMappingURL=resume.css.map */
