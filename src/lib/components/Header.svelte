@@ -1,4 +1,5 @@
 <script lang="ts">
+  import '$lib/styles/global.css'
   import { HomeIcon, SunIcon, MoonIcon } from 'svelte-feather-icons'
   import { darkTheme } from '$lib/stores'
   export const linkClass = `flex flex-col justify-center mx-5 hover:underline
@@ -6,7 +7,7 @@
   dark:hover:text-green-600`;
 </script>
 
-<header class="lg:sticky lg:pr-20 lg:pl-20 top-0 pt-10 flex flex-col justify-center pointer-events-none">
+<header class="lg:sticky lg:pr-20 lg:pl-20 top-0 pt-10 flex flex-col justify-center pointer-events-none z-10">
   <nav class="flex justify-center lg:justify-end">
     <ul class="flex flex-row items-center dark:text-white text-black
      lg:bg-white dark:bg-black lg:p-3 lg:rounded-full lg:border-2 dark:border-white border-black pointer-events-auto">
