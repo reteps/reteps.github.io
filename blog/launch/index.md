@@ -40,6 +40,10 @@ I was able to get this up and running fairly quickly, only ~2 days of coding. My
   }
 ```
 
+## Switching from medium
+
+Since [mediumexporter](https://github.com/xdamman/mediumexporter/issues/60#issuecomment-1365921084) wasn't working for me, and it looks like an extremely recent break, I used [medium-to-hugo](https://github.com/bgadrian/medium-to-hugo) with a [small patch](https://github.com/bgadrian/medium-to-hugo/issues/6#issuecomment-939646767) to download my medium posts and convert them to markdown.
+
 ## Future Improvements
 
 This section may just ~disappear~ but I still need to:

@@ -7,6 +7,7 @@
   <div class="prose prose-sm md:prose-lg lg:prose-xl pt-10 px-10 dark:prose-invert 
   prose-a:break-words prose-code:break-words 
   prose-img:mx-auto
+  prose-figcaption:text-center
   prose-figure:flex prose-figure:items-center prose-figure:flex-col">
     <div class="not-prose">
       <h1 class="text-3xl">{title}</h1>
