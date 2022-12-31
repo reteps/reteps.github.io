@@ -2,6 +2,9 @@
 title: Celebrating Site Launch
 date: "2022-12-29"
 ---
+<script>
+import { SkipBackIcon } from 'svelte-feather-icons'
+</script>
 # It's alive 🥳
 
 Finally decided to redo my site, as the last time it was made was my junior year of high school 😬
@@ -43,6 +46,22 @@ I was able to get this up and running fairly quickly, only ~2 days of coding. My
 ## Switching from medium
 
 Since [mediumexporter](https://github.com/xdamman/mediumexporter/issues/60#issuecomment-1365921084) wasn't working for me, and it looks like an extremely recent break, I used [medium-to-hugo](https://github.com/bgadrian/medium-to-hugo) with a [small patch](https://github.com/bgadrian/medium-to-hugo/issues/6#issuecomment-939646767) to download my medium posts and convert them to markdown.
+
+## Time Machine
+
+I added a basic time machine feature hidden in the footer of my site (<SkipBackIcon class="inline" />). I embed my old sites as iframes, and dynamically fetch all directories with a small function:
+
+```js
+export const fetchTimeMachineYears = () => {
+  const snapshots = import.meta.glob("../../../static/20[0-9][0-9]/index.html");
+  const years = Object.keys(snapshots).map((path) => path.match(/20[0-9][0-9]/)![0])
+  // sort years
+  years.sort((a, b) => parseInt(a) - parseInt(b))
+  return years
+}
+```
+
+You can check it out [here](/time-machine/2020).
 
 ## Future Improvements
 

@@ -8,7 +8,7 @@
   prose-a:break-words prose-code:break-words 
   prose-img:mx-auto
   prose-figcaption:text-center
-  prose-figure:flex prose-figure:items-center prose-figure:flex-col">
+  ">
     <div class="not-prose">
       <h1 class="text-3xl">{title}</h1>
       <p>Published: <strong>{date}</strong></p>
@@ -22,6 +22,4 @@
   .prose {
     max-width: min(100vw, 65ch);
   }
-
-
 </style>
