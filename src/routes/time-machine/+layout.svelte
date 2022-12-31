@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
   import '$lib/styles/global.css'
-  import Header from '$lib/components/Header.svelte'
+  // pass down to +page.svelte & [year]/+page.svelte
+  export const data : any = null
 </script>
-<Header fixed />
 <slot />
