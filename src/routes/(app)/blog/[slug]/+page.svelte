@@ -1,10 +1,10 @@
 <script>
-  import { Utterances } from "@codewithshin/svelte-utterances"
+  import Giscus from '@giscus/svelte'
   import SEO from "$lib/components/SEO.svelte";
   import { darkTheme } from "$lib/stores";
   export let data
   const { Content, meta: { title, description, date } } = data
-  $: theme = $darkTheme ? 'photon-dark' : 'github-light'
+  $: theme = $darkTheme ? 'dark' : 'light'
 </script>
 
 <SEO title={title} description={description} />
@@ -20,7 +20,19 @@
     </div>
     <Content />
     <div class="not-prose">
-      <Utterances reponame="reteps/reteps.github.io" {theme} />
+        <Giscus
+        repo="reteps/reteps.github.io"
+        repoId="R_kgDOIq_g7w"
+        categoryId="DIC_kwDOIq_g784CTdFf"
+        mapping="specific"
+        reactionsEnabled="1"
+        emitMetadata="0"
+        term="{title}"
+        inputPosition="bottom"
+        {theme}
+        lang="en"
+        loading="lazy"
+      />
     </div>
   </div>
 </article>
