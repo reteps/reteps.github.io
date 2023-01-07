@@ -10,6 +10,7 @@ import rehypeSlug from 'rehype-slug' /* Autolink headings */
 import rehypeAutolinkHeadings from 'rehype-autolink-headings' /* Autolink headings */
 import remarkCaptions from 'remark-captions' /* Captions */
 import remarkAttr from "remark-attr" /* HTML attributes for markdown */
+import remarkInferDescriptionMeta from './mdsvex/infer-description.js'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -22,9 +23,11 @@ const config = {
 				relativeImages,
 				remarkMath,
 				remarkAttr,
+				remarkInferDescriptionMeta,
 				[remarkCaptions, { external: { table: 'Caption:', code: 'Caption:', math: 'Caption:'}, internal: { image: 'Caption:' }}]
 			],
-			rehypePlugins: [rehypeSlug, 
+			rehypePlugins: [
+				rehypeSlug,
 				rehypeKatexSvelte, 
 				[rehypeAutolinkHeadings, { behavior: 'append' }],
 			]

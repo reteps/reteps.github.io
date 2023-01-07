@@ -16,7 +16,7 @@
     {
       'title': 'Personal website',
       'description': 'Built with SvelteKit and TailwindCSS. Blog uses mdsvex. Hosted on Github Pages.',
-      'image': '/showcase/website-beta.png',
+      'image': '/showcase/website.png',
       'source': 'https://github.com/reteps/reteps.github.io',
       'link': 'https://stenger.io',
       'languages': ['Javascript'],

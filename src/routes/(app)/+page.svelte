@@ -2,7 +2,14 @@
   import { ArrowDownCircleIcon } from 'svelte-feather-icons';
   import Link from '$lib/components/Link.svelte';
   import Showcase from '$lib/components/Showcase.svelte';
+  import SEO from '$lib/components/SEO.svelte'
   import { darkTheme } from '$lib/stores';
+
+  const seo = {
+    title: 'Pete Stenger',
+    description: 'Hi! I\'m Pete Stenger, a student at the University of Illinois Urbana Champaign (UIUC) studying computer science.',
+    image: '/showcase/website.png',
+  }
 
   $: hacker = $darkTheme;
 
@@ -23,6 +30,7 @@
   }
 </script>
 
+<SEO {...seo} />
 <div id="intro" class="flex flex-col" on:mousemove={rotateArrow}>
   <div class="flex flex-col-reverse lg:flex-row mx-10 mt-20">
     <div class="lg:w-3/4 text-black dark:text-white">
@@ -47,7 +55,7 @@
     </div>
     <div class="flex flex-row justify-center mb-10">
       <div class="w-1/2 lg:w-3/5">
-        <img src={hacker ? '/headshot_hacker.png' : '/headshot.png'} on:mouseover={() => hacker = true} on:focus={() => hacker = true} on:mouseleave={() => hacker = false} class="rounded-full w-full shadow-lg h-auto block" alt="Pete" />
+        <img src={hacker ? '/headshot_hacker.png' : '/headshot.png'} on:mouseover={() => hacker = !hacker} on:focus={() => hacker = !hacker} on:mouseleave={() => hacker = !hacker} class="rounded-full w-full shadow-lg h-auto block" alt="Pete" />
       </div>
     </div>
   </div>

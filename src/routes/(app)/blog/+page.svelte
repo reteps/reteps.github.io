@@ -1,8 +1,12 @@
 <script lang="ts">
+  import SEO from '$lib/components/SEO.svelte';
   import { CalendarIcon } from 'svelte-feather-icons';
   import Link from '$lib/components/Link.svelte'
   export let data: any
+  console.log(data)
   </script>
+
+<SEO title="Blog posts" description="All of my blog posts." />
 
 <div class="content px-10 pt-20 dark:text-white">
   <h1 class="text-3xl mb-3">Posts</h1>

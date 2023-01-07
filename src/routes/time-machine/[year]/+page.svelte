@@ -1,11 +1,13 @@
 <script lang="ts">
-	import TimeMachine from "$lib/components/TimeMachine.svelte";
+	import SEO from "$lib/components/SEO.svelte";
+import TimeMachine from "$lib/components/TimeMachine.svelte";
   export let data : any;
-  // console.log(year, years)
   $: years = data.years
   $: year = data.year
   $: src = `/${year}/index.html`
   console.log(src)
 </script>
+
 <TimeMachine {year} {years} />
+<SEO title="{year} Time Machine" description="My personal site until the year {year}." />
 <iframe {src} class="w-screen h-screen" title={`${year} site`}></iframe>

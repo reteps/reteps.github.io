@@ -1,8 +1,11 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   export let title: string
   export let description: string
-  export let image: string
-  export let url: string
+  export let image: string = ''
+
+  let url: string = ''
+  onMount(() => url = 'https://stenger.io' + window.location.pathname);
 </script>
 
 <svelte:head>
