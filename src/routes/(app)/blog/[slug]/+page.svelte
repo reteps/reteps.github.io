@@ -1,8 +1,10 @@
 <script>
+  import { Utterances } from "@codewithshin/svelte-utterances"
   import SEO from "$lib/components/SEO.svelte";
+  import { darkTheme } from "$lib/stores";
   export let data
   const { Content, meta: { title, description, date } } = data
-  console.log(data)
+  $: theme = $darkTheme ? 'photon-dark' : 'github-light'
 </script>
 
 <SEO title={title} description={description} />
@@ -17,6 +19,9 @@
       <p>Published: <strong>{date}</strong></p>
     </div>
     <Content />
+    <div class="not-prose">
+      <Utterances reponame="reteps/reteps.github.io" {theme} />
+    </div>
   </div>
 </article>
 
