@@ -45,3 +45,11 @@ jobs:
     steps:
       - uses: actions/deploy-pages@v1
         id: deployment
+
+  update-sitemap:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Send HTTP GET request
+        run: curl http://www.google.com/ping?sitemap=https://stenger.io/sitemap.xml
