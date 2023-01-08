@@ -48,7 +48,7 @@ jobs:
 
   update-sitemap:
     runs-on: ubuntu-latest
-    needs: build
+    needs: deploy
 
     steps:
       - name: Send HTTP GET request
