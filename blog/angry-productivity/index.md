@@ -1,6 +1,6 @@
 ---
 title: "A really angry guide to productivity tools"
-date: "2022-10-27"
+date: "10-27-2022"
 ---
 
 Hi. I’m a CS student @ UIUC. Sometimes it’s hard to stay on top of your stuff. Here is how to become a master productivity-er even when you are as lazy as me.

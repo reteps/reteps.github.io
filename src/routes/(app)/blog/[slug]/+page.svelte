@@ -1,10 +1,12 @@
 <script>
   import Giscus from '@giscus/svelte'
+  import { formatDate } from "$lib/utils"
   import SEO from "$lib/components/SEO.svelte";
   import { darkTheme } from "$lib/stores";
   export let data
   const { Content, meta: { title, description, date } } = data
   $: theme = $darkTheme ? 'dark' : 'light'
+
 </script>
 
 <SEO title={title} description={description} />
@@ -16,7 +18,7 @@
   ">
     <div class="not-prose">
       <h1 class="text-3xl">{title}</h1>
-      <p>Published: <strong>{date}</strong></p>
+      <p>Published: <strong>{formatDate(date)}</strong></p>
     </div>
     <Content />
     <div class="not-prose">

@@ -1,4 +1,4 @@
-import { fetchTimeMachineYears } from '$lib/utils'
+import { fetchTimeMachineYears } from '$lib/utils/server'
 import { json } from '@sveltejs/kit'
 
 export const GET = async () => {

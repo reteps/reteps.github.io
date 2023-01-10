@@ -1,6 +1,6 @@
 ---
 title: When Orange Chicken
-date: "2021-10-24"
+date: "10-24-2021"
 ---
 A simple, innocous question. While eating dinner, some friends and I were discussing the best Ike meals, eventually arriving at when is orange chicken next available at one of the Dining Halls littered around campus?
 

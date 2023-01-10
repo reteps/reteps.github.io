@@ -1,6 +1,6 @@
 ---
 title: Celebrating Site Launch
-date: "2022-12-29"
+date: "12-29-2022"
 ---
 <script>
 import { SkipBackIcon } from 'svelte-feather-icons'
@@ -49,7 +49,7 @@ Since [mediumexporter](https://github.com/xdamman/mediumexporter/issues/60#issue
 
 ## Time Machine
 
-I added a basic time machine feature hidden in the footer of my site (<SkipBackIcon class="inline" />). I embed my old sites as iframes, and dynamically fetch all directories with a small function:
+I added a basic time machine feature hidden in the footer of my site. I embed my old sites as iframes, and dynamically fetch all directories with a small function:
 
 ```js
 export const fetchTimeMachineYears = () => {
@@ -60,8 +60,32 @@ export const fetchTimeMachineYears = () => {
   return years
 }
 ```
+Caption: Glob all past years, and sort.
 
-You can check it out [here](/time-machine/2020).
+You can check it out [here](/time-machine/2020). I also added a draggable header so that it doesn't block your view.
+
+## SEO
+
+I wrote a small snippet of code to pull out text from my blog posts and use it as the description in SEO. 
+
+```js
+const remarkInferDescriptionMeta = () => (
+  (tree, file) => {
+    let description = ''
+    visit(tree, 'paragraph', (node) => {
+      if (description.length > 160) return
+      description += toString(node) + ' '
+    })
+
+    description = description.slice(0, 160) + '...'
+
+    file.data.fm.description = description
+  }
+)
+```
+Caption: Full Source [here](https://github.com/reteps/reteps.github.io/blob/551089e6b538e141042ab59d563afc5969dba2eb/mdsvex/infer-description.js#L6)
+
+Additionally, I am using [Svelte Sitemap](https://github.com/bartholomej/svelte-sitemap) and pushing updates to the Google Search Console with a [Github Action](https://github.com/reteps/reteps.github.io/blob/551089e6b538e141042ab59d563afc5969dba2eb/.github/workflows/pages.yml#L49).
 
 ## Future Improvements
 

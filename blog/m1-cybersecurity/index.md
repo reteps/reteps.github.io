@@ -1,6 +1,6 @@
 ---
 title: "My experience with an m1 macbook for cybersecurity"
-date: "1-9-2022"
+date: "1-9-2023"
 ---
 
 ![](./m1_keynote.png)
@@ -95,7 +95,7 @@ If you have a desktop or secondary x86 computer, I can highly reccommend this ma
   + NOTE: This problem is likely to be fixed with software updates from apple to their Virtualization Engine in the future
 + Specific x86 Windows applications
 
-, there might be merit in other options.
+there might be merit in other options.
 
 
 
