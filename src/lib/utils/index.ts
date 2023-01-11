@@ -1,5 +1,6 @@
-export const formatDate = (d: string | Date) => {
-  return (new Date(d)).toLocaleDateString('en-US', {
+export const formatDate = (date: string) => {
+  const [m, d, y] = date.split("-")
+  return (new Date(+y, +m-1, +d)).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
