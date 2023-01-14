@@ -5,7 +5,6 @@ import TimeMachine from "$lib/components/TimeMachine.svelte";
   $: years = data.years
   $: year = data.year
   $: src = `/${year}/index.html`
-  console.log(src)
 </script>
 
 <TimeMachine {year} {years} />

@@ -6,7 +6,13 @@
 		],
 		"$lib/*": [
 				"src/lib/*"
-		]
+		],
+		"$img": [
+				"src/img"
+		],
+		"$img/*": [
+				"src/img/*"
+		],
 	},
 	"compilerOptions": {
 		"allowJs": true,

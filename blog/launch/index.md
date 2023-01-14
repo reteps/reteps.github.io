@@ -2,9 +2,6 @@
 title: Celebrating Site Launch
 date: "12-29-2022"
 ---
-<script>
-import { SkipBackIcon } from 'svelte-feather-icons'
-</script>
 # It's alive 🥳
 
 Finally decided to redo my site, as the last time it was made was my junior year of high school 😬
@@ -85,8 +82,23 @@ const remarkInferDescriptionMeta = () => (
 ```
 Caption: Full Source [here](https://github.com/reteps/reteps.github.io/blob/551089e6b538e141042ab59d563afc5969dba2eb/mdsvex/infer-description.js#L6)
 
-Additionally, I am using [Svelte Sitemap](https://github.com/bartholomej/svelte-sitemap) and pushing updates to the Google Search Console with a [Github Action](https://github.com/reteps/reteps.github.io/blob/551089e6b538e141042ab59d563afc5969dba2eb/.github/workflows/pages.yml#L49).
+I am using [Svelte Sitemap](https://github.com/bartholomej/svelte-sitemap) and pushing updates to the Google Search Console with a [Github Action](https://github.com/reteps/reteps.github.io/blob/551089e6b538e141042ab59d563afc5969dba2eb/.github/workflows/pages.yml#L49).
 
+## Optimizations
+
+I used [vite-imagetools](https://www.npmjs.com/package/vite-imagetools) to optimize my images, and lazy-loaded the images on my homepage + other optimization. I also added an aria-label to every link based on the text content of the tag:
+
+```svelte
+<script>
+  export let href
+  let self
+  $: ariaLabel = $$restProps['aria-label'] || self?.innerText || href
+  // ...
+</script>
+<a href={href} bind:this={self} aria-label={ariaLabel} {...$$restProps}>
+```
+
+This lets me get super snappy loadtimes, and a >90 lighthouse score!
 ## Future Improvements
 
 This section may just ~disappear~ but I still need to:

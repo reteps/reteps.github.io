@@ -1,7 +1,7 @@
 <script lang="ts">
   import SEO from '$lib/components/SEO.svelte';
   import { formatDate } from '$lib/utils'
-  import { CalendarIcon } from 'svelte-feather-icons';
+  import CalendarIcon from 'svelte-feather-icons/src/icons/CalendarIcon.svelte';
   import Link from '$lib/components/Link.svelte'
   export let data: any
   </script>
@@ -17,7 +17,7 @@
       <div>
 
         <h2>
-          <Link className="text-xl" href={post.path} simple>
+          <Link class="text-xl" href={post.path} simple>
             {post.meta.title}
           </Link>
         </h2>

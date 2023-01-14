@@ -1,11 +1,15 @@
 <script lang="ts">
-  import { SkipForwardIcon, SkipBackIcon, MoveIcon, LogOutIcon, HomeIcon } from "svelte-feather-icons"
+  import SkipForwardIcon from "svelte-feather-icons/src/icons/SkipForwardIcon.svelte";
+  import SkipBackIcon from "svelte-feather-icons/src/icons/SkipBackIcon.svelte";
+  import MoveIcon from "svelte-feather-icons/src/icons/MoveIcon.svelte";
+  import HomeIcon from "svelte-feather-icons/src/icons/HomeIcon.svelte";
+
   import { draggable } from '@neodrag/svelte'
   export let year : String
   export let years : String[]
   const linkClass = `flex flex-col justify-center mx-5
   transition duration-300 hover:scale-110 flex-shrink-0
-  dark:hover:text-green-600`;
+  dark:hover:text-green-700`;
 
   const backgroundClass = 'dark:text-white text-black bg-white dark:bg-black dark:border-white border-black'
   $: previousYear = years[years.indexOf(year) - 1] || null

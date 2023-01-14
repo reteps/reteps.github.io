@@ -3,7 +3,7 @@ title: "My experience with an m1 macbook for cybersecurity"
 date: "1-9-2023"
 ---
 
-![](./m1_keynote.png)
+![](./m1_keynote.webp)
 
 The m1 mac. Truly a tough decision for many cybersecurity professionals, as it's non-standard architecture and OS leads to a general air of skepticism about it's abilities as a security workhorse. I am going to go through my setup, and some personal items I found about the machine to inform your decision.
 
