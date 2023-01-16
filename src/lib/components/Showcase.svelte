@@ -14,7 +14,6 @@
 	import Image6 from '$img/showcase/battelle.png?w=300;600;900;1200&webp&picture&meta=height;width';
 	import Image7 from '$img/showcase/fifth-eye.png?w=300;600;900;1200&webp&picture&meta=height;width';
 	import Image8 from '$img/showcase/ctftime.png?w=300;600;900;1200&webp&picture&meta=height;width';
-	console.log(Image1)
 	const content = [
 		{
 			title: 'uiuc-apartments.com',

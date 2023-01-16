@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Headshot from '$img/headshot.png?w=600&webp';
-  import HeadshotHacker from '$img/headshot_hacker.png?w=600&webp';
+  import Headshot from '$img/headshot.png?w=1000&webp';
+  import HeadshotHacker from '$img/headshot_hacker.png?w=1000&webp';
 	import ArrowDownCircleIcon from 'svelte-feather-icons/src/icons/ArrowDownCircleIcon.svelte';
 	import Link from '$lib/components/Link.svelte';
 	import Showcase from '$lib/components/Showcase.svelte';
@@ -35,7 +35,7 @@
 <SEO {...seo} />
 <div id="intro" class="flex flex-col" on:mousemove={rotateArrow}>
 	<div class="flex flex-col-reverse lg:flex-row mx-10 mt-20">
-		<div class="lg:w-3/4 text-black dark:text-white">
+		<div class="lg:w-3/4 text-black dark:text-white lg:ml-10">
 			<h1 class="text-4xl font-bold text-purple-700 dark:text-green-700">Hi! I'm Pete Stenger!</h1>
 			<p class="mt-5">
 				I'm a software developer at the University of Illinois Urbana Champaign (<Link
@@ -91,7 +91,7 @@
 		</a>
 	</div>
 </div>
-<div id="showcase" class="flex flex-col min-h-screen mx-10 mt-20">
+<div id="showcase" class="flex flex-col min-h-screen mx-10 pt-20" on:mousemove={rotateArrow}>
 	<Showcase />
 </div>
 
