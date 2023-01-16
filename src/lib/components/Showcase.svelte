@@ -5,16 +5,16 @@
 	import LinkIcon from 'svelte-feather-icons/src/icons/LinkIcon.svelte';
 	import GlobeIcon from 'svelte-feather-icons/src/icons/GlobeIcon.svelte';
 	import TrashIcon from 'svelte-feather-icons/src/icons/TrashIcon.svelte';
-	import Image1 from '$img/showcase/uiuc-apartments.png?w=300;600;900&webp&srcset';
-	import Image2 from '$img/showcase/website.png?w=300;600;900&webp&srcset';
-	import Image3 from '$img/showcase/pwnybot.png?w=300;600;900&webp&srcset';
-	import Image4 from '$img/showcase/pwnyctf.png?w=300;600;900&webp&srcset';
-	import Image5 from '$img/showcase/kotahi.png?w=300;600;900&webp&srcset';
-	import Image6 from '$img/showcase/battelle.png?w=300;600;900&webp&srcset';
-	import Image7 from '$img/showcase/fifth-eye.png?w=300;600;900&webp&srcset';
-	import Image8 from '$img/showcase/ctftime.png?w=300;600;900&webp&srcset';
-
-	import lazyLoad from '$lib/utils/lazyLoad';
+	
+	import Image1 from '$img/showcase/uiuc-apartments.png?w=300;600;900;1200&webp&picture&meta=height;width';
+	import Image2 from '$img/showcase/website.png?w=300;600;900;1200&webp&picture&meta=height;width';
+	import Image3 from '$img/showcase/pwnybot.png?w=300;600;900;1200&webp&picture&meta=height;width';
+	import Image4 from '$img/showcase/pwnyctf.png?w=300;600;900;1200&webp&picture&meta=height;width';
+	import Image5 from '$img/showcase/kotahi.png?w=300;600;900;1200&webp&picture&meta=height;width';
+	import Image6 from '$img/showcase/battelle.png?w=300;600;900;1200&webp&picture&meta=height;width';
+	import Image7 from '$img/showcase/fifth-eye.png?w=300;600;900;1200&webp&picture&meta=height;width';
+	import Image8 from '$img/showcase/ctftime.png?w=300;600;900;1200&webp&picture&meta=height;width';
+	console.log(Image1)
 	const content = [
 		{
 			title: 'uiuc-apartments.com',
@@ -209,7 +209,12 @@
 		{#each filteredContent as item, i}
 			<div class="flex flex-col">
 				<div class="flex flex-row justify-center item">
-					<img class="rounded-lg" data-srcset={item.image} alt={item.title} use:lazyLoad />
+					<picture>
+						{#each item.image.sources.webp as source}
+							<source media={`(max-width: ${~~(source.w*1.1)}px)`} srcset="{source.src}" type="image/webp" />
+						{/each}
+						<img class="rounded-lg" height="{~~item.image.fallback.h}" width="{item.image.fallback.w}" src={item.image.fallback.src} alt={item.title} />
+					</picture>
 				</div>
 				<div class="flex flex-col mt-5 dark:text-white">
 					<div class="flex flex-col lg:flex-row justify-between">

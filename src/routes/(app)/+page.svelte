@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Headshot from '$img/headshot.png?w=200;300;400;600&webp&srcset';
-  import HeadshotHacker from '$img/headshot_hacker.png?w=200;300;400;600&webp&srcset';
+  import Headshot from '$img/headshot.png?w=600&webp';
+  import HeadshotHacker from '$img/headshot_hacker.png?w=600&webp';
 	import ArrowDownCircleIcon from 'svelte-feather-icons/src/icons/ArrowDownCircleIcon.svelte';
 	import Link from '$lib/components/Link.svelte';
 	import Showcase from '$lib/components/Showcase.svelte';
@@ -66,7 +66,7 @@
 		<div class="flex flex-row justify-center mb-10">
 			<div class="w-1/2 lg:w-3/5">
 				<img
-					srcset={hacker ? HeadshotHacker : Headshot}
+					src={hacker ? HeadshotHacker : Headshot}
 					on:mouseover={() => (hacker = !hacker)}
 					on:focus={() => (hacker = !hacker)}
 					on:mouseleave={() => (hacker = !hacker)}

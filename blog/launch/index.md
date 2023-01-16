@@ -86,7 +86,7 @@ I am using [Svelte Sitemap](https://github.com/bartholomej/svelte-sitemap) and p
 
 ## Optimizations
 
-I used [vite-imagetools](https://www.npmjs.com/package/vite-imagetools) to optimize my images, and lazy-loaded the images on my homepage + other optimization. I also added an aria-label to every link based on the text content of the tag:
+I used [vite-imagetools](https://www.npmjs.com/package/vite-imagetools) to optimize my images. I also added an aria-label to every link based on the text content of the tag:
 
 ```svelte
 <script>
