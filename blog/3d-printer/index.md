@@ -1,6 +1,6 @@
 ---
 title: "Making a $144 pikachu"
-date: "1-16-2022"
+date: "1-16-2023"
 ---
 This is a short post about me purchasing, upgrading, and buying my first 3D printer.
 
