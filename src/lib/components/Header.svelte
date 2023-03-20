@@ -26,7 +26,7 @@ header {
         <a href="/blog" aria-label="Blog">Blog</a>
       </li>
       <li class={linkClass}>
-        <a href="https://drive.google.com/file/d/1ZAKsHNas-5nEJbnqZx5fgJxtUmyMZBeq/view" rel="noreferrer" aria-label="Resume">Resume</a>
+        <a href="https://drive.google.com/file/d/1BilrPM7IPKb680bVsoH-QtpXxuXbUKqu/view" rel="noreferrer" aria-label="Resume">Resume</a>
       </li>
       <li class={linkClass}>
         <button on:click={() => $darkTheme = !$darkTheme} aria-label="Toggle">
