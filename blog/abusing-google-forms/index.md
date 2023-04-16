@@ -313,7 +313,9 @@ await ctx.prisma.aWCResponse.create({
   },
 });
 ```
+
 And finally, we can ingest responses like so:
+
 ```ts
 // Call Google Forms API
 const { data } = await client.forms.responses.list({
@@ -322,7 +324,6 @@ const { data } = await client.forms.responses.list({
 });
 
 const responsesToInsert = data.responses.reduce((acc, response) => {
-  // https://issuetracker.google.com/issues/232280686
   // Use timestamp_ms to uniquely identify responses
   const timestamp_ms = new Date(
     response.createTime || new Date()
