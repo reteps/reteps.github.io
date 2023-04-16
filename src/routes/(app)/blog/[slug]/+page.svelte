@@ -14,7 +14,7 @@
 
 <SEO title={title} description={description} />
 <article class="flex flex-col dark:text-white items-center">
-  <div class="prose prose-sm md:prose-lg lg:prose-xl pt-10 px-10 dark:prose-invert 
+  <div class="prose prose-sm md:prose-md lg:prose-lg pt-10 px-10 dark:prose-invert 
   prose-a:break-words prose-code:break-words 
   prose-img:mx-auto
   prose-figcaption:text-center
