@@ -82,3 +82,68 @@ Into something like this:
 Additionally, we need to generate course prerequisite chains.
 
 THIS POST IS A WORK IN PROGRESS. CHECK BACK IN LATER.
+
+## Brief Detour ⚠️
+
+I wanted to know what the hardest class and hardest CS class at UIUC were. I used this snippet to find them:
+
+```python
+from z3 import Optimize, Bool, Or, And, Implies, If, Sum, sat
+import json
+data = json.load(open('uiuc-prerequisites.json','r'))
+solver = Optimize()
+course_constraints = {course: Bool(f'{course}') for course in data.keys()}
+for course in data.keys():
+    clauses = []
+    for prereq_list in data[course]:
+        valid_prereqs =[course_constraints[prereq['course']] for prereq in prereq_list if prereq['course'] in course_constraints]
+        if len(valid_prereqs) > 0:
+          clauses.append(Or(valid_prereqs))
+    
+    if len(clauses) == 0:
+        continue
+    prereqs = And(clauses)
+    solver.add(Implies(course_constraints[course], prereqs))
+
+solver.minimize(Sum([If(constraint, 1, 0) for constraint in course_constraints.values()]))
+
+
+hardest = []
+for course in data.keys():
+    solver.push()
+    solver.add(course_constraints[course] == True)
+    if solver.check() == sat:
+        items = []
+        model = solver.model()
+        for item in model:
+            if model[item]:
+                items.append(item.name())
+
+        if len(items) > len(hardest):
+            hardest = items
+    solver.pop()
+
+print(hardest)
+```
+
+So the hardest class is [SE 495](https://courses.illinois.edu/schedule/2023/fall/SE/495), requiring you to take 16 other classes. By the way, make sure you are a senior whose UIN ends in an even number 😄
+
++ MATH 221
++ PHYS 211
++ TAM 211
++ MATH 415
++ CS 101
++ TAM 251
++ MATH 231
++ SE 311
++ SE 261
++ IE 310
++ MATH 241
++ SE 312
++ TAM 212
++ SE 310
++ IE 300
++ TAM 335
++ SE 494
+
+And the hardest CS class is [CS 439](https://courses.illinois.edu/schedule/2023/fall/CS/439). Make sure you take **both** CS 341 and ECE 391!
