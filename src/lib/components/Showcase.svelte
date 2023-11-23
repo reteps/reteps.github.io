@@ -206,16 +206,16 @@
 	</div>
 	<div class="flex flex-col lg:w-4/5 lg:pl-20 mt-10 lg:mt-40">
 		{#each filteredContent as item, i}
-			<div class="flex flex-col">
+			<div class="flex flex-col rounded-lg border-2 border-t-0 border-dashed border-slate-400 dark:border-slate-500 pb-2 mb-10 lg:mb-20">
 				<div class="flex flex-row justify-center item">
 					<picture>
 						{#each item.image.sources.webp as source}
 							<source media={`(max-width: ${~~(source.w*1.1)}px)`} srcset="{source.src}" type="image/webp" />
 						{/each}
-						<img class="rounded-lg" height="{~~item.image.fallback.h}" width="{item.image.fallback.w}" src={item.image.fallback.src} alt={item.title} />
+						<img class="rounded-t-md" height="{~~item.image.fallback.h}" width="{item.image.fallback.w}" src={item.image.fallback.src} alt={item.title} />
 					</picture>
 				</div>
-				<div class="flex flex-col mt-5 dark:text-white">
+				<div class="flex flex-col mt-5 dark:text-white px-10">
 					<div class="flex flex-col lg:flex-row justify-between">
 						<h2 class="text-2xl lg:text-3xl">{item.title}</h2>
 						<div class="flex flex-row items-center mt-3 lg:mt-0">
@@ -243,13 +243,13 @@
 						{/each}
 					</div>
 				</div>
-				{#if i !== filteredContent.length - 1}
+				<!-- {#if i !== filteredContent.length - 1}
 					<div class="flex flex-row justify-center">
 						<hr
 							class="mt-10 mb-10 lg:mt-20 lg:mb-20 h-1 rounded border-0 w-64 bg-slate-400 dark:bg-slate-500"
 						/>
 					</div>
-				{/if}
+				{/if} -->
 			</div>
 		{/each}
 	</div>

@@ -47,18 +47,18 @@
 			<h2 class="text-xl font-bold mt-10">Currently...</h2>
 			<ul class="list-disc">
 				<li>
-					In my second year of a combined 3+1 undergraduate/graduate MCS <Link
+					In my third year of a combined 3+1 undergraduate/graduate MCS <Link
 						href="https://cs.illinois.edu/academics/graduate/fifth-year-masters-programs/5-year-bs-ms-program"
 						simple>program</Link
 					>.
 				</li>
 				<li>
-					A software developer for <Link href="https://uiuc.hack4impact.org" simple
+					I was a software developer for <Link href="https://uiuc.hack4impact.org" simple
 						>Hack4Impact</Link
-					>, where I program for nonprofits.
+					>, where I programmed for nonprofits.
 				</li>
 				<li>
-					An admin for <Link href="https://sigpwny.com/" simple>SIGPwny</Link>, an ACM special
+					The president for <Link href="https://sigpwny.com/" simple>SIGPwny</Link>, an ACM special
 					interest group focused on cybersecurity and the largest educational RSO on campus.
 				</li>
 			</ul>
@@ -91,7 +91,7 @@
 		</a>
 	</div>
 </div>
-<div id="showcase" class="flex flex-col min-h-screen mx-10 pt-20" on:mousemove={rotateArrow}>
+<div id="showcase" class="flex flex-col min-h-screen mx-10 mt-20" on:mousemove={rotateArrow}>
 	<Showcase />
 </div>
 
