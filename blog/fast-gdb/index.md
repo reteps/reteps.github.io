@@ -95,17 +95,19 @@ sudo apt install gcc:amd64
 
 ## Rosetta Passthrough
 
-Then follow the steps to register Rosetta passthrough (well described in the [UTM Docs](https://docs.getutm.app/advanced/rosetta/))
+Then follow the steps to register Rosetta passthrough (well described in the [UTM Docs](https://docs.getutm.app/advanced/rosetta/)). 
 
 ```bash
 sudo mkdir /media/rosetta
 sudo mount -t virtiofs rosetta /media/rosetta
 sudo echo 'rosetta\t/media/rosetta\tvirtiofs\tro,nofail\t0\t0' >> /etc/fstab
 sudo /usr/sbin/update-binfmts --install rosetta /media/rosetta/rosetta \
-     --magic "\x7fELF\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x3e\x00" \
-     --mask "\xff\xff\xff\xff\xff\xfe\xfe\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff" \
+     --magic "<COPY FROM LINK> \
+     --mask "<COPY FROM LINK>" \
      --credentials yes --preserve no --fix-binary yes
 ```
+
+Copy the command from the tutorial, my blog renderer messes up the mask/magic bytes.
 
 ## Your First Test
 
