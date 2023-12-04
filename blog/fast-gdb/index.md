@@ -2,7 +2,7 @@
 title: 'Fast x86 Debugging: Using GDB On Apple Silicon with Rosetta emulation'
 date: "12-04-2023"
 ---
-# Using GDB On Apple Silicon with Rosetta emulation
+# Overview
 
 This blog post will outline how to setup x86 GDB on M1. This isn't your run-of-the mill x86 emulation -
 this is *FAST* -- using the Rosetta translation engine, instead of QEMU. Thanks to [sporks.space](https://sporks.space/2023/04/12/debugging-an-x86-application-in-rosetta-for-linux/) for the initial writeup of the `ROSETTA_DEBUGSERVER` feature!
