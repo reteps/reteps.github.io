@@ -21,7 +21,7 @@ I am running on a M1 Chip, running MacOS Sonoma 14.0 (Build 23A339). I have had 
 
 Download a ARMv8 / aarch64 iso like Ubuntu Desktop 22.04.3 LTS. This can be downloaded [here](https://cdimage.ubuntu.com/jammy/daily-live/current/).
 
-Download the UTM DMG from their [Github Releases](https://github.com/utmapp/UTM/releases). At the time of writing, this is UTM 4.4.4. If you run into issues, I would reccomend using `8GB` RAM.
+Download the UTM DMG from their [Github Releases](https://github.com/utmapp/UTM/releases). At the time of writing, this is UTM 4.4.4. If you run into issues, I would recommend using `8GB` RAM.
 
 Then, setup your UTM VM.
 
@@ -102,7 +102,7 @@ sudo mkdir /media/rosetta
 sudo mount -t virtiofs rosetta /media/rosetta
 sudo echo 'rosetta\t/media/rosetta\tvirtiofs\tro,nofail\t0\t0' >> /etc/fstab
 sudo /usr/sbin/update-binfmts --install rosetta /media/rosetta/rosetta \
-     --magic "<COPY FROM LINK> \
+     --magic "<COPY FROM LINK>" \
      --mask "<COPY FROM LINK>" \
      --credentials yes --preserve no --fix-binary yes
 ```

@@ -224,6 +224,7 @@ Caption: The authentication flow I ended up with
 ## Development Process
 
 I forgot to take screenshots of the development process, sorry about that! If you want to see a more detailed view of the development process, please just view the [commit history](https://github.com/reteps/when-orange-chicken/commits/master) of my github repo :)
+
 ### Initial Baby Steps
 
 As I said, I first implemented authentication. I then pushed the user to the Cloud Firestore database. Firestore is a NoSQL database, which means that there are no ForeignKeys or SQL-style querying allowed. Overall, I am happy with how much I learned and what I ended up with but it was confusing at times.

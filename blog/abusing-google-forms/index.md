@@ -13,7 +13,7 @@ This post is going to detail my journey this semester exploring Google Forms, as
 
 # The beginning
 
-As a part of [Hack4Impact](https://uiuc.hack4impact.org/), we regularly work with nonprofits with budget and technology-based constraints. My team's nonprofit this semester was [Meraki](https://merakifoundation.in/). Meraki's goal is to improve education in India. One major role they play in this is surveying [Anganwadi's](https://en.wikipedia.org/wiki/Anganwadi) (rural childcard centers), and providing information about them back to the Indian government. The government then uses the data collected to inform grants, and spending decisions to improve the areas most in need.
+As a part of [Hack4Impact](https://uiuc.hack4impact.org/), we regularly work with nonprofits with budget and technology-based constraints. My team's nonprofit this semester was [Meraki](https://merakifoundation.in/). Meraki's goal is to improve education in India. One major role they play in this is surveying [Anganwadi's](https://en.wikipedia.org/wiki/Anganwadi) (rural childcare centers), and providing information about them back to the Indian government. The government then uses the data collected to inform grants, and spending decisions to improve the areas most in need.
 
 At the start of the project, the Meraki team said that they needed a custom software solution. Meraki was collecting this important information through Google Forms, and putting it all on massive Google Sheets. It was no longer working for them, as they hit the [10 million cell limit](https://www.ablebits.com/office-addins-blog/google-sheets-limits), and were worried that creating new Sheets and Forms was not a scalable solution.
 
@@ -91,6 +91,7 @@ Caption: So cursed
 However, it appeared the regex has a hidden limitation: if you make it too long, it will crash your webpage! This wasn't going to work.
 
 ### Redirect + Google Forms
+
 We also brought up another solution to continue using Google Forms, fill out the AWC part on our site (and do javascript validation), and then redirect to the Google Form with it [prefilled](https://support.google.com/docs/answer/2839588?hl=en&visit_id=638172636816298607-1610807482&rd=1#zippy=%2Csend-a-form-with-pre-filled-answers) in.
 
 We designed a PostgreSQL database schema, and were all set to go. We originally decided on storing the JSON for a response directly in the table. This seemed fine, as PostgreSQL supports high performance [JSON queries](https://www.postgresql.org/docs/12/functions-json.html).
