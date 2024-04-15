@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Headshot from '$img/headshot.png?w=1000&webp';
-  import HeadshotHacker from '$img/headshot_hacker.png?w=1000&webp';
+  import Headshot from '$img/pfp_cherry.jpg?w=1000&webp';
+  import HeadshotHacker from '$img/pfp_cherry_hacker.png?w=1000&webp';
 	import ArrowDownCircleIcon from 'svelte-feather-icons/src/icons/ArrowDownCircleIcon.svelte';
 	import Link from '$lib/components/Link.svelte';
 	import Showcase from '$lib/components/Showcase.svelte';
