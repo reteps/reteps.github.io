@@ -47,19 +47,22 @@
 			<h2 class="text-xl font-bold mt-10">Currently...</h2>
 			<ul class="list-disc">
 				<li>
-					In my third year of a combined 3+1 undergraduate/graduate MCS <Link
+					In my fourth year of a combined 3+1 undergraduate/graduate MCS <Link
 						href="https://cs.illinois.edu/academics/graduate/fifth-year-masters-programs/5-year-bs-ms-program"
 						simple>program</Link
 					>.
 				</li>
 				<li>
+					A TA for <Link href="https://courses.grainger.illinois.edu/cs425/fa2024/" simple>CS 425</Link>
+				</li>
+				<li>
+					I was the president for <Link href="https://sigpwny.com/" simple>SIGPwny</Link>, an ACM special
+					interest group focused on cybersecurity and the largest educational RSO on campus.
+				</li>
+				<li>
 					I was a software developer for <Link href="https://uiuc.hack4impact.org" simple
 						>Hack4Impact</Link
 					>, where I programmed for nonprofits.
-				</li>
-				<li>
-					The president for <Link href="https://sigpwny.com/" simple>SIGPwny</Link>, an ACM special
-					interest group focused on cybersecurity and the largest educational RSO on campus.
 				</li>
 			</ul>
 		</div>
