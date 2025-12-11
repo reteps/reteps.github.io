@@ -7,9 +7,9 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import { darkTheme } from '$lib/stores';
 	const seo = {
-		title: 'Pete Stenger',
+		title: 'Peter Stenger',
 		description:
-			"Hi! I'm Pete Stenger, a student at the University of Illinois Urbana Champaign (UIUC) studying computer science.",
+			"Hi! I'm Peter Stenger, a computer science graduate from the University of Illinois Urbana Champaign (UIUC).",
 		image: 'preview.png'
 	};
 
@@ -36,28 +36,25 @@
 <div id="intro" class="flex flex-col" on:mousemove={rotateArrow}>
 	<div class="flex flex-col-reverse lg:flex-row mx-10 mt-20">
 		<div class="lg:w-3/4 text-black dark:text-white lg:ml-10">
-			<h1 class="text-4xl font-bold text-purple-700 dark:text-green-700">Hi! I'm Pete Stenger!</h1>
+			<h1 class="text-4xl font-bold text-purple-700 dark:text-green-700">Hi! I'm Peter Stenger!</h1>
 			<p class="mt-5">
-				I'm a software developer at the University of Illinois Urbana Champaign (<Link
+				I'm a software developer at PrairieLearn and a computer science graduate from the University of Illinois Urbana Champaign (<Link
 					href="https://illinois.edu/"
 					simple>UIUC</Link
-				>) studying computer science. I'm passionate about open source software, cybersecurity, and
+				>). I'm passionate about open source software, cybersecurity, and
 				education.
 			</p>
 			<h2 class="text-xl font-bold mt-10">Currently...</h2>
 			<ul class="list-disc">
 				<li>
-					In my fourth year of a combined 3+1 undergraduate/graduate MCS <Link
-						href="https://cs.illinois.edu/academics/graduate/fifth-year-masters-programs/5-year-bs-ms-program"
-						simple>program</Link
-					>.
-				</li>
-				<li>
-					A TA for <Link href="https://courses.grainger.illinois.edu/cs425/fa2024/" simple>CS 425</Link>
+					Working :) 👨‍💻
 				</li>
 				<li>
 					I was the president for <Link href="https://sigpwny.com/" simple>SIGPwny</Link>, an ACM special
-					interest group focused on cybersecurity and the largest educational RSO on campus.
+					interest group focused on cybersecurity and the largest educational RSO on campus. I just graduated from
+                    a combined 3+1 undergraduate/graduate MCS <Link
+						href="https://cs.illinois.edu/academics/graduate/fifth-year-masters-programs/5-year-bs-ms-program"
+						simple>program</Link> program, and TA'd for <Link href="https://courses.grainger.illinois.edu/cs425/fa2024/" simple>CS 425</Link> and CS 128.
 				</li>
 				<li>
 					I was a software developer for <Link href="https://uiuc.hack4impact.org" simple
