@@ -1,9 +1,9 @@
 <script lang="ts">
   import Link from '$lib/components/Link.svelte'
-  import LinkedinIcon from 'svelte-feather-icons/src/icons/LinkedinIcon.svelte';
-  import GithubIcon from 'svelte-feather-icons/src/icons/GithubIcon.svelte';
-  import MailIcon from 'svelte-feather-icons/src/icons/MailIcon.svelte';
-  import SkipBackIcon from 'svelte-feather-icons/src/icons/SkipBackIcon.svelte';
+  import LinkedinIcon from '~icons/mdi/linkedin';
+  import GithubIcon from '~icons/mdi/github';
+  import MailIcon from '@lucide/svelte/icons/mail';
+  import SkipBackIcon from '@lucide/svelte/icons/skip-back';
 
 </script>
 

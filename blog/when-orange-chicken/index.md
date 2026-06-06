@@ -219,7 +219,7 @@ I decided to go with authentication method #3 because:
 
 tldr; I am lazy
 
-![login flow](./Untitled_Diagram.drawio.png)
+![login flow](./untitled-diagram-drawio.png)
 Caption: The authentication flow I ended up with
 
 ## Development Process

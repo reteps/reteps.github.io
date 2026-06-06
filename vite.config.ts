@@ -1,10 +1,11 @@
+import { enhancedImages } from '@sveltejs/enhanced-img';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { imagetools } from 'vite-imagetools';
-import viteCompression from 'vite-plugin-compression';
-import type { UserConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
+import Icons from 'unplugin-icons/vite';
+import { defineConfig } from 'vite';
 
-const config: UserConfig = {
-  plugins: [sveltekit(), imagetools({ force: true }), viteCompression()],
+export default defineConfig({
+  plugins: [enhancedImages(), tailwindcss(), Icons({ compiler: 'svelte' }), sveltekit()],
   server: {
     fs: {
       allow: ['blog']
@@ -15,6 +16,4 @@ const config: UserConfig = {
       $img: '/src/img'
     }
   }
-};
-
-export default config;
+});

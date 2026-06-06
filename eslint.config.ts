@@ -48,9 +48,15 @@ export default config(
       'import-x/no-unresolved': [
         'error',
         {
-          ignore: ['\\?']
+          ignore: ['\\?', '^~icons/']
         }
       ]
+    }
+  },
+  {
+    files: ['**/*.d.ts'],
+    rules: {
+      '@typescript-eslint/triple-slash-reference': 'off'
     }
   },
   {

@@ -102,13 +102,13 @@ const snowflakeEventLookup = discordEvents.reduce((o, event) => {
   %20return o;%20},%20{} as Record<string, GuildScheduledEvent<GuildScheduledEventStatus>);
 ```
 
-![Generated Discord event screenshot](./CleanShot%202024-10-07%20at%2014.46.03@2x.png)
+![Generated Discord event screenshot](./cleanshot-2024-10-07-at-14-46-03-2x.png)
 
 - ... Create a subscribable calendar / gcal that people can just add to their existing calendar
 
 Another consideration is that we want selectable team subsets that people can subscribe to.
 
-![Meeting type selector screenshot](./CleanShot%202024-10-07%20at%2013.48.59@2x.png)
+![Meeting type selector screenshot](./cleanshot-2024-10-07-at-13-48-59-2x.png)
 
 To do this, we generate a ICS file for each meeting type combination. E.g. for my selected picture, you could subscribe to `webcal://sigpwny.com/calendar/ctf-embedded-general/apple.ics`.
 
@@ -120,14 +120,14 @@ As long as we have less than 7 types of meetings ( $$7! = 5040$$ routes), this p
 
 ACM was missing a calendar, so I made one for them. This has a corresponding admin panel view (thanks to Dev for his help on this).
 
-![website](./CleanShot%202024-10-07%20at%2013.53.42@2x.png)
-![admin panel](./CleanShot%202024-10-07%20at%2013.54.47@2x.png)
+![website](./cleanshot-2024-10-07-at-13-53-42-2x.png)
+![admin panel](./cleanshot-2024-10-07-at-13-54-47-2x.png)
 
 - ... Pull in ACM calendar data into Discord.
 
 Since ACM doesn't have an event page I linked to the calendar with a URI fragment per event. This has the same logic as the SIGPwny action. E.g.
 
-![discord calendar](./CleanShot%202024-10-07%20at%2013.59.21@2x.png)
+![discord calendar](./cleanshot-2024-10-07-at-13-59-21-2x.png)
 
 ### Reminders to prepare meetings to helpers
 
@@ -145,13 +145,13 @@ Unfortunately, GitHub does not support (out of the box) a way to schedule a GitH
 
 The only thing that is allowed is running a workflow on a cron job timer. Also, the cron jobs can run as infrequently as 1 time per year. So as long as old cron jobs are cleaned up, this should work!
 
-![Cron-based scheduled workflow screenshot](./CleanShot%202024-10-07%20at%2014.05.29@2x.png)
+![Cron-based scheduled workflow screenshot](./cleanshot-2024-10-07-at-14-05-29-2x.png)
 
 I was so happy with this idea of "Automating automation creation", that after doing some research and not finding anything that fit my needs, I created a way to generate these files in TypeScript! The [GitHub Action scheduler repo](https://github.com/reteps/github-action-scheduler) is available on GitHub.
 
 So to use this functionality we can have a two stage process:
 
-![Two-stage scheduled workflow diagram](./CleanShot%202024-10-07%20at%2014.20.55@2x.png)
+![Two-stage scheduled workflow diagram](./cleanshot-2024-10-07-at-14-20-55-2x.png)
 
 1. A post-build step that generates a list of messages that we need to send, and at what time. Then, we need to create a workflow run for each time, and commit this to the repo.
 
@@ -167,11 +167,11 @@ scheduleJobs(jobs, {
 });
 ```
 
-![Generated scheduled pings workflow](./CleanShot%202024-10-07%20at%2014.22.35@2x.png)
+![Generated scheduled pings workflow](./cleanshot-2024-10-07-at-14-22-35-2x.png)
 
 2. On workflow run, our desired behavior will happen!
 
-![yay message](./CleanShot%202024-10-07%20at%2014.25.41@2x.png)
+![yay message](./cleanshot-2024-10-07-at-14-25-41-2x.png)
 
 ### Maintaining documentation
 
@@ -179,7 +179,7 @@ scheduleJobs(jobs, {
 
 I put our guides repo as a submodule of the main site. When the guides repo has a commit, I use a GitHub Action to update the upstream submodule commit.
 
-![Guides repository submodule update](./CleanShot%202024-10-07%20at%2014.28.02@2x.png)
+![Guides repository submodule update](./cleanshot-2024-10-07-at-14-28-02-2x.png)
 
 This commit will trigger a site rebuild, at which point we copy it to the `/docs` route of the website in our `astro.config.ts`. This lets us host `sigpwny.com/docs` AND `fallctf.com/guide-2024` effectively without any major configuration steps!
 
@@ -209,8 +209,8 @@ Ideally,
 
 Luckily, [Cloudflare Zero Trust](https://developers.cloudflare.com/cloudflare-one/identity/) allows us to do just that, and protect the _endpoint_ with auth.
 
-![alt text](./CleanShot%202024-10-07%20at%2014.34.45@2x.png)
-![alt text](./CleanShot%202024-10-07%20at%2014.35.16@2x.png)
+![alt text](./cleanshot-2024-10-07-at-14-34-45-2x.png)
+![alt text](./cleanshot-2024-10-07-at-14-35-16-2x.png)
 
 ## Conclusion
 

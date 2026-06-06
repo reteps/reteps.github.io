@@ -1,8 +1,8 @@
 <script lang="ts">
-  import SkipForwardIcon from "svelte-feather-icons/src/icons/SkipForwardIcon.svelte";
-  import SkipBackIcon from "svelte-feather-icons/src/icons/SkipBackIcon.svelte";
-  import MoveIcon from "svelte-feather-icons/src/icons/MoveIcon.svelte";
-  import HomeIcon from "svelte-feather-icons/src/icons/HomeIcon.svelte";
+  import SkipForwardIcon from '@lucide/svelte/icons/skip-forward';
+  import SkipBackIcon from '@lucide/svelte/icons/skip-back';
+  import MoveIcon from '@lucide/svelte/icons/move';
+  import HomeIcon from '@lucide/svelte/icons/house';
 
   import { draggable } from '@neodrag/svelte'
   export let year : string

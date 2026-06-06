@@ -36,7 +36,7 @@ These tools suck. Make them better.
 - Wikipedia looks like shit. [Wikiwand](https://chrome.google.com/webstore/detail/wikiwand-wikipedia-modern/emffkefkbkpkgpdeeooapgaicgmcbolj?hl=en-US) makes it less shit.
 - Get inspired. I use [momentum](https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca?hl=en) for my new tab page.
 - Organize your shit. Use just the icons for sites. Use folders for class bookmarks.
-  ![Browser bookmark organization](./images/1.png#layoutTextWidth)
+  ![Browser bookmark organization](./images/1.png)
 
 - Stop having 3000 tabs. Use tab groups for each class.
 
@@ -44,7 +44,7 @@ These tools suck. Make them better.
 
 - Fuck it. Get the Sync. Worth paying 5$/month instead of using version control for syncing your notes or learning an overcomplicated overengineered thing like Notion.
 - Get Excalidraw Plugin. Embed clean AF drawings right into your notes.
-  ![Obsidian note with an Excalidraw sketch](./images/2.png#layoutTextWidth)
+  ![Obsidian note with an Excalidraw sketch](./images/2.png)
   Caption: Latex. Easy Markdown syntax. Easy drawing built in.
 
 ### Improve VSCode
@@ -75,7 +75,7 @@ Use GitHub [Copilot](https://github.com/features/copilot). Get the [Student Pack
 
 Ascend into ultra CS Major. [Wallpaper Engine](https://www.wallpaperengine.io/en).
 
-![Animated desktop wallpaper](./images/3.png#layoutTextWidth)
+![Animated desktop wallpaper](./images/3.png)
 Caption: My background. The water moves. The clouds move. I want to look at a cloud while I descend into madness.
 
 Flameshot. Docker. oh-my-zsh. Duh.

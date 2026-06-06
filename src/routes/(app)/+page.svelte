@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Headshot from '$img/pfp_cherry.jpg?w=1000&webp';
-  import HeadshotHacker from '$img/pfp_cherry_hacker.png?w=1000&webp';
-  import ArrowDownCircleIcon from 'svelte-feather-icons/src/icons/ArrowDownCircleIcon.svelte';
+  import Headshot from '$img/pfp_cherry.jpg?enhanced&w=1000';
+  import HeadshotHacker from '$img/pfp_cherry_hacker.png?enhanced&w=1000';
+  import ArrowDownCircleIcon from '@lucide/svelte/icons/circle-arrow-down';
   import Link from '$lib/components/Link.svelte';
   import Showcase from '$lib/components/Showcase.svelte';
   import SEO from '$lib/components/SEO.svelte';
@@ -14,6 +14,7 @@
   };
 
   $: hacker = $darkTheme;
+  $: headshot = hacker ? HeadshotHacker : Headshot;
 
   function scrollIntoView() {
     const el = document.getElementById('showcase');
@@ -33,7 +34,8 @@
 </script>
 
 <SEO {...seo} />
-<div id="intro" class="flex flex-col" on:mousemove={rotateArrow}>
+<svelte:window on:mousemove={rotateArrow} />
+<div id="intro" class="flex flex-col">
   <div class="flex flex-col-reverse lg:flex-row mx-10 mt-20">
     <div class="lg:w-3/4 text-black dark:text-white lg:ml-10">
       <h1 class="text-4xl font-bold text-purple-700 dark:text-green-700">Hi! I'm Peter Stenger!</h1>
@@ -65,13 +67,11 @@
     </div>
     <div class="flex flex-row justify-center mb-10">
       <div class="w-1/2 lg:w-3/5">
-        <img
-          src={hacker ? HeadshotHacker : Headshot}
+        <enhanced:img
+          src={headshot}
           on:mouseover={() => (hacker = !hacker)}
           on:focus={() => (hacker = !hacker)}
           on:mouseleave={() => (hacker = !hacker)}
-          width="200"
-          height="200"
           class="rounded-full w-full shadow-lg h-auto block"
           alt="Pete"
         />
@@ -91,7 +91,7 @@
     </a>
   </div>
 </div>
-<div id="showcase" class="flex flex-col min-h-screen mx-10 mt-20" on:mousemove={rotateArrow}>
+<div id="showcase" class="flex flex-col min-h-screen mx-10 mt-20">
   <Showcase />
 </div>
 

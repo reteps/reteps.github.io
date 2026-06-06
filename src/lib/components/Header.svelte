@@ -1,7 +1,7 @@
 <script lang="ts">
-  import HomeIcon from 'svelte-feather-icons/src/icons/HomeIcon.svelte';
-  import SunIcon from 'svelte-feather-icons/src/icons/SunIcon.svelte';
-  import MoonIcon from 'svelte-feather-icons/src/icons/MoonIcon.svelte';
+  import HomeIcon from '@lucide/svelte/icons/house';
+  import SunIcon from '@lucide/svelte/icons/sun';
+  import MoonIcon from '@lucide/svelte/icons/moon';
   import { darkTheme } from '$lib/stores'
   export let fixed = false;
   $: fixedClass = fixed ? 'lg:fixed' : 'lg:sticky';
@@ -35,6 +35,7 @@ header {
           {:else}
             <MoonIcon />
           {/if}
+        </button>
       </li>
     </ul>
   </nav>

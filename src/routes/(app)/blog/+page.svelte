@@ -1,8 +1,8 @@
 <script lang="ts">
   import SEO from '$lib/components/SEO.svelte';
   import { formatDate } from '$lib/utils'
-  import CalendarIcon from 'svelte-feather-icons/src/icons/CalendarIcon.svelte';
-  import ExternalLinkIcon from 'svelte-feather-icons/src/icons/ExternalLinkIcon.svelte';
+  import CalendarIcon from '@lucide/svelte/icons/calendar';
+  import ExternalLinkIcon from '@lucide/svelte/icons/external-link';
   import Link from '$lib/components/Link.svelte'
   export let data: any
   </script>

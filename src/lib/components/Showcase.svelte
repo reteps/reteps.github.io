@@ -1,37 +1,26 @@
 <script lang="ts">
   import Link from '$lib/components/Link.svelte';
-  import FilterIcon from 'svelte-feather-icons/src/icons/FilterIcon.svelte';
-  import CodeIcon from 'svelte-feather-icons/src/icons/CodeIcon.svelte';
-  import LinkIcon from 'svelte-feather-icons/src/icons/LinkIcon.svelte';
-  import GlobeIcon from 'svelte-feather-icons/src/icons/GlobeIcon.svelte';
-  import TrashIcon from 'svelte-feather-icons/src/icons/TrashIcon.svelte';
+  import FilterIcon from '@lucide/svelte/icons/funnel';
+  import CodeIcon from '@lucide/svelte/icons/code';
+  import LinkIcon from '@lucide/svelte/icons/link';
+  import GlobeIcon from '@lucide/svelte/icons/globe';
+  import TrashIcon from '@lucide/svelte/icons/trash-2';
 
-  import Image1 from '$img/showcase/uiuc-apartments.png?w=300;600;900;1200&webp&picture&meta=height;width';
-  import Image2 from '$img/showcase/website.png?w=300;600;900;1200&webp&picture&meta=height;width';
-  import Image3 from '$img/showcase/pwnybot.png?w=300;600;900;1200&webp&picture&meta=height;width';
-  import Image4 from '$img/showcase/pwnyctf.png?w=300;600;900;1200&webp&picture&meta=height;width';
-  import Image5 from '$img/showcase/kotahi.png?w=300;600;900;1200&webp&picture&meta=height;width';
-  import Image6 from '$img/showcase/battelle.png?w=300;600;900;1200&webp&picture&meta=height;width';
-  import Image7 from '$img/showcase/fifth-eye.png?w=300;600;900;1200&webp&picture&meta=height;width';
-  import Image8 from '$img/showcase/ctftime.png?w=300;600;900;1200&webp&picture&meta=height;width';
+  import type { Picture } from '@sveltejs/enhanced-img';
 
-  type ImageSource = {
-    src: string;
-    w: number;
-    h: number;
-  };
-
-  type PictureImage = {
-    sources: {
-      webp: ImageSource[];
-    };
-    fallback: ImageSource;
-  };
+  import Image1 from '$img/showcase/uiuc-apartments.png?enhanced&w=300;600;900;1200';
+  import Image2 from '$img/showcase/website.png?enhanced&w=300;600;900;1200';
+  import Image3 from '$img/showcase/pwnybot.png?enhanced&w=300;600;900;1200';
+  import Image4 from '$img/showcase/pwnyctf.png?enhanced&w=300;600;900;1200';
+  import Image5 from '$img/showcase/kotahi.png?enhanced&w=300;600;900;1200';
+  import Image6 from '$img/showcase/battelle.png?enhanced&w=300;600;900;1200';
+  import Image7 from '$img/showcase/fifth-eye.png?enhanced&w=300;600;900;1200';
+  import Image8 from '$img/showcase/ctftime.png?enhanced&w=300;600;900;1200';
 
   type ShowcaseItem = {
     title: string;
     description: string;
-    image: PictureImage;
+    image: Picture;
     source?: string;
     link?: string;
     languages: string[];
@@ -202,13 +191,14 @@
     </div>
     <div class="flex flex-row flex-wrap justify-center">
       {#each languages as language}
-        <span
+        <button
+          type="button"
           class={languageClass(language)}
-          on:click={() => toggleLanguage(language)}
-          on:keypress={() => toggleLanguage(language)}>{language}</span
+          on:click={() => toggleLanguage(language)}>{language}</button
         >
       {/each}
-      <span
+      <button
+        type="button"
         class="rounded-lg text-s px-3 dark:border-slate-400 border-slate-500 text-slate-700 dark:text-slate-200
       hover:text-red-700 hover:bg-red-100 hover:border-red-100 dark:hover:text-red-700 dark:hover:border-red-100
         border-2 mx-2 mb-2 flex flex-row items-center cursor-pointer justify-between viewbox-fix"
@@ -216,14 +206,10 @@
           selectedLanguages = [];
           scrollIntoView();
         }}
-        on:keydown={() => {
-          selectedLanguages = [];
-          scrollIntoView();
-        }}
       >
-        <div class="mr-2">Clear</div>
+        <span class="mr-2">Clear</span>
         <TrashIcon size="14" />
-      </span>
+      </button>
     </div>
     <div class="text-center mt-10 dark:text-white">
       Showing {filteredContent.length} of {content.length} results
@@ -233,12 +219,12 @@
       {#each filteredContent as item}
       <div class="flex flex-col rounded-lg border-2 border-t-0 border-dashed border-slate-400 dark:border-slate-500 pb-2 mb-10 lg:mb-20">
         <div class="flex flex-row justify-center item">
-          <picture>
-            {#each item.image.sources.webp as source}
-              <source media={`(max-width: ${~~(source.w*1.1)}px)`} srcset="{source.src}" type="image/webp" />
-            {/each}
-            <img class="rounded-t-md" height="{~~item.image.fallback.h}" width="{item.image.fallback.w}" src={item.image.fallback.src} alt={item.title} />
-          </picture>
+          <enhanced:img
+            class="rounded-t-md"
+            src={item.image}
+            sizes="(max-width: 1024px) 100vw, 60vw"
+            alt={item.title}
+          />
         </div>
         <div class="flex flex-col mt-5 dark:text-white px-10">
           <div class="flex flex-col lg:flex-row justify-between">
