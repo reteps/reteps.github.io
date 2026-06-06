@@ -1,4 +1,5 @@
 import { dirname } from 'path';
+import { externalPosts } from '$lib/external-posts';
 
 // These are intended to be server-side methods, so we can use node modules
 // Access to these methods should be wrapped in a api route, like src/routes/api/posts.ts
@@ -13,12 +14,19 @@ export const fetchMarkdownPosts = async () => {
 
       return {
         meta: metadata,
-        path: postPath
+        path: postPath,
+        external: false
       };
     })
   );
 
-  return allPosts;
+  const external = externalPosts.map(({ url, ...meta }) => ({
+    meta,
+    path: url,
+    external: true
+  }));
+
+  return [...allPosts, ...external];
 };
 
 export const fetchTimeMachineYears = () => {

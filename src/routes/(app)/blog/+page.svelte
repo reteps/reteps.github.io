@@ -2,6 +2,7 @@
   import SEO from '$lib/components/SEO.svelte';
   import { formatDate } from '$lib/utils'
   import CalendarIcon from 'svelte-feather-icons/src/icons/CalendarIcon.svelte';
+  import ExternalLinkIcon from 'svelte-feather-icons/src/icons/ExternalLinkIcon.svelte';
   import Link from '$lib/components/Link.svelte'
   export let data: any
   </script>
@@ -16,10 +17,13 @@
     <li class="mb-3">
       <div>
 
-        <h2>
+        <h2 class="flex flex-row items-center">
           <Link class="text-xl" href={post.path} simple>
             {post.meta.title}
           </Link>
+          {#if post.external}
+            <ExternalLinkIcon class="ml-2" size="16" />
+          {/if}
         </h2>
       </div>
         <div class="lg:w-1/2">
