@@ -1,15 +1,16 @@
 ---
 title: When Orange Chicken
-date: "10-24-2021"
+date: '10-24-2021'
 ---
-A simple, innocous question. While eating dinner, some friends and I were discussing the best Ike meals, eventually arriving at when is orange chicken next available at one of the Dining Halls littered around campus?
 
-![Picture of orange chicken](./Pasted_image_20211021003820.png){ width=400 }
+A simple, innocuous question. While eating dinner, some friends and I were discussing the best Ike meals, eventually arriving at when is orange chicken next available at one of the Dining Halls littered around campus?
+
+![Orange chicken](./Pasted_image_20211021003820.png){ width=400 }
 Caption: That sweet, sweet chicken
 
-Any ordinary person on campus would tell you to pull out your phone, and click on each dining hall, then search for some of that delicious chicken. But instead, I thought, 
+Any ordinary person on campus would tell you to pull out your phone, and click on each dining hall, then search for some of that delicious chicken. But instead, I thought,
 
-> What if you received a text message every time orange chicken was available at a dining hall?. 
+> What if you received a text message every time orange chicken was available at a dining hall?
 
 And so that Monday evening, I started some investigative work.
 
@@ -17,9 +18,9 @@ And so that Monday evening, I started some investigative work.
 
 ![Meme](./Pasted_image_20211021005300.png)
 
-The first thing I looked at was how I could even send these SMS messages for cheap (or even free!). After some searching around, it appeared that no one wanted to let me send it from a *phone number* for free. However, there were projects that use the carrier specific sms emails to send your message.
+The first thing I looked at was how I could even send these SMS messages for cheap (or even free!). After some searching around, it appeared that no one wanted to let me send it from a _phone number_ for free. However, there were projects that use the carrier specific sms emails to send your message.
 
-The most popular of these is [textbelt](https://github.com/typpo/textbelt). 
+The most popular of these is [textbelt](https://github.com/typpo/textbelt).
 
 In a nutshell, we configure an email provider to send email from, and then the library will send out our message as an email to a preconfigured list of email addresses where `%s` is the phone number you want a message to:
 
@@ -45,7 +46,8 @@ In a nutshell, we configure an email provider to send email from, and then the l
     // '%s@sms.edgewireless.com',  // slow
   ],
 ```
-Caption: A snippet of https://github.com/typpo/textbelt/blob/master/lib/providers.js
+
+Caption: A snippet of <https://github.com/typpo/textbelt/blob/master/lib/providers.js>
 
 After some playing around, I was successfully sending texts!
 
@@ -54,21 +56,20 @@ Caption: ignore the message contents please
 
 Unfortunately, this method has some drawbacks:
 
-1) You are sending from an email, which looks really suspicious
-2) You are sending an email to ~20 carriers, when only one will get delivered.
-3) This doesn't scale well
+1. You are sending from an email, which looks really suspicious
+2. You are sending an email to ~20 carriers, when only one will get delivered.
+3. This doesn't scale well
 
-When I setup the email service, the easiest method was to connect my gmail account and use that as the SMS sender. I have since regretted that decision, as the 19/20 emails repeatedly bounce.
+When I set up the email service, the easiest method was to connect my Gmail account and use that as the SMS sender. I have since regretted that decision, as the 19/20 emails repeatedly bounce.
 
 ![Lots of emails](./Pasted_image_20211021010021.png)
 Caption: 2 days after the experiment
 
 I later switched to mailgun, but I was not able to get the texts, even though the emails sent. I concluded that there must be some security protection against this sort of SMS spam
 
-* This claim requires further research, and I had already spent an hour trying to get it to work, and so I moved onto more interesting parts of this project to determine it's feasibility.
+- This claim requires further research, and I had already spent an hour trying to get it to work, and so I moved onto more interesting parts of this project to determine it's feasibility.
 
 ![Mailgun errors](./Pasted_image_20211021010305.png)
-
 
 ## Playing around with web APIs
 
@@ -91,13 +92,13 @@ Caption: Debugger Tools showing the despair-inducing `__VIEWSTATE`.
 
 I was able to easily replicate this request in [Insomnia](https://insomnia.rest/), my favorite web request tester, showing the possibility of acquiring the data ahead of time.
 
-I could have stopped here, and created a python script running to screen-scrape the menu and then send out emails. But  would I be a true software engineer if I did that?
+I could have stopped here, and created a python script running to screen-scrape the menu and then send out emails. But would I be a true software engineer if I did that?
 
 ![xkcd](./Pasted_image_20211021011038.png)
 
 ## The Illinois Dining App
 
-Most people at Illinois are familiar with the Illinois App: It shows you the locations and menu for all the dining halls. The app's information comes from somewhere, and that place is 99% of the time an API. 
+Most people at Illinois are familiar with the Illinois App: It shows you the locations and menu for all the dining halls. The app's information comes from somewhere, and that place is 99% of the time an API.
 
 Reverse-engineering closed-source APIs is pretty much my specialty, and I really enjoy doing it. I've done it lets see, [one](https://github.com/sec-edgar/sec-edgar), [two](https://github.com/reteps/lrc_kit), [three](https://github.com/reteps/kbot), [four](https://github.com/reteps/rundata), [five](https://github.com/reteps/redfin), [six](https://github.com/reteps/quizizz-bot), [seven](https://github.com/reteps/mcdonalds-api-wrapper), [eight](https://github.com/reteps/freenom-register), [nine](https://github.com/reteps/pywerschool) times and turned it into an open-source library. DATA EQUITY FTW!!
 
@@ -105,8 +106,8 @@ Reverse-engineering closed-source APIs is pretty much my specialty, and I really
 Caption: An image of the dining hall app for the IKE dining hall
 
 Enter Charles.
- ![charles logo](./Pasted_image_20211021011830.png)
- 
+![charles logo](./Pasted_image_20211021011830.png)
+
 A MITM (Man-in-the-middle) proxy for intercepting mobile requests. In the best case scenario, I can inspect the requests directly from Charles with no further work.
 
 However, once we start intercepting requests, we see the spinner of death :(
@@ -119,26 +120,24 @@ Luckily, two weeks ago, I did a deep dive into bypassing SSL Pinning on Snapchat
 
 In order,
 
-1. Acquire Android Emulator w/ rooted android phone & install Frida
+1. Acquire Android Emulator w/ rooted Android phone & install Frida
 2. Install Burp Suite to monitor requests
 3. Proxy requests you make on the emulator through burp suite to monitor traffic
 4. Use the ~magic~ of Frida to bypass SSL pinning
 5. Profit!!
 
-Completing steps 1-3, I was able to confirm my hunch in the `adb logcat` output: SSL Pinning is stopping us from viewing what web pages it views.
+Completing steps 1-3, I was able to confirm my hunch in the `adb logcat` output: SSL Pinning is stopping us from viewing what web pages it visits.
 
-*adb logcat output*
+### adb logcat output
 
 This output pretty clearly shows us that native libraries are involved in SSL pinning.
 
 ![gru meme SSL pinning](./template.jpg)
 Caption: I cry every time
 
-
 ### Time to bring out the heavy artillery
 
-After decompiling the source using [APKtool](https://ibotpeaches.github.io/Apktool/), we can identify that this application is actually written in Dart/Flutter (a fairly new mobile app programming language/platform for those not family).
-
+After decompiling the source using [APKtool](https://ibotpeaches.github.io/Apktool/), we can identify that this application is actually written in Dart/Flutter (a fairly new mobile app programming language/platform for those not familiar).
 
 After reading more into how the Dart VM works, I figured out that most of the business logic happens inside the shared object file `libapp.so`. This is a beast of a file: I am not interested in reverse-engineering a VM (a well-known obfuscation technique)
 
@@ -148,10 +147,11 @@ Since Flutter is such a new language, reverse-engineering support is sparse: [Do
 Luckily, we aren't the only person to attempt dart SSL bypassing:
 
 These 4 articles greatly helped me get it working.
-+ https://nachiketrathod.com/Intercepting-Flutter-Android-Application/
-+ https://medium.com/@ryanfabella/bypass-ssl-pinning-flutter-didevice-x86-64-avd-d319343b0039
-+ https://id.horangi.com/blog/bypass-ssl-pinning-di-flutter-library/
-+ https://blog.nviso.eu/2020/05/20/intercepting-flutter-traffic-on-android-x64/
+
+- <https://nachiketrathod.com/Intercepting-Flutter-Android-Application/>
+- <https://medium.com/@ryanfabella/bypass-ssl-pinning-flutter-didevice-x86-64-avd-d319343b0039>
+- <https://id.horangi.com/blog/bypass-ssl-pinning-di-flutter-library/>
+- <https://blog.nviso.eu/2020/05/20/intercepting-flutter-traffic-on-android-x64/>
 
 First, I tracked down the function in my version of flutter:
 ![ghidra screenshot](./ghidra.png)
@@ -174,35 +174,36 @@ Mirroring these requests using Insomnia, we find two endpoints we care about:
 
 The list of locations,
 
-```
+```text
 https://web.housing.illinois.edu/MobileAppWS/api/LocationSchedules
 ```
+
 ![location API](./Pasted_image_20211021015211.png)
 
 As well as the menu for that location on a certain day:
 
-```
+```text
 https://web.housing.illinois.edu/MobileAppWS/api/Menu/<diningID>/<date>
 ```
+
 ![menu API](./Pasted_image_20211021015311.png)
 
 ## Technology Stack and Planning
 
 After this point, I decided that I wanted to turn this project into a full webapp. After some careful consideration, I ended up with a tech stack:
 
-|Service|Used|Reasoning|
-|------|-----|-----|
-|SMS Messaging|Twilio|Cheapest rates for actual SMS
-|Database|Firebase|I wanted to try a new technology for this project
-|Front-End|React + Next.JS + MaterialUI|Familiar with React, wanted to try SSR (Next.JS)
-|Hosting|Firebase hosting|Try it out
+| Service       | Used                         | Reasoning                                         |
+| ------------- | ---------------------------- | ------------------------------------------------- |
+| SMS Messaging | Twilio                       | Cheapest rates for actual SMS                     |
+| Database      | Firebase                     | I wanted to try a new technology for this project |
+| Front-End     | React + Next.JS + MaterialUI | Familiar with React, wanted to try SSR (Next.JS)  |
+| Hosting       | Firebase hosting             | Try it out                                        |
 
 I also made some other decisions: Obviously this webapp would be able to do more than just Orange Chicken, will provide some needed customization, and I will try to store all the data I will need in `Firestore`, and use `Cloud Functions` for other tasks, like sending messages and fetching the menu for the day.
 
-
 ### Authentication
 
-Authentication scares me, so I always do it first. I didn't really implement anything special, so I will just overview what I resarched instead. I looked into types of Illinois authentication, which boiled down to shibboleth, OpenID Connect, and Google. 
+Authentication scares me, so I always do it first. I didn't really implement anything special, so I will just overview what I researched instead. I looked into types of Illinois authentication, which boiled down to Shibboleth, OpenID Connect, and Google.
 
 ![shib meme](./Pasted_image_20211021020308.png){width=400}
 
@@ -212,9 +213,9 @@ I don't think any explanation I make of the first two is going to be better than
 
 I decided to go with authentication method #3 because:
 
-1) shibboleth authentication sounded hard to setup, and would require me to self-host something (I couldn't just use Firebase hosting)
-2) I would need to build out the application *first*, before asking to register with OpenID Connect. [edit] Now that it is built, I could reach out...
-3) Google Auth is built-in to firebase authentication, making it very easy
+1. Shibboleth authentication sounded hard to set up, and would require me to self-host something (I couldn't just use Firebase hosting)
+2. I would need to build out the application _first_, before asking to register with OpenID Connect. [edit] Now that it is built, I could reach out...
+3. Google Auth is built-in to firebase authentication, making it very easy
 
 tldr; I am lazy
 
@@ -223,7 +224,7 @@ Caption: The authentication flow I ended up with
 
 ## Development Process
 
-I forgot to take screenshots of the development process, sorry about that! If you want to see a more detailed view of the development process, please just view the [commit history](https://github.com/reteps/when-orange-chicken/commits/master) of my github repo :)
+I forgot to take screenshots of the development process, sorry about that! If you want to see a more detailed view of the development process, please just view the [commit history](https://github.com/reteps/when-orange-chicken/commits/master) of my GitHub repo :)
 
 ### Initial Baby Steps
 
@@ -234,7 +235,7 @@ As I said, I first implemented authentication. I then pushed the user to the Clo
 
 ### Filling in the database
 
-I then setup a cloud function to pull down data from the API every day at 1AM and into the database.
+I then set up a cloud function to pull down data from the API every day at 1AM and into the database.
 
 ```js
 export const updateMenu = functions.pubsub.schedule('0 1 * * *')
@@ -259,16 +260,17 @@ export const updateMenu = functions.pubsub.schedule('0 1 * * *')
 ```
 
 ### UI Madness
+
 ![meme](./Pasted_image_20211021031205.png){width=400}
 Most of the UI development process went smoothly, I always forget how to use [MaterialUI](https://mui.com/) and so it takes me 2x as long to do basic things, like make a react button. I ended up using [styled-components](https://styled-components.com/), which made styling things way easier:
 
 ```js
 styled(Container)`
- display: flex;
- flex-direction: row;
- justify-content: space-apart;
- `
- ```
+  display: flex;
+  flex-direction: row;
+  justify-content: space-apart;
+`;
+```
 
 ![shitty UI project](./Pasted_image_20211021024050.png)
 Caption: About half-way through the project.
@@ -276,36 +278,35 @@ Caption: About half-way through the project.
 React is great for most things, but what it is not known for is forms. This may have been the most infuriating two hours of my life to validate a phone number. The only advice I have to you is that while `useState` hooks can be annoying, integrating [react-hook-form](https://react-hook-form.com/) into a UI library is worse.
 
 ![cursed js](./Pasted_image_20211021023649.png)
-Caption: Ah yes, the joys of es6 javascript ...
+Caption: Ah yes, the joys of ES6 JavaScript ...
 
 ### Re-engineering
 
 As I built out the site more, I realized I would have to redo my original data structure:
 
-```
+```text
 root
 - users
 - food
    - breakfast
       - (DATE)
-	    - food item 1
+        - food item 1
    - lunch
       - (DATE)
-	    - food item 2
+        - food item 2
    - dinner
       - (DATE)
-	    - food item 3
+        - food item 3
 ```
 
 The main issue I was facing was in the UI, there was no easy way to display all food elements without performing a metric ton of queries.
 
 After opening a couple tabs,
-![lots of tabs](./Pasted_image_20211021003947.png), the limits of firestore querying finally drove me to StackOverflow, where I got answered by this absolute legend: ![SO legend](./Pasted_image_20211021024700.png)
+![lots of tabs](./Pasted_image_20211021003947.png), the limits of Firestore querying finally drove me to Stack Overflow, where I got answered by this absolute legend: ![SO legend](./Pasted_image_20211021024700.png)
 
 He gave me a pretty crazy looking path structure to use, `/food/{date_doc}/meals/{meal_doc}/items/{item_doc}`, but after thinking it out on paper, I figured out a data structure for the food elements, as well how to query for food in this structure based on my alerts.
 ![paper for programming](./Pasted_image_20211021022927.png)
 Caption: When you use paper for programming, you know it's a complicated problem
-
 
 ### Final Strides
 

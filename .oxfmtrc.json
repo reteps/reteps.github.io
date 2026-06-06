@@ -1,0 +1,23 @@
+{
+  "useTabs": false,
+  "tabWidth": 2,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "printWidth": 100,
+  "pluginSearchDirs": ["."],
+  "sortPackageJson": false,
+  "ignorePatterns": [
+    ".DS_Store",
+    "node_modules",
+    "/build",
+    "/.svelte-kit",
+    "/package",
+    ".env",
+    ".env.*",
+    "!.env.example",
+    "static/**/*.html",
+    "pnpm-lock.yaml",
+    "package-lock.json",
+    "yarn.lock"
+  ]
+}

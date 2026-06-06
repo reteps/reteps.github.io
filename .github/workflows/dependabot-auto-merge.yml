@@ -1,0 +1,47 @@
+name: Dependabot Auto-Merge
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge:
+    if: >
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge Dependabot PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          pr_number="$(
+            gh pr list \
+              --state open \
+              --head "$HEAD_BRANCH" \
+              --json number,headRefOid \
+              --jq ".[] | select(.headRefOid == \"$HEAD_SHA\") | .number" |
+              head -n 1
+          )"
+
+          if [ -z "$pr_number" ]; then
+            echo "No open PR found for $HEAD_BRANCH at $HEAD_SHA"
+            exit 0
+          fi
+
+          pr_author="$(gh pr view "$pr_number" --json author --jq .author.login)"
+
+          if [ "$pr_author" != "dependabot[bot]" ]; then
+            echo "Skipping PR #$pr_number from $pr_author"
+            exit 0
+          fi
+
+          gh pr merge "$pr_number" --squash --delete-branch

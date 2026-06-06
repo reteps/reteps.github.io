@@ -1,13 +1,13 @@
 ---
 title: Abusing Google Forms
-date: "04-16-2023"
+date: '04-16-2023'
 ---
 
 Ah, the classic Google Form. So simple and innocent. And it's free! If only we could hook it up to a database to store the results. How hard could it be?
 
 > [Narrator] He would go on to waste dozens of hours on this problem
 
-This post is going to detail my journey this semester exploring Google Forms, as I went down rabbit holes containing 10+ year old issues, broken and undocumented APIs, and the world of Google Apps Script. 
+This post is going to detail my journey this semester exploring Google Forms, as I went down rabbit holes containing 10+ year old issues, broken and undocumented APIs, and the world of Google Apps Script.
 
 **⚠️ Warning ⚠️** This post is mainly about my exploration with various technologies given constantly changing constraints, and not the cleanest / best solutions to problems. Take my ideas with a grain of salt 🧂
 
@@ -31,30 +31,30 @@ Caption: Design mockup of the platform (🤤 So sexy)
 
 For this reason, we didn't want to spend multiple weeks creating a form builder in our chosen tech stack, taking developer resources away from the main project focus. Our teams TL ✨ (the 🐐 ~) had decided on a ~~T3~~ T2+C stack:
 
-+ [tRPC](https://trpc.io/) + [Next.js](https://nextjs.org/) (Typescript) + ~~Tailwind~~ + [ChakraUI](https://chakra-ui.com/)
-+ [Prisma](https://www.prisma.io/) (ORM)
-+ [Supabase](https://supabase.com/) (Cloud DB Hosting)
-+ [Vercel](https://vercel.com/dashboard) (Website hosting)
+- [tRPC](https://trpc.io/) + [Next.js](https://nextjs.org/) (TypeScript) + ~~Tailwind~~ + [ChakraUI](https://chakra-ui.com/)
+- [Prisma](https://www.prisma.io/) (ORM)
+- [Supabase](https://supabase.com/) (Cloud DB Hosting)
+- [Vercel](https://vercel.com/dashboard) (Website hosting)
+
 ## Budget + Usability Constraints
 
-Meraki wanted these forms to be easy to create. They wanted non-technical officials to be able to edit these forms if neccessary. Additionally, we didn't want to make them pay for a SaaS form builder. We originally considered services like [appsmith_](https://www.appsmith.com/), and [budibase](https://budibase.com/), but we felt that:
+Meraki wanted these forms to be easy to create. They wanted non-technical officials to be able to edit these forms if necessary. Additionally, we didn't want to make them pay for a SaaS form builder. We originally considered services like [appsmith\_](https://www.appsmith.com/), and [budibase](https://budibase.com/), but we felt that:
 
-+ Google Forms was free, and sufficient for our needs
-+ These tools would be complicated to use and create forms with
-+ The tools cost money for cloud hosting, and self-hosting infrastructure that hundreds of thousands of preschools rely on wasn't something we were comfortable with
+- Google Forms was free, and sufficient for our needs
+- These tools would be complicated to use and create forms with
+- The tools cost money for cloud hosting, and self-hosting infrastructure that hundreds of thousands of preschools rely on wasn't something we were comfortable with
 
 ![.](./appsmith.png)
 Caption: Appsmith homepage -- Showing how one can accelerate the internal tooling process
 
 ## The "AWC" Code
 
-Each Anganwadi in India is assigned a unique "Anganwadi Center" code (AWC). This is a government id used to uniquely identify them. Meraki had been performing **no field validation** on this input on the Google Form, and had to **manually clean up data** and **contact supervisors directly** 😭 
+Each Anganwadi in India is assigned a unique "Anganwadi Center" code (AWC). This is a government id used to uniquely identify them. Meraki had been performing **no field validation** on this input on the Google Form, and had to **manually clean up data** and **contact supervisors directly** 😭
 
 ![.](./awc_cursed_validation.png)
 Caption: Cursed AWC Validation Formulas
 
-
-These codes are made up of 5 parts. 
+These codes are made up of 5 parts.
 
 ![.](./awc_code.png)
 Caption: Your AWC may be apart of cluster Badechina, in block Bhaisiyachana, in District Almora, in Utterakhand.
@@ -74,25 +74,33 @@ Caption: The Google Sheet contains all the information we needed.
 
 ```js
 function createRegex(cells) {
-  var expression = "";
-  for(var i = 0; i < cells.length; i++){
-      var digits = "";
-      var maxDigit = Math.floor(cells[i][1] / 10);
-      var lastDigit = cells[i][1] % 10;
-      digits += "([0-" + (maxDigit-1).toString() + "][0-9]|["+ maxDigit.toString() + "][0-" + lastDigit.toString() + "])";
-      regex = cells[i][0].slice(3) + digits;
-      expression += regex + "|";
+  var expression = '';
+  for (var i = 0; i < cells.length; i++) {
+    var digits = '';
+    var maxDigit = Math.floor(cells[i][1] / 10);
+    var lastDigit = cells[i][1] % 10;
+    digits +=
+      '([0-' +
+      (maxDigit - 1).toString() +
+      '][0-9]|[' +
+      maxDigit.toString() +
+      '][0-' +
+      lastDigit.toString() +
+      '])';
+    regex = cells[i][0].slice(3) + digits;
+    expression += regex + '|';
   }
-  return "050(" + expression.slice(0, expression.length - 1) + ")";
+  return '050(' + expression.slice(0, expression.length - 1) + ')';
 }
 ```
+
 Caption: So cursed
 
 However, it appeared the regex has a hidden limitation: if you make it too long, it will crash your webpage! This wasn't going to work.
 
 ### Redirect + Google Forms
 
-We also brought up another solution to continue using Google Forms, fill out the AWC part on our site (and do javascript validation), and then redirect to the Google Form with it [prefilled](https://support.google.com/docs/answer/2839588?hl=en&visit_id=638172636816298607-1610807482&rd=1#zippy=%2Csend-a-form-with-pre-filled-answers) in.
+We also brought up another solution to continue using Google Forms, fill out the AWC part on our site (and do JavaScript validation), and then redirect to the Google Form with it [prefilled](https://support.google.com/docs/answer/2839588?hl=en&visit_id=638172636816298607-1610807482&rd=1#zippy=%2Csend-a-form-with-pre-filled-answers) in.
 
 We designed a PostgreSQL database schema, and were all set to go. We originally decided on storing the JSON for a response directly in the table. This seemed fine, as PostgreSQL supports high performance [JSON queries](https://www.postgresql.org/docs/12/functions-json.html).
 
@@ -103,7 +111,6 @@ Caption: Guess whose handwriting 🤔
 
 Meraki stated that there wasn't just multiple forms, but that the forms could **change over time**!
 
-
 ![.](./nuke.jpg)
 Caption: My mind after I receive the news
 
@@ -111,28 +118,28 @@ If why this is an issue isn't immediately obvious, don't worry, it wasn't to us 
 
 Imagine we have a question set up like this:
 
-```
+````text
 Do you like Google Forms?
 
 - Yes
 - I guess
 - Somewhat
-```
+```text
 
 And then we change it to:
 
-```
+```text
 Do you like Google Forms?
 - Yes
 - Maybe
 - No
-```
+```text
 
 It's unclear what happened:
-+ Did we delete "I guess" or "Somewhat", or both?
-+ Did we add "No"?
-+ Which options were renamed?
 
+- Did we delete "I guess" or "Somewhat", or both?
+- Did we add "No"?
+- Which options were renamed?
 
 What does Google Forms do with previous responses of "I guess"?
 
@@ -142,9 +149,9 @@ For each option, Google Forms doesn't even store a unique ID, just the text of t
 
 Since we are using a proper database, this problem gets worse:
 
-+ If they rename an option, now the responses are split between the old set of options and new set of options. For a question with only 3 choices, there could now be 9 different answer choices we have to display on the UI because of the changes to the question.
-+ If we delete the old options that no longer exist, now our data collection is skewed (50% Yes, 25% I guess, 25% Somewhat) becomes (100% Yes).
-+ Deleting the entire question seems dangerous too - If they rename an option on a question (e.g. changing an incorrect spelling), that would wipe all previous responses for that question!
+- If they rename an option, now the responses are split between the old set of options and new set of options. For a question with only 3 choices, there could now be 9 different answer choices we have to display on the UI because of the changes to the question.
+- If we delete the old options that no longer exist, now our data collection is skewed (50% Yes, 25% I guess, 25% Somewhat) becomes (100% Yes).
+- Deleting the entire question seems dangerous too - If they rename an option on a question (e.g. changing an incorrect spelling), that would wipe all previous responses for that question!
 
 ![.](./problem.jpg)
 
@@ -161,12 +168,12 @@ Which works great! All you have to do is [install it](https://developers.google.
 The tl;dr of how I do this is pretty simple. I measure the `uncertainty` of a question, and also allow the user to provide a list of changes in order to lower it. If there is no uncertainty, then we can update the database schema!
 
 ```js
-toAdd = [] // Options added
-toDelete = [] // Options deleted
-userChanges = [] // List of user changes
+toAdd = []; // Options added
+toDelete = []; // Options deleted
+userChanges = []; // List of user changes
 
 /*
-(1) if none were deleted, and some were added, then we are sure they were added 
+(1) if none were deleted, and some were added, then we are sure they were added
 (2) if some were deleted, and none were added, then we are sure they were deleted
 */
 if (toAdd.length === 0 || toDelete.length === 0) {
@@ -194,7 +201,7 @@ userChanges.forEach((change) => {
     if (oldEnum && oldEnum.id) {
       toUpdate.push({
         id: oldEnum.id,
-        value: change.changedTo,
+        value: change.changedTo
       });
       uncertainty -= 2;
     }
@@ -204,11 +211,11 @@ userChanges.forEach((change) => {
 if (uncertainty === 0) {
   // Make changes
 }
-```
+````
 
 ### Apps Script Plugin -- Prefilling
 
-Now google provides an easy prefill ID we can use to fill in the URLs for certain fields, right 😅?!? [Not exactly](https://stackoverflow.com/questions/46017170/get-entry-id-which-is-used-to-pre-populate-fields-items-in-a-google-form-url). We have to prefill every single question with every single option in order to get the IDs.
+Now Google provides an easy prefill ID we can use to fill in the URLs for certain fields, right 😅?!? [Not exactly](https://stackoverflow.com/questions/46017170/get-entry-id-which-is-used-to-pre-populate-fields-items-in-a-google-form-url). We have to prefill every single question with every single option in order to get the IDs.
 
 ```js
 // ...
@@ -236,11 +243,11 @@ The reason we need to do this for choices now is that the AWC code also represen
 
 By now, the Apps Script was getting pretty unweildy, and was taking 2+ minutes to get the form state (since it had to spend 100+ ms per choice to get the prefill ID).
 
-After asking a question on [StackOverflow](https://stackoverflow.com/questions/75598403/determine-google-form-question-reference-to-google-sheet-column) about associating Google Sheet columns with Google Form questions, I received feedback of "Yeah you could, but why don't you just read from the Google Form API directly?" 🤦 I'm such a fool. Why did I do all this in Apps Script?!?!?
+After asking a question on [Stack Overflow](https://stackoverflow.com/questions/75598403/determine-google-form-question-reference-to-google-sheet-column) about associating Google Sheet columns with Google Form questions, I received feedback of "Yeah you could, but why don't you just read from the Google Form API directly?" 🤦 I'm such a fool. Why did I do all this in Apps Script?!?!?
 
 ### Google Form API -- Diffing
 
-Google has a pretty good [API wrapper](https://github.com/googleapis/google-api-nodejs-client#readme) for node that I ended up using. Form diffing was a pretty straightforward process, with the algorithm I developed earlier for reducing uncertainty. One problem I found is that you can't get the prefill ID from the Google Form API. Luckily, it turns out that the prefill ID is just the question ID converted from hex to base 10 (this isn't documented anywhere).
+Google has a pretty good [API wrapper](https://github.com/googleapis/google-api-nodejs-client#readme) for Node that I ended up using. Form diffing was a pretty straightforward process, with the algorithm I developed earlier for reducing uncertainty. One problem I found is that you can't get the prefill ID from the Google Form API. Luckily, it turns out that the prefill ID is just the question ID converted from hex to base 10 (this isn't documented anywhere).
 
 I also created a UI on our platform to replace the Apps Script Add-on.
 
@@ -251,12 +258,12 @@ I also created a UI on our platform to replace the Apps Script Add-on.
 ## Google Forms Abuse
 
 After the solution was completed, our contacts pointed out a problem: users could just change the answer for AWC Code on the Google Form to a different value after it gets prefilled to the correct value. Users could change this, and their response would be lost ;\(
-  
+
 Google Forms also still doesn't have [readonly form fields](https://stackoverflow.com/questions/34364235/google-form-make-answer-field-readonly)! Insane.
 
-Instead, I wanted to give each user a unique form response URL. 
+Instead, I wanted to give each user a unique form response URL.
 
-![](./plan_v1.jpg)
+![Plan V1 using Google Forms API support](./plan_v1.jpg)
 
 The Google Forms [API](https://developers.google.com/forms/api/guides/compare-rest-apps-script) says that
 
@@ -266,13 +273,13 @@ I made an [issue](https://issuetracker.google.com/issues/277822266) for this on 
 
 Ok, what if I use Apps Script for just creating the response? I can just make a request to my Apps Script, and then return the result back!
 
-![](./plan_v2.jpg)
+![Plan V2 using Apps Script](./plan_v2.jpg)
 
 This problem is also on the [Issue Tracker](https://issuetracker.google.com/issues/232280686)! Why don't they use consistent IDs?
 
 Instead, I noticed how incredibly time-accurate the responses were. So I came up with one final plan:
 
-![](./plan_v3.jpeg)
+![Plan V3 using response timestamps](./plan_v3.jpeg)
 
 Here is the simple code that creates the responses in Apps Script:
 
@@ -290,11 +297,10 @@ function doGet(e) {
   const id = res.getId();
   const timestamp_ms = res.getTimestamp().getTime();
   const link = res.getEditResponseUrl();
-  return ContentService.createTextOutput(
-    JSON.stringify({ link, id, timestamp_ms })
-  );
+  return ContentService.createTextOutput(JSON.stringify({ link, id, timestamp_ms }));
 }
 ```
+
 And here is its counterpart on the server:
 
 ```js
@@ -310,8 +316,8 @@ await ctx.prisma.aWCResponse.create({
     district_id: input.districtId,
     block_id: input.blockId,
     cluster_id: input.clusterId,
-    update_status: UpdateStatus.PENDING,
-  },
+    update_status: UpdateStatus.PENDING
+  }
 });
 ```
 
@@ -321,20 +327,18 @@ And finally, we can ingest responses like so:
 // Call Google Forms API
 const { data } = await client.forms.responses.list({
   formId,
-  filter: `timestamp > ${after.toISOString()}`,
+  filter: `timestamp > ${after.toISOString()}`
 });
 
 const responsesToInsert = data.responses.reduce((acc, response) => {
   // Use timestamp_ms to uniquely identify responses
-  const timestamp_ms = new Date(
-    response.createTime || new Date()
-  ).getTime();
+  const timestamp_ms = new Date(response.createTime || new Date()).getTime();
   // Get answers
   acc[`${timestamp_ms}`] = {
     update_status: UpdateStatus.DONE,
     questionAnswers: {
-      create: questionAnswers,
-    },
+      create: questionAnswers
+    }
   };
   return acc;
 }, {});
@@ -342,23 +346,22 @@ const responsesToInsert = data.responses.reduce((acc, response) => {
 // Then, update the 'after' timestamp
 await ctx.prisma.form.update({
   where: {
-    id: form.id,
+    id: form.id
   },
   data: {
-    last_ingest: new Date(),
-  },
+    last_ingest: new Date()
+  }
 });
 ```
 
-I had to do some authentication magic, as you can't create Apps Script using a [service account](https://issuetracker.google.com/issues/36763096). Instead of using a service account to authenticate with the Google API, I created a dummy gmail account, and got a OAUTH refresh token that I can store locally to reauthenticate if needed. People are pretty mad you can't control Apps Script with service accounts. If you figure out how to, please answer my [StackOverflow post](https://stackoverflow.com/questions/75991171/run-apps-script-webapp-in-the-context-of-a-service-account) about it 🥺
+I had to do some authentication magic, as you can't create Apps Script using a [service account](https://issuetracker.google.com/issues/36763096). Instead of using a service account to authenticate with the Google API, I created a dummy Gmail account, and got an OAuth refresh token that I can store locally to reauthenticate if needed. People are pretty mad you can't control Apps Script with service accounts. If you figure out how to, please answer my [Stack Overflow post](https://stackoverflow.com/questions/75991171/run-apps-script-webapp-in-the-context-of-a-service-account) about it 🥺
 
-![](./angry_apps_script.png)
+![Screenshot of the Apps Script issue tracker](./angry_apps_script.png)
 Caption: This has been a missing feature for over 7 years according to the issue tracker
-
 
 # Conclusion
 
-![](./ohboy.png)
+![Reaction to proposing another idea](./ohboy.png)
 Caption: When I propose another idea
 
 Yes, it is possible to use Google Forms as a Form Builder. But please don't.

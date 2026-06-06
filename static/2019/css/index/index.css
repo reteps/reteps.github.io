@@ -1,29 +1,33 @@
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
 }
 
-header, header .description-wrapper, header .contact, header nav {
+header,
+header .description-wrapper,
+header .contact,
+header nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
-header .header, header .description-wrapper .description {
+header .header,
+header .description-wrapper .description {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .fa-github:hover {
@@ -35,7 +39,14 @@ header .header, header .description-wrapper .description {
 }
 
 .fa-instagram {
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -52,7 +63,7 @@ header .header, header .description-wrapper .description {
 .fab:hover,
 .fa:hover {
   -webkit-transition-duration: 0.5s;
-          transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
 
 header {
@@ -65,7 +76,7 @@ header .name {
 
 header .info {
   font-size: 2em;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 header i {
@@ -74,30 +85,30 @@ header i {
 
 header .header {
   -webkit-box-flex: 3;
-      -ms-flex-positive: 3;
-          flex-grow: 3;
+  -ms-flex-positive: 3;
+  flex-grow: 3;
 }
 
 header .description-wrapper .spacer {
   -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 header .contact {
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   font-size: 2em;
 }
 
 header nav {
   -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   font-size: 2em;
 }
 
@@ -113,8 +124,8 @@ header nav .selected {
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .dropdown:hover .dropdown-label {
@@ -131,13 +142,13 @@ header nav .selected {
 }
 
 .dropdown:hover .dropdown-options a {
-  font-size: .75em;
+  font-size: 0.75em;
 }
 
 .dropdown:hover .dropdown-options hr {
-  margin-top: .25em;
+  margin-top: 0.25em;
   border-style: solid;
-  margin-bottom: .25em;
+  margin-bottom: 0.25em;
 }
 
 h1 {
@@ -151,8 +162,8 @@ h3 {
 
 footer {
   -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -181,12 +192,12 @@ body {
   display: flex;
   font-size: 1em;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   background: -webkit-gradient(linear, left top, left bottom, from(#30a9c3), to(#8255cd));
   background: linear-gradient(to bottom, #30a9c3, #8255cd);
 }

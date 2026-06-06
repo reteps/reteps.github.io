@@ -5,8 +5,8 @@
   import HomeIcon from "svelte-feather-icons/src/icons/HomeIcon.svelte";
 
   import { draggable } from '@neodrag/svelte'
-  export let year : String
-  export let years : String[]
+  export let year : string
+  export let years : string[]
   const linkClass = `flex flex-col justify-center mx-5
   transition duration-300 hover:scale-110 flex-shrink-0
   dark:hover:text-green-700`;
@@ -20,7 +20,7 @@
   <nav class="flex justify-center lg:justify-end">
     <div class="flex flex-col items-center">
       <ul class="flex flex-row items-center {backgroundClass}
-        p-3 rounded-full border-2 pointer-events-auto"> 
+        p-3 rounded-full border-2 pointer-events-auto">
       <li class={linkClass}>
           {#if previousYear}
             <a href="/time-machine/{previousYear}"><SkipBackIcon /></a>

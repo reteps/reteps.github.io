@@ -1,10 +1,10 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { imagetools } from 'vite-imagetools';
 import viteCompression from 'vite-plugin-compression';
+import type { UserConfig } from 'vite';
 
-/** @type {import('vite').UserConfig} */
-const config = {
-	plugins: [sveltekit(), imagetools({ force: true }), viteCompression()],
+const config: UserConfig = {
+  plugins: [sveltekit(), imagetools({ force: true }), viteCompression()],
   server: {
     fs: {
       allow: ['blog']
@@ -12,7 +12,7 @@ const config = {
   },
   resolve: {
     alias: {
-      '$img': '/src/img',
+      $img: '/src/img'
     }
   }
 };

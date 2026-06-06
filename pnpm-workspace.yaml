@@ -1,0 +1,9 @@
+allowBuilds:
+  '@parcel/watcher': true
+  '@sveltejs/kit': true
+  esbuild: true
+  sharp: true
+  svelte-preprocess: true
+  unrs-resolver: true
+minimumReleaseAgeExclude:
+  - '@types/node@25.9.2'

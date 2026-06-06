@@ -10,7 +10,7 @@
 
 <div class="content px-10 pt-10 dark:text-white">
   <h1 class="text-4xl mb-5">Posts</h1>
-  
+
   <ul>
     {#each data.posts as post}
     <li class="mb-3">

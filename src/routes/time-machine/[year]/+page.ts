@@ -1,5 +1,7 @@
-export function load({ params }) {
+import type { PageLoad } from './$types';
+
+export const load: PageLoad = ({ params }) => {
   return {
-    year: params.year,
+    year: params.year
   };
-}
+};

@@ -11,12 +11,12 @@
 
 <div class:dark class={bg_color} >
   <Header />
-  
+
   <main class="flex flex-col items-center">
     <div class="container">
       <slot />
     </div>
   </main>
-  
+
   <Footer />
 </div>

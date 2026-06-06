@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SEO from "$lib/components/SEO.svelte";
+  import SEO from "$lib/components/SEO.svelte";
 import TimeMachine from "$lib/components/TimeMachine.svelte";
   export let data : any;
   $: years = data.years
