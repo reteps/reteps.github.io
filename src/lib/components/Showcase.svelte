@@ -6,21 +6,10 @@
   import GlobeIcon from '@lucide/svelte/icons/globe';
   import TrashIcon from '@lucide/svelte/icons/trash-2';
 
-  import type { Picture } from '@sveltejs/enhanced-img';
-
-  import Image1 from '$img/showcase/uiuc-apartments.png?enhanced&w=300;600;900;1200';
-  import Image2 from '$img/showcase/website.png?enhanced&w=300;600;900;1200';
-  import Image3 from '$img/showcase/pwnybot.png?enhanced&w=300;600;900;1200';
-  import Image4 from '$img/showcase/pwnyctf.png?enhanced&w=300;600;900;1200';
-  import Image5 from '$img/showcase/kotahi.png?enhanced&w=300;600;900;1200';
-  import Image6 from '$img/showcase/battelle.png?enhanced&w=300;600;900;1200';
-  import Image7 from '$img/showcase/fifth-eye.png?enhanced&w=300;600;900;1200';
-  import Image8 from '$img/showcase/ctftime.png?enhanced&w=300;600;900;1200';
-
   type ShowcaseItem = {
     title: string;
     description: string;
-    image: Picture;
+    image: { src: string; srcset: string };
     source?: string;
     link?: string;
     languages: string[];
@@ -28,99 +17,7 @@
     categories: string[];
   };
 
-  const content: ShowcaseItem[] = [
-    {
-      title: 'uiuc-apartments.com',
-      description:
-        'A website that helps students find apartments near the University of Illinois at Urbana-Champaign. Wrote a web scraper for around 15 rental agencies on campus. Fetch new listings every day and provide a frontend for students to search for apartments.',
-      image: Image1,
-      source: 'https://github.com/uiuc-apartments/uiuc-apartments.com',
-      link: 'https://www.uiuc-apartments.com/',
-      languages: ['Javascript', 'Python'],
-      technologies: ['Typescript', 'Vue', 'Google Cloud', 'TailwindCSS'],
-      categories: ['Projects']
-    },
-    {
-      title: 'Personal website',
-      description:
-        'Built with SvelteKit and TailwindCSS. Blog uses mdsvex. Hosted on Github Pages.',
-      image: Image2,
-      source: 'https://github.com/reteps/reteps.github.io',
-      link: 'https://stenger.io',
-      languages: ['Javascript'],
-      technologies: ['Typescript', 'Svelte', 'SvelteKit', 'TailwindCSS', 'Github Pages'],
-      categories: ['Projects']
-    },
-    {
-      title: 'CTF Discord Bot: pwnybot',
-      description:
-        'A tool for the cybersecurity club @ UIUC to manage CTFs, and perform other useful actions. Autodeployed with Github Actions.',
-      image: Image3,
-      languages: ['Python'],
-      technologies: ['CI/CD', 'Discord.py', 'Docker'],
-      source: 'https://github.com/sigpwny/pwnybot',
-      categories: ['Projects']
-    },
-    {
-      title: 'CTF Platform: PwnyCTF',
-      description:
-        'An in-house CTF platform for the cybersecurity club @ UIUC. Driven by a Github Action that redeploys the latest challenges to the website and challenge infrastructure to the SIGPwny server. Hooks into Discord using webhooks.',
-      image: Image4,
-      source: 'https://github.com/sigpwny/CTFd',
-      link: 'https://ctf.sigpwny.com',
-      languages: ['Python', 'Javascript'],
-      technologies: ['Docker', 'CI/CD', 'Django', 'Bootstrap 5'],
-      categories: ['Projects']
-    },
-    {
-      title: 'Kotahi: Manuscript Publishing Platform (Fall 2021)',
-      description:
-        'Worked with the nonprofit <a href="https://coko.foundation">Coko</a> to improve their open-source manuscript publishing system. Refactored the dashboard page into an extensible table system, and hooked up the tables with GraphQL to Postgres for filtering and sorting.',
-      image: Image5,
-      source: 'https://gitlab.coko.foundation/kotahi/kotahi/-/commits/peer-review-dashboard',
-      link: 'https://elife.kotahi.cloud',
-      languages: ['Javascript'],
-      technologies: ['Node.js', 'React', 'GraphQL', 'Postgres', 'Docker'],
-      categories: ['Previous Work']
-    },
-    {
-      title: 'Cybersecurity Intern @ Battelle (Summer 2021)',
-      description:
-        'Reverse-engineered a closed-source ARM-based modem and modified functionality in order to exfiltrate valuable cellular data typically disarded. Wrote an emulator for a .NET debugging tool and wrote Ghidra plugins to aid in reverse-engineering.',
-      image: Image6,
-      languages: ['Assembly', 'C', 'Python'],
-      technologies: ['Ghidra', 'Android'],
-      categories: ['Previous Work', 'Cybersecurity']
-    },
-    {
-      title: 'Full-Stack Intern @ Fifth Eye (Summer 2020)',
-      description:
-        'Interned at a medical technology startup, creating a webapp to manage hospital deployments. It performs AWS provisioning and displays AWS CloudWatch statistics. Deployment management triggers <a href="https://circleci.com/">CircleCI</a> actions.',
-      image: Image7,
-      languages: ['Javascript'],
-      technologies: ['Node.js', 'React', 'AWS', 'MaterialUI', 'CI/CD'],
-      categories: ['Previous Work']
-    },
-    {
-      title: 'CTF Player for SIGPwny',
-      description:
-        'Compete in cybersecurity "Capture the Flag" competitions at a high level. Am a key team player, especially focused on reverse-engineering. Ranked 47th in the world out of 10000+ teams, and the second best US collegiate team.',
-      categories: ['Cybersecurity'],
-      languages: [],
-      image: Image8,
-      link: 'https://ctftime.org/team/27736',
-      technologies: [
-        'Organizer - UIUCTF 2020/2021/2022',
-        '1st - Club CTF 2021',
-        '5th - CSAW Finals 2022',
-        '2nd - BuckeyeCTF 2022'
-      ]
-    }
-    // {
-    //   'title': 'PrairieLearn Security Research Project',
-    //   'description': 'Exploited a flaw in the Python PrairieLearn autograder escalating to RCE and arbitrary grades. '
-    // }
-  ];
+  export let content: ShowcaseItem[];
 
   $: categories = ['Everything', ...new Set(content.map((item) => item.categories).flat())];
   $: languages = [...new Set(content.map((item) => item.languages).flat())];
@@ -219,11 +116,13 @@
       {#each filteredContent as item}
       <div class="flex flex-col rounded-lg border-2 border-t-0 border-dashed border-slate-400 dark:border-slate-500 pb-2 mb-10 lg:mb-20">
         <div class="flex flex-row justify-center item">
-          <enhanced:img
+          <img
             class="rounded-t-md"
-            src={item.image}
+            src={item.image.src}
+            srcset={item.image.srcset}
             sizes="(max-width: 1024px) 100vw, 60vw"
             alt={item.title}
+            loading="lazy"
           />
         </div>
         <div class="flex flex-col mt-5 dark:text-white px-10">
@@ -254,19 +153,12 @@
             {/each}
           </div>
         </div>
-        <!-- {#if i !== filteredContent.length - 1}
-          <div class="flex flex-row justify-center">
-            <hr
-              class="mt-10 mb-10 lg:mt-20 lg:mb-20 h-1 rounded border-0 w-64 bg-slate-400 dark:bg-slate-500"
-            />
-          </div>
-        {/if} -->
       </div>
     {/each}
   </div>
 </div>
 
-<style lang="scss">
+<style>
   .viewbox-fix {
     margin: 0 8px 8px;
   }

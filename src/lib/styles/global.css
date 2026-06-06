@@ -18,6 +18,10 @@
   }
 }
 
+body {
+  @apply bg-white dark:bg-black;
+}
+
 svg {
   vertical-align: middle;
 }

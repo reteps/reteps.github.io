@@ -1,0 +1,19 @@
+---
+interface Props {
+  href: string;
+  simple?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { href, simple = false, class: className = '', ...rest } = Astro.props;
+
+const linkClass = simple
+  ? 'underline hover:text-slate-700 dark:hover:text-slate-200'
+  : 'mx-5 hover:underline transition duration-300 hover:text-purple-700 dark:hover:text-green-700 hover:scale-110';
+
+const external = href.startsWith('http');
+const extraProps = external ? { rel: 'noreferrer', target: '_blank' } : {};
+---
+
+<a href={href} class={`${linkClass} ${className}`} {...extraProps} {...rest}><slot /></a>

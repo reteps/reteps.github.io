@@ -2,9 +2,10 @@
   import HomeIcon from '@lucide/svelte/icons/house';
   import SunIcon from '@lucide/svelte/icons/sun';
   import MoonIcon from '@lucide/svelte/icons/moon';
-  import { darkTheme } from '$lib/stores'
+  import { theme, toggleTheme } from '$lib/stores/theme'
   export let fixed = false;
   $: fixedClass = fixed ? 'lg:fixed' : 'lg:sticky';
+  $: dark = $theme === 'dark';
   export const linkClass = `flex flex-col justify-center mx-5 hover:underline
   transition duration-300 hover:text-purple-700 hover:scale-110 flex-shrink-0
   dark:hover:text-green-700`;
@@ -29,8 +30,8 @@ header {
         <a href="https://drive.google.com/file/d/1DU8WLrzb4OvWggE9Yy4NxnYn3TK4LT0N/view" rel="noreferrer" aria-label="Resume">Resume</a>
       </li>
       <li class={linkClass}>
-        <button on:click={() => $darkTheme = !$darkTheme} aria-label="Toggle">
-          {#if $darkTheme}
+        <button on:click={toggleTheme} aria-label="Toggle">
+          {#if dark}
             <SunIcon />
           {:else}
             <MoonIcon />

@@ -1,5 +1,6 @@
 import js from '@eslint/js';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import { configs as astroConfigs } from 'eslint-plugin-astro';
 import { createNodeResolver, importX } from 'eslint-plugin-import-x';
 import promise from 'eslint-plugin-promise';
 import svelte from 'eslint-plugin-svelte';
@@ -8,16 +9,7 @@ import { config, configs, parser } from 'typescript-eslint';
 
 export default config(
   {
-    ignores: [
-      'node_modules/**',
-      'build/**',
-      '.svelte-kit/**',
-      'package/**',
-      'static/**',
-      '**/*.cjs',
-      'pnpm-lock.yaml',
-      'vite.config.ts.timestamp-*'
-    ]
+    ignores: ['node_modules/**', 'dist/**', '.astro/**', 'public/**', '**/*.cjs', 'pnpm-lock.yaml']
   },
   js.configs.recommended,
   ...configs.recommended,
@@ -25,6 +17,7 @@ export default config(
   importX.flatConfigs.typescript,
   promise.configs['flat/recommended'],
   ...svelte.configs['flat/base'],
+  ...astroConfigs.recommended,
   {
     settings: {
       'import-x/resolver-next': [
@@ -48,7 +41,7 @@ export default config(
       'import-x/no-unresolved': [
         'error',
         {
-          ignore: ['\\?', '^~icons/']
+          ignore: ['\\?', '^~icons/', '^astro:']
         }
       ]
     }

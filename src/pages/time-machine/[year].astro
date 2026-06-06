@@ -1,0 +1,25 @@
+---
+import fs from 'node:fs';
+import TimeMachine from '$lib/components/TimeMachine.svelte';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export function getStaticPaths() {
+  const years = fs
+    .readdirSync('public')
+    .filter((entry) => /^20[0-9]{2}$/.test(entry) && fs.existsSync(`public/${entry}/index.html`))
+    .sort();
+
+  return years.map((year) => ({
+    params: { year },
+    props: { year, years }
+  }));
+}
+
+const { year, years } = Astro.props;
+const src = `/${year}/index.html`;
+---
+
+<BaseLayout title={`${year} Time Machine`} description={`My personal site until the year ${year}.`}>
+  <TimeMachine client:load {year} {years} />
+  <iframe {src} class="w-screen h-screen" title={`${year} site`}></iframe>
+</BaseLayout>

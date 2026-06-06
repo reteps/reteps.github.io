@@ -9,7 +9,7 @@ This blog post will outline how to set up x86 GDB on M1. This isn't your run-of-
 this is _FAST_ -- using the Rosetta translation engine, instead of QEMU. Thanks to [sporks.space](https://sporks.space/2023/04/12/debugging-an-x86-application-in-rosetta-for-linux/) for the initial writeup of the `ROSETTA_DEBUGSERVER` feature!
 
 <video width="480" height="320" controls muted>
-  <source src="./demo_gdb.mp4" type="video/mp4">
+  <source src="/videos/demo_gdb.mp4" type="video/mp4">
 </video>
 
 ## System Requirements

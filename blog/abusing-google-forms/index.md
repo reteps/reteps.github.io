@@ -160,7 +160,7 @@ Since we are using a proper database, this problem gets worse:
 If they are editing the form, it could be pretty simple for them to sync up the form state while they edit. So I wrote an App Script Plugin that could do just this:
 
 <video width="480" height="320" controls muted>
-  <source src="./app_script_sync.mp4" type="video/mp4">
+  <source src="/videos/app_script_sync.mp4" type="video/mp4">
 </video>
 
 Which works great! All you have to do is [install it](https://developers.google.com/apps-script/add-ons/how-tos/publish-add-on-overview)! Oh ... to install it you need to get it approved by Google for use by the public (unlikely), or install it under a Google Workspace using an admin account (e.g. a school might have a Google Workspace). Oh... so they can't use the plugin outside of a couple accounts 😭 this isn't gonna work.
@@ -252,7 +252,7 @@ Google has a pretty good [API wrapper](https://github.com/googleapis/google-api-
 I also created a UI on our platform to replace the Apps Script Add-on.
 
 <video width="480" height="320" controls muted>
-  <source src="./website_sync.mp4" type="video/mp4">
+  <source src="/videos/website_sync.mp4" type="video/mp4">
 </video>
 
 ## Google Forms Abuse

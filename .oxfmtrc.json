@@ -9,13 +9,12 @@
   "ignorePatterns": [
     ".DS_Store",
     "node_modules",
-    "/build",
-    "/.svelte-kit",
-    "/package",
+    "/dist",
+    "/.astro",
     ".env",
     ".env.*",
     "!.env.example",
-    "static/**/*.html",
+    "public/**/*.html",
     "pnpm-lock.yaml",
     "package-lock.json",
     "yarn.lock"

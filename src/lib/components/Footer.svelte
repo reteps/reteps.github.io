@@ -33,7 +33,7 @@
   </div>
 </footer>
 
-<style lang="scss">
+<style>
   footer {
     height: 20vh;
   }

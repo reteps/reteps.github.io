@@ -1,0 +1,89 @@
+---
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
+import Headshot1 from '$assets/pfp_cherry.jpg';
+import HeadshotHacker from '$assets/pfp_cherry_hacker.png';
+import Headshot from '$lib/components/Headshot.svelte';
+import ScrollArrow from '$lib/components/ScrollArrow.svelte';
+import Showcase from '$lib/components/Showcase.svelte';
+import Link from '../components/Link.astro';
+import { content } from '../data/showcase';
+import AppLayout from '../layouts/AppLayout.astro';
+
+const seo = {
+  title: 'Peter Stenger',
+  description:
+    "Hi! I'm Peter Stenger, a computer science graduate from the University of Illinois Urbana Champaign (UIUC).",
+  image: 'preview.png'
+};
+
+async function optimize(src: ImageMetadata, widths: number[], sizes: string) {
+  const img = await getImage({ src, widths, sizes, format: 'webp' });
+  return { src: img.src, srcset: img.srcSet.attribute };
+}
+
+const headshotSizes = '(min-width: 1024px) 30vw, 50vw';
+const light = await optimize(Headshot1, [1000], headshotSizes);
+const dark = await optimize(HeadshotHacker, [1000], headshotSizes);
+
+const showcaseSizes = '(max-width: 1024px) 100vw, 60vw';
+const showcaseItems = await Promise.all(
+  content.map(async (item) => ({
+    ...item,
+    image: await optimize(item.image, [300, 600, 900, 1200], showcaseSizes)
+  }))
+);
+---
+
+<AppLayout {...seo}>
+  <div id="intro" class="flex flex-col">
+    <div class="flex flex-col-reverse lg:flex-row mx-10 mt-20">
+      <div class="lg:w-3/4 text-black dark:text-white lg:ml-10">
+        <h1 class="text-4xl font-bold text-purple-700 dark:text-green-700">Hi! I'm Peter Stenger!</h1>
+        <p class="mt-5">
+          I'm a software developer at PrairieLearn and a computer science graduate from the
+          University of Illinois Urbana Champaign (<Link href="https://illinois.edu/" simple
+            >UIUC</Link
+          >). I'm passionate about open source software, cybersecurity, and education.
+        </p>
+        <h2 class="text-xl font-bold mt-10">Currently...</h2>
+        <ul class="list-disc">
+          <li>Working :) 👨‍💻</li>
+          <li>
+            I was the president for <Link href="https://sigpwny.com/" simple>SIGPwny</Link>, an ACM
+            special interest group focused on cybersecurity and the largest educational RSO on
+            campus. I just graduated from a combined 3+1 undergraduate/graduate MCS <Link
+              href="https://cs.illinois.edu/academics/graduate/fifth-year-masters-programs/5-year-bs-ms-program"
+              simple>program</Link
+            > program, and TA'd for <Link
+              href="https://courses.grainger.illinois.edu/cs425/fa2024/"
+              simple>CS 425</Link
+            > and CS 128.
+          </li>
+          <li>
+            I was a software developer for <Link href="https://uiuc.hack4impact.org" simple
+              >Hack4Impact</Link
+            >, where I programmed for nonprofits.
+          </li>
+        </ul>
+      </div>
+      <div class="flex flex-row justify-center mb-10">
+        <div class="w-1/2 lg:w-3/5">
+          <Headshot client:load {light} {dark} />
+        </div>
+      </div>
+    </div>
+    <div class="flex-row items-end flex-grow hidden lg:flex">
+      <ScrollArrow client:visible />
+    </div>
+  </div>
+  <div id="showcase" class="flex flex-col min-h-screen mx-10 mt-20">
+    <Showcase client:visible content={showcaseItems} />
+  </div>
+</AppLayout>
+
+<style>
+  #intro {
+    min-height: 90vh;
+  }
+</style>
