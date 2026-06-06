@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@giscus/svelte':
-        specifier: ^2.2.6
-        version: 2.4.0(svelte@3.59.2)
+        specifier: ^3.1.0
+        version: 3.1.0(svelte@3.59.2)
       '@neodrag/svelte':
         specifier: ^1.2.4
         version: 1.2.4
@@ -332,10 +332,10 @@ packages:
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
 
-  '@giscus/svelte@2.4.0':
-    resolution: {integrity: sha512-ykB/cb0hdSfkwM3vlcD0MitVNeTVMWAMdNAtzlVHu/WiTFUJ4QpBXzHmf3ROk7tf35KIGER3SWDPGDWSgJHcBQ==}
+  '@giscus/svelte@3.1.0':
+    resolution: {integrity: sha512-87AhkRvT5mUzGFbbv5RX1+DiC8RsRVZPzyGDNyshNUlezlTjnLB7cXf7ySqEKu6KlRTP41c1XGUufoKhoaQjqg==}
     peerDependencies:
-      svelte: ^3 || ^4
+      svelte: ^3 || ^4 || ^5
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
@@ -3168,7 +3168,7 @@ snapshots:
 
   '@fastify/busboy@2.1.1': {}
 
-  '@giscus/svelte@2.4.0(svelte@3.59.2)':
+  '@giscus/svelte@3.1.0(svelte@3.59.2)':
     dependencies:
       giscus: 1.6.0
       svelte: 3.59.2
