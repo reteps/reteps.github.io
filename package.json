@@ -34,7 +34,7 @@
     "globals": "^17.6.0",
     "jiti": "^2.7.0",
     "markdownlint-cli2": "^0.22.1",
-    "oxfmt": "^0.53.0",
+    "oxfmt": "^0.54.0",
     "svelte-check": "^4.6.0",
     "svelte-eslint-parser": "^1.8.0",
     "tailwindcss": "^4.3.0",
