@@ -39,9 +39,14 @@ jobs:
 
           pr_author="$(gh pr view "$pr_number" --json author --jq .author.login)"
 
-          if [ "$pr_author" != "dependabot[bot]" ]; then
-            echo "Skipping PR #$pr_number from $pr_author"
-            exit 0
-          fi
+          # gh normalises the bot login differently across versions:
+          # older gh returns "dependabot[bot]", newer returns "app/dependabot".
+          case "$pr_author" in
+            "dependabot[bot]" | "app/dependabot") ;;
+            *)
+              echo "Skipping PR #$pr_number from $pr_author"
+              exit 0
+              ;;
+          esac
 
           gh pr merge "$pr_number" --squash --delete-branch
