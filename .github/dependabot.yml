@@ -14,3 +14,9 @@ updates:
     # opening a PR, so every bump already satisfies the supply-chain policy.
     cooldown:
       default-days: 2
+    # Bundle all npm updates into a single PR so there is only ever one
+    # pnpm-lock.yaml change in flight — avoids cross-PR lockfile conflicts.
+    groups:
+      npm:
+        patterns:
+          - '*'
