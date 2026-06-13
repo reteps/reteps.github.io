@@ -40,7 +40,7 @@
     "tailwindcss": "^4.3.0",
     "tslib": "^2.4.1",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.60.1",
+    "typescript-eslint": "^8.61.0",
     "unplugin-icons": "^23.0.1"
   },
   "type": "module",
