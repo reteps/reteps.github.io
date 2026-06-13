@@ -61,7 +61,7 @@
     "remark-captions": "^2.2.4",
     "remark-math": "^6.0.0",
     "remark-parse": "^11.0.0",
-    "sharp": "^0.34.5",
+    "sharp": "^0.35.1",
     "svelte": "^5.56.2",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.1.0"
