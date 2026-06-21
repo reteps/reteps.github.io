@@ -53,7 +53,7 @@ const imageUrl = image ? new URL(image, Astro.site).href : '';
 
     <slot name="head" />
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen">
     <slot />
   </body>
 </html>

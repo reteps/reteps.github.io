@@ -15,7 +15,7 @@ const { title, description, image } = Astro.props;
 <BaseLayout {title} {description} {image}>
   <slot name="head" slot="head" />
   <Header client:load />
-  <main class="flex flex-col items-center">
+  <main class="flex flex-grow flex-col items-center">
     <div class="container">
       <slot />
     </div>

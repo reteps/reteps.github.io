@@ -41,31 +41,35 @@ const showcaseItems = await Promise.all(
       <div class="lg:w-3/4 text-black dark:text-white lg:ml-10">
         <h1 class="text-4xl font-bold text-purple-700 dark:text-green-700">Hi! I'm Peter Stenger!</h1>
         <p class="mt-5">
-          I'm a software developer at PrairieLearn and a computer science graduate from the
-          University of Illinois Urbana Champaign (<Link href="https://illinois.edu/" simple
+          I'm a software developer at <Link href="https://www.mechanize.work/" simple>Mechanize</Link>
+          and a computer science graduate from the University of Illinois Urbana Champaign (<Link href="https://illinois.edu/" simple
             >UIUC</Link
-          >). I'm passionate about open source software, cybersecurity, and education.
+          >). I'm passionate about open source software, automation, cybersecurity, and education.
         </p>
-        <h2 class="text-xl font-bold mt-10">Currently...</h2>
+        <h2 class="text-xl font-bold mt-10">Previously...</h2>
         <ul class="list-disc">
-          <li>Working :) 👨‍💻</li>
-          <li>
-            I was the president for <Link href="https://sigpwny.com/" simple>SIGPwny</Link>, an ACM
-            special interest group focused on cybersecurity and the largest educational RSO on
-            campus. I just graduated from a combined 3+1 undergraduate/graduate MCS <Link
+          <li>The founding engineer at <Link href="https://prairielearn.org/" simple>PrairieLearn</Link>.</li>
+          <li>A student at UIUC doing a 3+1 MCS <Link
               href="https://cs.illinois.edu/academics/graduate/fifth-year-masters-programs/5-year-bs-ms-program"
               simple>program</Link
-            > program, and TA'd for <Link
+            >.</li>
+            <li>
+          A TA for <Link
               href="https://courses.grainger.illinois.edu/cs425/fa2024/"
               simple>CS 425</Link
             > and CS 128.
+            </li>
+          <li>
+            The president of <Link href="https://sigpwny.com/" simple>SIGPwny</Link>.
           </li>
           <li>
-            I was a software developer for <Link href="https://uiuc.hack4impact.org" simple
+            A software developer for <Link href="https://uiuc.hack4impact.org" simple
               >Hack4Impact</Link
-            >, where I programmed for nonprofits.
+            >.
           </li>
         </ul>
+        <h2 class="text-xl font-bold mt-10">Questions?</h2>
+          <p>Contact me at <code>peter @ stenger.io</code></p>
       </div>
       <div class="flex flex-row justify-center mb-10">
         <div class="w-1/2 lg:w-3/5">
@@ -73,17 +77,11 @@ const showcaseItems = await Promise.all(
         </div>
       </div>
     </div>
-    <div class="flex-row items-end flex-grow hidden lg:flex">
+    <!-- <div class="flex-row items-end flex-grow hidden lg:flex">
       <ScrollArrow client:visible />
-    </div>
+    </div> -->
   </div>
-  <div id="showcase" class="flex flex-col min-h-screen mx-10 mt-20">
+  <!-- <div id="showcase" class="flex flex-col min-h-screen mx-10 mt-20">
     <Showcase client:visible content={showcaseItems} />
-  </div>
+  </div> -->
 </AppLayout>
-
-<style>
-  #intro {
-    min-height: 90vh;
-  }
-</style>
