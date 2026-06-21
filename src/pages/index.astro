@@ -4,10 +4,7 @@ import { getImage } from 'astro:assets';
 import Headshot1 from '$assets/pfp_cherry.jpg';
 import HeadshotHacker from '$assets/pfp_cherry_hacker.png';
 import Headshot from '$lib/components/Headshot.svelte';
-import ScrollArrow from '$lib/components/ScrollArrow.svelte';
-import Showcase from '$lib/components/Showcase.svelte';
 import Link from '../components/Link.astro';
-import { content } from '../data/showcase';
 import AppLayout from '../layouts/AppLayout.astro';
 
 const seo = {
@@ -25,14 +22,6 @@ async function optimize(src: ImageMetadata, widths: number[], sizes: string) {
 const headshotSizes = '(min-width: 1024px) 30vw, 50vw';
 const light = await optimize(Headshot1, [1000], headshotSizes);
 const dark = await optimize(HeadshotHacker, [1000], headshotSizes);
-
-const showcaseSizes = '(max-width: 1024px) 100vw, 60vw';
-const showcaseItems = await Promise.all(
-  content.map(async (item) => ({
-    ...item,
-    image: await optimize(item.image, [300, 600, 900, 1200], showcaseSizes)
-  }))
-);
 ---
 
 <AppLayout {...seo}>
@@ -77,11 +66,5 @@ const showcaseItems = await Promise.all(
         </div>
       </div>
     </div>
-    <!-- <div class="flex-row items-end flex-grow hidden lg:flex">
-      <ScrollArrow client:visible />
-    </div> -->
   </div>
-  <!-- <div id="showcase" class="flex flex-col min-h-screen mx-10 mt-20">
-    <Showcase client:visible content={showcaseItems} />
-  </div> -->
 </AppLayout>
