@@ -1,19 +1,24 @@
 name: CI
 
 on:
+  push:
+    branches: ['main']
   pull_request:
+  workflow_dispatch:
 
+# GITHUB_TOKEN permissions for deploying to GitHub Pages (deploy job only)
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  checks:
+  lint:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v6
@@ -26,4 +31,50 @@ jobs:
       - run: pnpm format:check
       - run: pnpm lint
       - run: pnpm check
+
+  resume:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install TeX Live and tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-lang-english \
+            latexmk \
+            chktex \
+            poppler-utils
+      - name: Lint and verify PDF is in sync with source
+        run: make -C src/resume check
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/configure-pages@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+      - uses: pnpm/action-setup@v6
+        with:
+          cache: true
+      - run: pnpm install --frozen-lockfile
       - run: pnpm build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [lint, build, resume]
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v5
+        id: deployment
