@@ -1,0 +1,262 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+\RequirePackage{fix-cm}
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{ulem}
+\input{glyphtounicode}
+
+\usepackage{ulem}                % Provides text-wrapping underlines
+
+% This command controls how thick and how far down the underline sits
+\setlength{\ULdepth}{1.5pt}       % Distance below text
+\renewcommand{\ULthickness}{0.4pt} % Thickness of line (0.4pt is standard and subtle)
+\newcommand{\uhref}[2]{\href{#1}{\uline{#2}}}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+	\vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+	\item\small{
+		{#1 \vspace{-2pt}}
+	}
+}
+
+\newcommand{\resumeSubheading}[4]{
+	\vspace{-2pt}\item
+	\begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+		\textbf{#1} & #2 \\
+		\textit{\small#3} & \textit{\small #4} \\
+	\end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+	\item
+	\begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+		\textit{\small#1} & \textit{\small #2} \\
+	\end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+	\item
+	\begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+		\small#1 & #2 \\
+	\end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+	\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+	\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{\Huge \scshape Peter Stenger} \\ \vspace{1pt}
+		\small 734-881-4354 $|$ \uhref{mailto:peter@stenger.io}{peter@stenger.io} $|$ 
+		\uhref{https://linkedin.com/in/peter-stenger/}{linkedin.com/in/peter-stenger} $|$
+		\uhref{https://stenger.io}{stenger.io}
+
+	\end{center}
+	
+	
+	%-----------EDUCATION-----------
+	\section{Education}
+	\resumeSubHeadingListStart
+	\resumeSubheading
+	{University of Illinois Urbana-Champaign}{}
+ 	{Master of Computer Science}{August 2024 -- May 2025}
+        \resumeSubSubheading
+	{Bachelor of Science in Computer Science}{August 2021 -- May 2024}
+	\resumeSubHeadingListEnd
+
+	%-----------EXPERIENCE-----------
+	\section{Experience}
+	\resumeSubHeadingListStart
+  	\resumeSubheading
+	{\textbf{Software Engineer}}{June 2026 -- Present}
+	{Mechanize}{San Francisco, CA}
+  	\resumeSubheading
+	{\textbf{Founding Engineer}}{June 2025 -- June 2026}
+	{PrairieLearn}{Remote}
+	\resumeItemListStart
+\resumeItem{Designed, planned, and built the full frontend and backend for the \uhref{https://www.prairielearn.com/about/blog/self-enrollment-overhaul}{enrollment management}, course publishing system, \uhref{https://www.prairielearn.com/about/blog/assessment-access-control}{assessment access control} system. Infrastructure work on AWS with Terraform.}
+\resumeItem{\uhref{https://www.prairielearn.com/about/blog/linting-pit-of-success}{Modernized codebase} to TypeScript, typed SQL queries (Zod), React, tRPC, react-aria, and TanStack Query/Table. Built a \uhref{https://www.prairielearn.com/about/blog/stylish-mustaches}{parser, linter and LSP} for the mustache templating engine.}
+	\resumeItemListEnd
+  	\resumeSubheading
+	{\textbf{Security Research Intern}}{May 2024 -- August 2024}
+	{Battelle}{Columbus, OH}
+	\resumeItemListStart
+\resumeItem{Reverse-engineered MIPS \& ARM firmware on embedded Linux devices, gaining an in-depth understanding of consumer device RF protocols. Discovered a means of running a version-agnostic binary using C and assembly.}
+\resumeItem{Added a caching layer to our distributed job runner (Kubernetes and MinIO) making job runs 95\% faster.}
+% \resumeItem{Programmed a Python library for firmware analysis and metadata extraction used by 5+ internal projects.}
+% \resumeItem{Created a Web GUI using TypeScript, React, and MaterialUI to aggregate and display analysis results.}
+	\resumeItemListEnd
+ 	\resumeSubheading
+	{\textbf{Software Engineering Intern}}{May 2023 -- August 2023}
+	{NETSCOUT}{Ann Arbor, MI}
+	\resumeItemListStart
+	% \resumeItem{Full-stack feature development in a diverse and complex legacy codebase (monorepo) on an 8-member team.}
+        \resumeItem{Modernized the account management page from pure PHP to React+MaterialUI, PHP, Python, Typescript.}
+        \resumeItem{Fixed high-severity bugs in the PHP and React frontend, authorization issues in Python middleware, and filesystem issues in the custom operating system (bash + TCL).}
+	\resumeItemListEnd
+	
+	\resumeSubheading
+	{Security Research Intern}{May 2022 -- August 2022}
+	{Battelle}{Columbus, OH}
+	\resumeItemListStart
+	\resumeItem{Reverse-engineered a ARM-based modem and modified functionality in order to exfiltrate valuable cellular data.}
+	\resumeItem{Reverse-engineered a complex .NET modem debugging tool, and emulated the tool with 3000+ lines of Python.}
+    % \resumeItem{Automated function annotation and type-guessing with Ghidra, successfully renaming and retyping 80k+ functions.}
+	\resumeItemListEnd
+
+	% \resumeSubheading
+	% {\textbf{Software Engineering Intern}}{June 2021 -- August 2021}
+	% {Fifth Eye}{Ann Arbor, MI}
+	% \resumeItemListStart
+	% \resumeItem{Developed a platform that performs AWS provisioning and displays AWS CloudWatch statistics in a cross-functional team using Express, React, AWS, and CI pipelines to manage hospital ECG monitoring software}
+	\resumeItemListEnd
+	
+	% -----------Multiple Positions Heading-----------
+	
+	
+	
+	%\resumeSubheading
+	%{Programming Subsystem Leader / Systems Integrator}{June 2019 -- June 2021}
+	%{FIRST Robotics, Huron High School}{Ann Arbor, MI}
+	%\resumeItemListStart
+	%\resumeItem{Wrote vision processing in Python using the robot's camera to detect and navigate towards game pieces.}
+	%\resumeItem{Developed C++ teaching curriculum to teach 10+ students how to program and contribute to the robot.}
+	%\resumeItem{Planned and coordinated with mechanical and CAD subsystems, looking ahead to manage deadlines and ensure subteams understood each other and oversaw students working on separate pieces of the robot.}
+	%\resumeItem{Developed strong leadership and teamwork skills through extensive collaboration, teaching, and task delegation.}
+	%\resumeItemListEnd
+	
+        \section{Activities}
+        \resumeSubHeadingListStart
+	\resumeProjectHeading{\textbf{Teaching Assistant (Distributed Systems, Intro to C++)}}{August 2024 -- May 2025}
+
+	\resumeProjectHeading{\textbf{SIGPwny}}{September 2021 -- August 2024}
+	\resumeItemListStart
+	\resumeItem{President of SIGPwny, a cybersecurity club with 150+ members and top-50 worldwide ranking on \uhref{https://ctftime.org/team/27763}{CTFtime}.
+        }
+        \resumeItem{
+Project manager for \uhref{https://2023.uiuc.tf}{UIUCTF 2023}, which had 800+ teams (6k+ prize pool). Created a custom Windows 95 theme, wrote reverse-engineering and sandboxing challenges, stood up infrastructure on Google Cloud.
+        }
+        \resumeItem{
+Rewrote \uhref{https://sigpwny.com}{club website} with Astro, React, Typescript, Decap CMS, and GitHub Actions.
+        }
+	\resumeItemListEnd
+        \resumeProjectHeading{\textbf{Security Research}}{September 2021 -- May 2024}
+        \resumeItemListStart
+                \resumeItem{Same-process sandboxing (2021), security education (2023), kernel configuration recovery (2024) under Levchenko.}
+        \resumeItemListEnd
+	\resumeProjectHeading{\textbf{Hack4Impact Developer}}{September 2022 -- July 2023}
+	\resumeItemListStart
+%  \end{itemize}
+        \resumeItem{Software engineering work with nonprofits in a SWE team structure of 8 people (designers, developers, team lead).}
+        \resumeItem{
+            \textbf{\uhref{https://uiuc.hack4impact.org/projects/meraki}{Meraki (Spring 2023)}} - Architected Parivartan, a tool to view insights into the state of Anganwadis (preschools) across India. Built with PostgreSQL, Typescript, tRPC, ChakraUI, Prisma, Supabase, AppScript.
+        }
+        \resumeItem{Designed the database schema and score caching system for 100,000+ form responses. Created \uhref{https://stenger.io/blog/abusing-google-forms/}{a system} that maps Google Forms to database tables, and performs schema migrations as forms change.}
+        \resumeItemListEnd
+	%-----------PROJECTS-----------
+ % 	\resumeProjectHeading
+	% {\textbf{UIUC Course Schedule Optimizer}}{April 2023}
+	% \resumeItemListStart
+	% \resumeItem{Created a web app using Python, MySQL, and React to provide a student's optimal graduation plan given their transcript and needs, such as class size, average GPA, and hard classes per semester}
+	% \resumeItem{Used NLP to create a course requirements dataset, and Pandas to clean and combine a variety of course datasets}
+	% \resumeItem{Solved for the best schedule given arbitrary schedule constraints using z3 (a constraint solver)}
+	% \resumeItemListEnd
+	% \resumeProjectHeading
+	% {\textbf{When Orange Chicken?} $|$ \emph{React, Firebase, Twilio}}{December 2021}
+	% \resumeItemListStart
+	% \resumeItem{Created a web app to send a custom SMS message letting the user know when food is available in the dining halls.}
+	% \resumeItem{Reverse-engineered and hooked an app using Ghidra \& Frida to find private API endpoints.}
+	% \resumeItem{Hosted project on Firebase with a Cloud Firestore NoSQL database, with timed event triggers to send SMS messages through Twilio.}
+	% \resumeItemListEnd
+	% \resumeProjectHeading
+	% {\textbf{sec-edgar} $|$ \emph{Python, requests, asyncio, git}}{Dec. 2020 -- March 2021}
+	% \resumeItemListStart
+	% \resumeItem{Rewrote a SEC stock filings fetching library (600+ Github stars) with additional features.}
+	% \resumeItem{Restructured project to be more extensible and flexible, allowing downloads with filters and in multiple formats.}
+	% \resumeItem{Implemented multi-threading and bulk downloading functionality using asyncio to get 10-50x speed gains.}
+	% \resumeItemListEnd
+
+	\resumeSubHeadingListEnd
+	
+	
+	
+	%
+	%-----------PROGRAMMING SKILLS-----------
+
+			\section{Awards \& Skills}
+	\begin{itemize}[leftmargin=0.15in, label={}]
+ 		\small{\item{
+                Eagle Scout, Dean's List $\cdot$ Python, Javascript (TypeScript/React), Rust, C, Golang, SQL $\cdot$ Git, Docker, AWS, CI
+		}}
+	\end{itemize}
+	
+	%-------------------------------------------
+\end{document}

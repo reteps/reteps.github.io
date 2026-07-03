@@ -12,7 +12,10 @@
     "lint": "eslint . && pnpm lint:workflows && pnpm lint:markdown",
     "lint:workflows": "github-actionlint",
     "lint:markdown": "markdownlint-cli2",
-    "format": "oxfmt --write ."
+    "format": "oxfmt --write .",
+    "resume:build": "make -C src/resume",
+    "resume:lint": "make -C src/resume lint",
+    "resume:check": "make -C src/resume check"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
