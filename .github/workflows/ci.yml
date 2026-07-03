@@ -44,6 +44,7 @@ jobs:
             texlive-latex-extra \
             texlive-fonts-recommended \
             texlive-lang-english \
+            texlive-plain-generic \
             latexmk \
             chktex \
             poppler-utils
