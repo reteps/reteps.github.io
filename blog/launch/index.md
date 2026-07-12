@@ -104,7 +104,7 @@ This lets me get super snappy load times, and a >90 Lighthouse score!
 
 ## Future Improvements
 
-This section may just ~disappear~ but I still need to:
+This section may just ~~disappear~~ but I still need to:
 
 - Add a bunch more styling for my blog
 - Add some cool theme / flavor to the site
