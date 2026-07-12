@@ -123,7 +123,7 @@ In order,
 1. Acquire Android Emulator w/ rooted Android phone & install Frida
 2. Install Burp Suite to monitor requests
 3. Proxy requests you make on the emulator through burp suite to monitor traffic
-4. Use the ~magic~ of Frida to bypass SSL pinning
+4. Use the ~~magic~~ of Frida to bypass SSL pinning
 5. Profit!!
 
 Completing steps 1-3, I was able to confirm my hunch in the `adb logcat` output: SSL Pinning is stopping us from viewing what web pages it visits.
