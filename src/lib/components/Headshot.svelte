@@ -5,16 +5,37 @@
   export let light: ImageData;
   export let dark: ImageData;
 
-  $: hacker = $theme === 'dark';
-  $: image = hacker ? dark : light;
+  // Track real hover state instead of toggling, so missed enter/leave
+  // events can never leave the image stuck in the inverted state.
+  let hovered = false;
+  $: hacker = ($theme === 'dark') !== hovered;
 </script>
 
-<img
-  src={image.src}
-  srcset={image.srcset}
-  on:mouseover={() => (hacker = !hacker)}
-  on:focus={() => (hacker = !hacker)}
-  on:mouseleave={() => (hacker = !hacker)}
-  class="rounded-full w-full shadow-lg h-auto block"
-  alt="Pete"
-/>
+<!-- Shadow lives on the outer wrapper; the inner one clips the hover
+     target to the visible circle so the square corners don't trigger it. -->
+<div class="rounded-full shadow-lg">
+  <div
+    class="relative [clip-path:circle(50%)]"
+    role="img"
+    aria-label="Peter Stenger headshot"
+    on:pointerenter={() => (hovered = true)}
+    on:pointerleave={() => (hovered = false)}
+  >
+    <!-- Both images stay in the DOM and crossfade, so hovering never
+         triggers a fresh download or a layout change. -->
+    <img
+      src={light.src}
+      srcset={light.srcset}
+      alt=""
+      class="block w-full h-auto rounded-full transition-opacity duration-300"
+      class:opacity-0={hacker}
+    />
+    <img
+      src={dark.src}
+      srcset={dark.srcset}
+      alt=""
+      class="absolute inset-0 w-full h-full rounded-full transition-opacity duration-300"
+      class:opacity-0={!hacker}
+    />
+  </div>
+</div>
