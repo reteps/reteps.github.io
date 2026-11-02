@@ -8,8 +8,10 @@
 </script>
 
 <Giscus
+  id="comments"
   repo="reteps/reteps.github.io"
   repoId="R_kgDOIq_g7w"
+  category="Announcements"
   categoryId="DIC_kwDOIq_g784CTdFf"
   mapping="specific"
   reactionsEnabled="1"
