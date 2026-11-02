@@ -7,7 +7,7 @@
     "dev": "astro dev --host 0.0.0.0",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check",
+    "check": "astro check && svelte-check --threshold warning",
     "format:check": "oxfmt --check .",
     "lint": "eslint . && pnpm lint:workflows && pnpm lint:markdown",
     "lint:workflows": "github-actionlint",
