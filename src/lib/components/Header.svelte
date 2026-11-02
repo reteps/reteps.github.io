@@ -16,8 +16,8 @@ header {
 }
 </style>
 
-<header class={fixedClass + " lg:pr-20 lg:pl-20 top-0 pt-10 flex flex-col justify-center pointer-events-none z-10"}>
-  <nav class="flex justify-center lg:justify-end">
+<header class={fixedClass + " w-full top-0 pt-10 flex flex-col justify-center pointer-events-none z-10"}>
+  <nav class="flex w-full max-w-7xl mx-auto lg:px-10 justify-center lg:justify-end">
     <ul class="flex flex-row items-center dark:text-white text-black
      lg:bg-white dark:bg-black lg:p-3 lg:rounded-full lg:border-2 dark:border-white border-black pointer-events-auto">
       <li class={linkClass}>

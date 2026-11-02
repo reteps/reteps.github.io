@@ -7,7 +7,7 @@
 
 </script>
 
-<footer class="ml-5 mr-5 mt-5 mb-5 sm:ml-20 sm:mr-20 sm:mt-10 sm:mb-10 flex flex-col justify-center">
+<footer class="w-full max-w-7xl mx-auto px-5 my-5 sm:px-10 sm:my-10 flex flex-col justify-center">
   <!-- <div class="flex flex-row mb-5 justify-center lg:justify-start">
     <h1 class="text-2xl font-bold text-purple-700 dark:text-green-700">
       Let's stay in touch.
