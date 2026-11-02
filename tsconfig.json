@@ -3,12 +3,11 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist", "public", "eslint.config.ts", "astro.config.mjs"],
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
-      "$lib": ["src/lib"],
-      "$lib/*": ["src/lib/*"],
-      "$assets": ["src/assets"],
-      "$assets/*": ["src/assets/*"]
+      "$lib": ["./src/lib"],
+      "$lib/*": ["./src/lib/*"],
+      "$assets": ["./src/assets"],
+      "$assets/*": ["./src/assets/*"]
     }
   }
 }
