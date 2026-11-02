@@ -4,7 +4,7 @@
   import CodeIcon from '@lucide/svelte/icons/code';
   import LinkIcon from '@lucide/svelte/icons/link';
   import GlobeIcon from '@lucide/svelte/icons/globe';
-  import TrashIcon from '@lucide/svelte/icons/trash-2';
+  import TrashIcon from '@lucide/svelte/icons/trash';
 
   type ShowcaseItem = {
     title: string;
