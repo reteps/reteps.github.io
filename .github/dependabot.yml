@@ -16,6 +16,10 @@ updates:
       default-days: 2
     # Bundle all npm updates into a single PR so there is only ever one
     # pnpm-lock.yaml change in flight — avoids cross-PR lockfile conflicts.
+    # typescript-eslint does not support TS 7 (native/Go port) yet; stay on 6.x.
+    ignore:
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
     groups:
       npm:
         patterns:
